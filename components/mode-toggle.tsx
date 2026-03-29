@@ -21,21 +21,21 @@ export function ModeToggle() {
     <div className="flex items-center gap-1 border border-foreground/10 p-1 rounded-full bg-background/50 backdrop-blur-md">
       <button
         onClick={() => setTheme("light")}
-        className={`p-2 rounded-full transition-all ${theme === 'light' ? 'bg-foreground/10 text-foreground' : 'text-foreground/40 hover:text-foreground'}`}
+        className={`p-2 rounded-full transition-all ${theme === 'light' ? 'bg-black text-white dark:bg-violet-500 dark:text-black shadow-md' : 'text-foreground/40 hover:text-foreground hover:bg-foreground/5'}`}
         aria-label="Light Mode"
       >
         <Sun size={18} />
       </button>
       <button
         onClick={() => setTheme("dark")}
-        className={`p-2 rounded-full transition-all ${theme === 'dark' ? 'bg-foreground/10 text-foreground' : 'text-foreground/40 hover:text-foreground'}`}
+        className={`p-2 rounded-full transition-all ${theme === 'dark' ? 'bg-black text-white dark:bg-violet-500 dark:text-black shadow-md' : 'text-foreground/40 hover:text-foreground hover:bg-foreground/5'}`}
         aria-label="Dark Mode"
       >
         <Moon size={18} />
       </button>
       <button
         onClick={() => setTheme("system")}
-        className={`p-2 rounded-full transition-all ${theme === 'system' ? 'bg-foreground/10 text-foreground' : 'text-foreground/40 hover:text-foreground'}`}
+        className={`p-2 rounded-full transition-all ${theme === 'system' ? 'bg-black text-white dark:bg-violet-500 dark:text-black shadow-md' : 'text-foreground/40 hover:text-foreground hover:bg-foreground/5'}`}
         aria-label="System Mode"
       >
         <Monitor size={18} />
