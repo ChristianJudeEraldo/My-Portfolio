@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Computer Engineering Student Portfolio",
+  title: "Christian Jude | Computer Engineer",
+  description: "Portfolio of a Computer Engineering student specializing in AI and Cybersecurity.",
 };
 
 export default function RootLayout({
@@ -13,15 +14,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // suppressHydrationWarning is REQUIRED for next-themes
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="antialiased selection:bg-blue-500/30">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
+          disableTransitionOnChange
         >
-          {children}
+          {/* Main Layout Structure */}
+          <div className="relative flex min-h-screen flex-col">
+            <SiteHeader />
+            <main className="flex-1 container mx-auto px-4 py-8">
+              {children}
+            </main>
+            {/* You can add a SiteFooter here later */}
+          </div>
         </ThemeProvider>
       </body>
     </html>
