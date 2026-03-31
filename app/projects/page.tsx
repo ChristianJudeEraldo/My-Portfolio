@@ -1,36 +1,53 @@
-import Link from "next/link";
+import Link from "next/link"
 
 export default function ProjectsPage() {
   const projects = [
     {
-      title: "CNN Thesis",
-      slug: "cnn-thesis",
-      description: "Your CNN thesis project details go here",
+      title: "CNN Facial Recognition",
+      description: "Detecting early signs of sleep deprivation in students using AI.",
+      link: "/projects/cnn-thesis",
+      tag: "Thesis / AI"
     },
-    // Add more projects here as you create them
-  ];
+    {
+      title: "Interactive To-Do List",
+      description: "A React-based task manager with state persistence and reordering.",
+      link: "/projects/todo",
+      tag: "React / State"
+    }
+  ]
 
   return (
-    <main className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-4">Projects</h1>
-      <p className="text-foreground/60 mb-12">
-        A collection of my work and projects.
-      </p>
+    <div className="space-y-8">
+      <div className="space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight">My Projects</h1>
+        <p className="text-muted-foreground">A showcase of my engineering and development work.</p>
+      </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {/* This grid puts them side-by-side on tablets and desktops */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project) => (
-          <Link
-            key={project.slug}
-            href={`/projects/${project.slug}`}
-            className="group border border-foreground/10 rounded-lg p-6 hover:border-foreground/30 transition-colors"
-          >
-            <h2 className="text-xl font-semibold mb-2 group-hover:text-blue-500 transition-colors">
-              {project.title}
-            </h2>
-            <p className="text-foreground/60">{project.description}</p>
+          <Link key={project.link} href={project.link} className="group">
+            <div className="h-full border border-foreground/10 rounded-2xl p-6 bg-foreground/5 hover:bg-foreground/10 transition-all hover:scale-[1.02] hover:shadow-lg">
+              <div className="flex flex-col h-full justify-between">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-500">
+                    {project.tag}
+                  </span>
+                  <h3 className="text-xl font-bold mt-2 group-hover:text-blue-500 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-foreground/60 mt-2 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+                <div className="mt-6 text-sm font-medium flex items-center gap-2">
+                  View Project <span className="transition-transform group-hover:translate-x-1">→</span>
+                </div>
+              </div>
+            </div>
           </Link>
         ))}
       </div>
-    </main>
-  );
+    </div>
+  )
 }
