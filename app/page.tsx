@@ -25,17 +25,29 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Profile Picture Placeholder */}
+       {/* Profile Picture Section */}
         <div className="relative w-64 h-64 md:w-80 md:h-80">
           <div className="absolute inset-0 bg-blue-500 rounded-2xl rotate-6 opacity-20 blur-2xl"></div>
-          <div className="relative w-full h-full rounded-2xl border-2 border-foreground/10 overflow-hidden bg-foreground/5 flex items-center justify-center">
           
-           <Image 
-            src="/profile.jpg" 
-            alt="Christian Jude Profile" 
-            fill 
-            className="object-cover"
-          />
+          <div className="relative w-full h-full rounded-2xl border-2 border-foreground/10 overflow-hidden bg-foreground/5">
+            {/* Light Mode Image */}
+            <Image 
+              src="/profile.jpg" 
+              alt="Christian Jude Profile" 
+              fill 
+              className="object-cover dark:opacity-0 dark:invisible transition-all duration-300"
+              priority 
+              unoptimized
+            />
+
+            {/* Dark Mode Image */}
+            <Image 
+              src="/profile2.jpg" 
+              alt="Christian Jude Profile - Dark Mode" 
+              fill 
+              className="object-cover opacity-0 invisible dark:opacity-100 dark:visible transition-all duration-300"
+              unoptimized
+            />
           </div>
         </div>
       </section>

@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Tailwind v4: enable dark: utilities based on the .dark class */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -12,6 +15,7 @@
   --foreground: #ededed;
   color-scheme: dark;
 }
+
 
 html {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
