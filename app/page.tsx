@@ -14,7 +14,7 @@ export default function Home() {
           </h1>
           <p className="text-xl text-foreground/70 max-w-2xl leading-relaxed">
             A <span className="font-semibold text-foreground">Computer Engineering Student</span> specializing in 
-            AI-driven systems and backend development. I bridge the gap between complex data and functional software.
+            building high-performance web applications and AI-integrated software solutions.
           </p>
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
             <Link href="/projects" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all shadow-lg shadow-blue-500/20">
@@ -66,7 +66,8 @@ export default function Home() {
               <h3 className="text-xl font-semibold">B.S. in Computer Engineering</h3>
               <p className="text-foreground/60 italic">Graduating Student</p>
               <p className="mt-4 text-foreground/70 text-sm leading-relaxed">
-                Focused on hardware-software integration, digital logic, and AI workflow automation.
+                Software-focused engineer building high-performance apps, 
+                backed by a BSCPE degree and industry certifications
               </p>
             </div>
           </div>
