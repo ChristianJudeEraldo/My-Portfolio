@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Briefcase, GraduationCap, Award, Cpu, Database, Code } from "lucide-react";
+import { Briefcase, GraduationCap, Award, Database, Code, 
+        Code2, Globe, Terminal, Cpu, CheckCircle2 } from "lucide-react";
 
 export default function Home() {
   return (
@@ -98,6 +99,71 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- TECHNICAL SKILLS --- */}
+      <section className="space-y-8">
+        <div className="flex items-center gap-3">
+          <Cpu className="text-blue-500" size={28} />
+          <h2 className="text-3xl font-bold tracking-tight">Technical Skills</h2>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {/* Python - Certified */}
+          <div className="p-6 border border-foreground/10 rounded-2xl bg-foreground/5 hover:border-blue-500/30 transition-all group">
+            <div className="flex justify-between items-start mb-4">
+              <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500">
+                <Terminal size={24} />
+              </div>
+              <span className="text-[10px] font-bold px-2 py-1 bg-green-500/10 text-green-500 rounded-full flex items-center gap-1">
+                <CheckCircle2 size={10} /> CERTIFIED
+              </span>
+            </div>
+            <h3 className="font-bold">Python</h3>
+            <p className="text-xs text-foreground/50 mt-1">AI & Scripting</p>
+          </div>
+
+          {/* MySQL - Certified */}
+          <div className="p-6 border border-foreground/10 rounded-2xl bg-foreground/5 hover:border-blue-500/30 transition-all group">
+            <div className="flex justify-between items-start mb-4">
+              <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500">
+                <Database size={24} />
+              </div>
+              <span className="text-[10px] font-bold px-2 py-1 bg-green-500/10 text-green-500 rounded-full flex items-center gap-1">
+                <CheckCircle2 size={10} /> CERTIFIED
+              </span>
+            </div>
+            <h3 className="font-bold">MySQL</h3>
+            <p className="text-xs text-foreground/50 mt-1">Database Management</p>
+          </div>
+
+          {/* PHP */}
+          <div className="p-6 border border-foreground/10 rounded-2xl bg-foreground/5 hover:border-blue-500/30 transition-all group">
+            <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500 mb-4 w-fit">
+              <Code2 size={24} />
+            </div>
+            <h3 className="font-bold">PHP</h3>
+            <p className="text-xs text-foreground/50 mt-1">Backend Logic</p>
+          </div>
+
+          {/* JavaScript */}
+          <div className="p-6 border border-foreground/10 rounded-2xl bg-foreground/5 hover:border-blue-500/30 transition-all group">
+            <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500 mb-4 w-fit">
+              <Code2 size={24} />
+            </div>
+            <h3 className="font-bold">JavaScript</h3>
+            <p className="text-xs text-foreground/50 mt-1">Interactive Web</p>
+          </div>
+
+          {/* HTML & CSS */}
+          <div className="p-6 border border-foreground/10 rounded-2xl bg-foreground/5 hover:border-blue-500/30 transition-all group">
+            <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500 mb-4 w-fit">
+              <Globe size={24} />
+            </div>
+            <h3 className="font-bold">HTML5 / CSS3</h3>
+            <p className="text-xs text-foreground/50 mt-1">Responsive Design</p>
           </div>
         </div>
       </section>
