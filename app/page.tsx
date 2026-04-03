@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Briefcase, GraduationCap, Award, Database, Code, 
-        Code2, Globe, Terminal, Cpu, CheckCircle2 } from "lucide-react";
+  Code2, Globe, Terminal, Cpu, CheckCircle2, Bot } from "lucide-react";
 
 export default function Home() {
   return (
@@ -165,6 +165,15 @@ export default function Home() {
             </div>
             <h3 className="font-bold">HTML5 / CSS3</h3>
             <p className="text-xs text-foreground/50 mt-1">Responsive Design</p>
+          </div>
+
+          {/* Agentic AI Workflows */}
+          <div className="p-6 border border-foreground/10 rounded-2xl bg-foreground/5 hover:border-blue-500/30 transition-all group">
+            <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500 mb-4 w-fit">
+              <Bot size={24} />
+            </div>
+            <h3 className="font-bold">Agentic AI Workflows</h3>
+            <p className="text-xs text-foreground/50 mt-1">Automation & Orchestration</p>
           </div>
         </div>
       </section>
