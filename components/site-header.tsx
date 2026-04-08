@@ -45,7 +45,7 @@ export function SiteHeader() {
             )
           })}
           
-          <div className="ml-2 border-l border-foreground/10 pl-6">
+          <div className="ml-2 flex items-center border-l border-foreground/10 pl-6">
             <ModeToggle />
           </div>
         </nav>

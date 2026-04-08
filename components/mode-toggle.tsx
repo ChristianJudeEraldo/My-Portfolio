@@ -27,31 +27,29 @@ export function ModeToggle() {
   }
 
   const activeTheme = theme === "system" ? resolvedTheme : theme
+  const isDark = activeTheme === "dark"
+
+  const toggleTheme = () => {
+    triggerThemeChange(isDark ? "light" : "dark")
+  }
 
   return (
-    <div className="flex items-center gap-1 border border-foreground/10 p-1 rounded-full bg-background/50 backdrop-blur-md" data-theme-toggle>
-      <button
-        onClick={() => triggerThemeChange("light")}
-        className={`p-2 rounded-full transition-all duration-300 ${
-          activeTheme === "light"
-            ? "bg-amber-100 text-amber-900 shadow-md"
-            : "text-foreground/40 hover:text-foreground hover:bg-foreground/5"
+    <button
+      onClick={toggleTheme}
+      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 min-h-0 min-w-0 ${
+        isDark ? "bg-zinc-700 hover:bg-zinc-600" : "bg-slate-300 hover:bg-gray-400"
+      }`}
+      aria-label="Toggle theme"
+      data-theme-toggle
+      type="button"
+    >
+      <span
+        className={`absolute left-0.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.08)] transition-all duration-300 ease-in-out ${
+          isDark ? "translate-x-5 bg-slate-800" : "translate-x-0 bg-amber-100"
         }`}
-        aria-label="Light Mode"
       >
-        <Sun size={18} />
-      </button>
-      <button
-        onClick={() => triggerThemeChange("dark")}
-        className={`p-2 rounded-full transition-all duration-300 ${
-          activeTheme === "dark"
-            ? "bg-slate-800 text-slate-100 shadow-md"
-            : "text-foreground/40 hover:text-foreground hover:bg-foreground/5"
-        }`}
-        aria-label="Dark Mode"
-      >
-        <Moon size={18} />
-      </button>
-    </div>
+        {isDark ? <Moon className="h-4 w-4 text-slate-100" /> : <Sun className="h-4 w-4 text-gray-500" />}
+      </span>
+    </button>
   )
 }
