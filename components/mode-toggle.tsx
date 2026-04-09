@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 export function ModeToggle() {
   const { theme, resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
+  const clipPathId = React.useId().replace(/:/g, "")
 
   // Avoid "Hydration Mismatch" (ensures the component only renders after the page loads)
   React.useEffect(() => {
@@ -36,20 +36,39 @@ export function ModeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 min-h-0 min-w-0 ${
-        isDark ? "bg-zinc-700 hover:bg-zinc-600" : "bg-slate-300 hover:bg-gray-400"
-      }`}
+      className={`theme-toggle ${isDark ? "theme-toggle--toggled" : ""}`}
+      title="Toggle theme"
       aria-label="Toggle theme"
       data-theme-toggle
       type="button"
     >
-      <span
-        className={`absolute left-0.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.08)] transition-all duration-300 ease-in-out ${
-          isDark ? "translate-x-5 bg-slate-800" : "translate-x-0 bg-amber-100"
-        }`}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        width="1em"
+        height="1em"
+        fill="currentColor"
+        strokeLinecap="round"
+        className="theme-toggle__classic"
+        viewBox="0 0 32 32"
       >
-        {isDark ? <Moon className="h-4 w-4 text-slate-100" /> : <Sun className="h-4 w-4 text-gray-500" />}
-      </span>
+        <clipPath id={clipPathId}>
+          <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
+        </clipPath>
+        <g clipPath={`url(#${clipPathId})`}>
+          <circle cx="16" cy="16" r="9.34" />
+          <g stroke="currentColor" strokeWidth="1.5">
+            <path d="M16 5.5v-4" />
+            <path d="M16 30.5v-4" />
+            <path d="M1.5 16h4" />
+            <path d="M26.5 16h4" />
+            <path d="m23.4 8.6 2.8-2.8" />
+            <path d="m5.7 26.3 2.9-2.9" />
+            <path d="m5.8 5.8 2.8 2.8" />
+            <path d="m23.4 23.4 2.9 2.9" />
+          </g>
+        </g>
+      </svg>
     </button>
   )
 }
