@@ -26,12 +26,12 @@ export function CircularReveal() {
       // Delay theme switch so the circular reveal is visibly underway first
       setTimeout(() => {
         setTheme(newTheme)
-      }, 220)
+      }, 320)
 
       // Reset animation state after completion
       setTimeout(() => {
         setIsAnimating(false)
-      }, 600)
+      }, 400)
     },
     [setTheme]
   )
