@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -27,19 +33,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased selection:bg-blue-500/30">
+      <body className={`${inter.variable} linear-bg-aurora antialiased selection:bg-[#7170ff]/30`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
         >
-          {/* Main Layout Structure */}
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader />
-            <main className="flex-1 container mx-auto px-4 py-8">
+            <main className="linear-shell flex-1 py-8 md:py-10">
               {children}
             </main>
-            {/* You can add a SiteFooter here later */}
           </div>
         </ThemeProvider>
       </body>

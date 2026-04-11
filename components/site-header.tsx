@@ -14,38 +14,33 @@ export function SiteHeader() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-foreground/5 bg-background/70 backdrop-blur-md">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        {/* Logo */}
-        <Link href="/" className="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity">
-          Jude<span className="text-blue-500">.</span>
+    <header className="sticky top-0 z-50 w-full border-b border-(--border-subtle) bg-(--header-bg) backdrop-blur-md">
+      <div className="linear-shell flex h-16 items-center justify-between">
+        <Link href="/" className="text-[15px] font-[590] tracking-[-0.02em] text-(--foreground)">
+          Jude<span className="text-(--accent)">.</span>
         </Link>
 
-        {/* Navigation */}
-        <nav className="flex items-center gap-8">
+        <nav className="flex items-center gap-6 md:gap-8">
           {navItems.map((item) => {
-            // Check if the current path starts with the link href
-            // This keeps "Projects" highlighted even when viewing a sub-project
             const isActive = pathname.startsWith(item.href)
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative text-sm font-medium transition-colors hover:text-foreground ${
-                  isActive ? "text-foreground" : "text-foreground/60"
+                className={`relative pb-1 text-[13px] font-[510] tracking-[-0.01em] transition-colors ${
+                  isActive ? "text-(--foreground)" : "text-(--text-secondary) hover:text-(--foreground)"
                 }`}
               >
                 {item.name}
-                {/* Visual Highlight: An animated blue dot or underline */}
                 {isActive && (
-                  <span className="absolute -bottom-5.25 left-0 right-0 h-0.5 bg-blue-500 rounded-full" />
+                  <span className="absolute -bottom-4.25 left-0 right-0 h-px rounded-full bg-(--accent)" />
                 )}
               </Link>
             )
           })}
           
-          <div className="ml-2 flex items-center border-l border-foreground/10 pl-6">
+          <div className="ml-1 flex items-center border-l border-(--border-subtle) pl-4">
             <ModeToggle />
           </div>
         </nav>
