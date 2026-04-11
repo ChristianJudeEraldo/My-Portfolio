@@ -2,93 +2,137 @@ import { Mail, Globe, GitBranch, MapPin, Send } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="max-w-5xl mx-auto space-y-16 pb-20">
-      {/* --- HEADER --- */}
-      <section className="space-y-4 text-center md:text-left">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Let's <span className="text-blue-500">Connect</span></h1>
-        <p className="text-lg text-foreground/60 max-w-2xl">
-          Whether you have a question about my <strong>CNN Thesis</strong>, want to discuss <strong>agentic AI</strong>, or just want to say hi, my inbox is always open.
+    <div className="mx-auto max-w-5xl pb-20 pt-6 md:pt-10">
+      <section className="space-y-4 border-b border-foreground/10 pb-8">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">
+          Contact
+        </p>
+        <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
+          Let&apos;s build something meaningful.
+        </h1>
+        <p className="max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">
+          If you&apos;re hiring, collaborating, or discussing a project, I&apos;m open to
+          conversations around full-stack web development, AI-integrated systems, and
+          product-focused engineering.
         </p>
       </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* --- CONTACT INFO CARDS --- */}
-        <div className="space-y-4">
-          {/* Email Card */}
-          <a href="mailto:your-email@lpunetwork.edu.ph" className="block group p-6 border border-foreground/10 rounded-3xl bg-foreground/5 hover:border-blue-500/30 transition-all">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-blue-500/10 rounded-2xl text-blue-500 group-hover:scale-110 transition-transform">
-                <Mail size={24} />
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-foreground/40 uppercase tracking-widest">Email</p>
-                <p className="font-medium text-[13px]">christian.eraldo@lpunetwork.edu.ph</p>
-              </div>
-            </div>
-          </a>
-
-          {/* LinkedIn Card */}
-          <a href="https://www.linkedin.com/in/christian-jude-eraldo-012718251/" target="_blank" className="block group p-6 border border-foreground/10 rounded-3xl bg-foreground/5 hover:border-blue-500/30 transition-all">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-blue-500/10 rounded-2xl text-blue-500 group-hover:scale-110 transition-transform">
-                <Globe size={24} />
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-foreground/40 uppercase tracking-widest">LinkedIn</p>
-                <p className="font-medium text-sm">Christian Jude Eraldo</p>
-              </div>
-            </div>
-          </a>
-
-          {/* GitHub Card */}
-          <a href="https://github.com/ChristianJudeEraldo" target="_blank" className="block group p-6 border border-foreground/10 rounded-3xl bg-foreground/5 hover:border-blue-500/30 transition-all">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-blue-500/10 rounded-2xl text-blue-500 group-hover:scale-110 transition-transform">
-                <GitBranch size={24} />
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-foreground/40 uppercase tracking-widest">GitHub</p>
-                <p className="font-medium text-sm">@ChristianJudeEraldo</p>
-              </div>
-            </div>
-          </a>
-
-          {/* Location Card */}
-          <div className="p-6 border border-foreground/10 rounded-3xl bg-foreground/5">
-            <div className="flex items-center gap-4 text-foreground/60">
-              <div className="p-3 bg-foreground/5 rounded-2xl">
-                <MapPin size={24} />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-widest">Location</p>
-                <p className="font-medium text-sm">Philippines</p>
-              </div>
-            </div>
+      <section className="grid gap-12 pt-10 md:grid-cols-[0.95fr_1.05fr] md:gap-16">
+        <div className="space-y-8">
+          <div className="space-y-3">
+            <h2 className="text-lg font-semibold tracking-tight">Reach Me Directly</h2>
+            <p className="text-sm leading-relaxed text-foreground/65">
+              I usually respond within 24-48 hours. For faster coordination, email is the
+              best channel.
+            </p>
           </div>
+
+          <ul className="divide-y divide-foreground/10 border-y border-foreground/10">
+            <li>
+              <a
+                href="mailto:christian.eraldo@lpunetwork.edu.ph"
+                className="group flex items-center justify-between gap-4 py-4"
+              >
+                <div className="flex items-center gap-3">
+                  <Mail size={18} className="text-blue-500" />
+                  <span className="text-sm font-medium">Email</span>
+                </div>
+                <span className="text-xs text-foreground/60 group-hover:text-foreground/80">
+                  christian.eraldo@lpunetwork.edu.ph
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/christian-jude-eraldo-012718251/"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-between gap-4 py-4"
+              >
+                <div className="flex items-center gap-3">
+                  <Globe size={18} className="text-blue-500" />
+                  <span className="text-sm font-medium">LinkedIn</span>
+                </div>
+                <span className="text-xs text-foreground/60 group-hover:text-foreground/80">
+                  christian-jude-eraldo-012718251
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/ChristianJudeEraldo"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-between gap-4 py-4"
+              >
+                <div className="flex items-center gap-3">
+                  <GitBranch size={18} className="text-blue-500" />
+                  <span className="text-sm font-medium">GitHub</span>
+                </div>
+                <span className="text-xs text-foreground/60 group-hover:text-foreground/80">
+                  @ChristianJudeEraldo
+                </span>
+              </a>
+            </li>
+            <li className="flex items-center justify-between gap-4 py-4">
+              <div className="flex items-center gap-3">
+                <MapPin size={18} className="text-blue-500" />
+                <span className="text-sm font-medium">Location</span>
+              </div>
+              <span className="text-xs text-foreground/60">Philippines</span>
+            </li>
+          </ul>
         </div>
 
-        {/* --- MESSAGE FORM --- */}
-        <div className="md:col-span-2 p-8 border border-foreground/10 rounded-3xl bg-foreground/5 space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form className="space-y-5 border border-foreground/10 p-6 md:p-8">
+          <h2 className="text-lg font-semibold tracking-tight">Send a Message</h2>
+
+          <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <label className="text-xs font-bold text-foreground/50 ml-1">NAME</label>
-              <input type="text" placeholder="John Doe" className="w-full p-4 rounded-2xl bg-background border border-foreground/10 focus:border-blue-500 focus:outline-none transition-all" />
+              <label htmlFor="name" className="text-xs font-semibold uppercase tracking-[0.14em] text-foreground/55">
+                Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                className="w-full border border-foreground/15 bg-background px-4 py-3 text-sm focus:border-blue-500 focus:outline-none"
+              />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold text-foreground/50 ml-1">EMAIL</label>
-              <input type="email" placeholder="john@example.com" className="w-full p-4 rounded-2xl bg-background border border-foreground/10 focus:border-blue-500 focus:outline-none transition-all" />
+              <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.14em] text-foreground/55">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="john@example.com"
+                className="w-full border border-foreground/15 bg-background px-4 py-3 text-sm focus:border-blue-500 focus:outline-none"
+              />
             </div>
           </div>
+
           <div className="space-y-2">
-            <label className="text-xs font-bold text-foreground/50 ml-1">MESSAGE</label>
-            <textarea rows={4} placeholder="Hi Jude, I saw your CNN thesis and..." className="w-full p-4 rounded-2xl bg-background border border-foreground/10 focus:border-blue-500 focus:outline-none transition-all resize-none"></textarea>
+            <label htmlFor="message" className="text-xs font-semibold uppercase tracking-[0.14em] text-foreground/55">
+              Message
+            </label>
+            <textarea
+              id="message"
+              rows={5}
+              placeholder="Tell me briefly about your project or opportunity."
+              className="w-full resize-none border border-foreground/15 bg-background px-4 py-3 text-sm leading-relaxed focus:border-blue-500 focus:outline-none"
+            />
           </div>
-          <button className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-blue-500/20 active:scale-[0.98]">
-            <Send size={18} />
+
+          <button
+            type="button"
+            className="inline-flex w-full items-center justify-center gap-2 bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
+          >
+            <Send size={16} />
             Send Message
           </button>
-        </div>
-      </div>
+        </form>
+      </section>
     </div>
   );
 }

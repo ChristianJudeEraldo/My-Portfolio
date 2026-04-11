@@ -62,7 +62,7 @@ export default function AboutPage() {
         </div>
 
         <aside className="space-y-6 lg:pt-2">
-          <figure className="relative aspect-4/5 overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/5">
+          <figure className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-full border border-foreground/10 bg-foreground/5">
             <Image
               src="/profile.jpg"
               alt="Christian Jude Eraldo"

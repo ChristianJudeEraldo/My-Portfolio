@@ -28,9 +28,9 @@ export default function Home() {
 
        {/* Profile Picture Section */}
         <div className="relative w-64 h-64 md:w-80 md:h-80">
-          <div className="absolute inset-0 bg-blue-500 rounded-2xl rotate-6 opacity-20 blur-2xl"></div>
+            <div className="absolute inset-0 bg-blue-500 rounded-full rotate-6 opacity-20 blur-2xl"></div>
           
-          <div className="relative w-full h-full rounded-2xl border-2 border-foreground/10 overflow-hidden bg-foreground/5">
+            <div className="relative w-full h-full rounded-full border-2 border-foreground/10 overflow-hidden bg-foreground/5">
             {/* Light Mode Image */}
             <Image 
               src="/profile.jpg" 
