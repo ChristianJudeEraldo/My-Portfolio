@@ -18,6 +18,23 @@ export default function AboutPage() {
               intersection of performant frontend engineering, backend reliability, and
               AI-assisted product development.
             </p>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="linear-button linear-button-primary"
+              >
+                View Resume
+              </a>
+              <a
+                href="/resume.pdf"
+                download="Christian_Jude_Eraldo_Resume.pdf"
+                className="linear-button linear-button-ghost"
+              >
+                Download PDF
+              </a>
+            </div>
           </div>
 
           <dl className="linear-card overflow-hidden">
