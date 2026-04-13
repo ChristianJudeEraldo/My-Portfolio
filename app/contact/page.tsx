@@ -1,8 +1,33 @@
-import { Mail, Globe, GitBranch, MapPin, Send } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Mail, Globe, GitBranch, MapPin, Send, Loader2 } from "lucide-react";
+import { sendEmail } from "../actions/sendEmail";
+import { Toaster, toast } from "sonner";
 
 export default function ContactPage() {
+  const [isPending, setIsPending] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsPending(true);
+
+    const formData = new FormData(e.currentTarget);
+    const result = await sendEmail(formData);
+
+    if (result.error) {
+      toast.error(result.error);
+    } else {
+      toast.success("Message sent successfully! I'll be in touch soon.");
+      (e.target as HTMLFormElement).reset();
+    }
+
+    setIsPending(false);
+  }
+
   return (
     <div className="pb-20 pt-6 md:pt-10">
+      <Toaster position="bottom-right" theme="dark" />
       <section className="space-y-4 border-b border-(--border-subtle) pb-8">
         <p className="linear-eyebrow">
           Contact
@@ -84,7 +109,7 @@ export default function ContactPage() {
           </ul>
         </div>
 
-        <form className="linear-card space-y-5 p-6 md:p-8">
+        <form onSubmit={handleSubmit} className="linear-card space-y-5 p-6 md:p-8">
           <h2 className="text-[20px] font-[590] tracking-[-0.012em]">Send a Message</h2>
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -94,6 +119,8 @@ export default function ContactPage() {
               </label>
               <input
                 id="name"
+                name="name"
+                required
                 type="text"
                 placeholder="John Doe"
                 className="w-full rounded-md border border-(--border-standard) bg-[rgba(255,255,255,0.02)] px-4 py-3 text-[14px] text-(--text-secondary) outline-none focus:border-(--accent)"
@@ -105,6 +132,8 @@ export default function ContactPage() {
               </label>
               <input
                 id="email"
+                name="email"
+                required
                 type="email"
                 placeholder="john@example.com"
                 className="w-full rounded-md border border-(--border-standard) bg-[rgba(255,255,255,0.02)] px-4 py-3 text-[14px] text-(--text-secondary) outline-none focus:border-(--accent)"
@@ -118,6 +147,8 @@ export default function ContactPage() {
             </label>
             <textarea
               id="message"
+              name="message"
+              required
               rows={5}
               placeholder="Tell me briefly about your project or opportunity."
               className="w-full resize-none rounded-md border border-(--border-standard) bg-[rgba(255,255,255,0.02)] px-4 py-3 text-[14px] leading-relaxed text-(--text-secondary) outline-none focus:border-(--accent)"
@@ -125,11 +156,12 @@ export default function ContactPage() {
           </div>
 
           <button
-            type="button"
-            className="linear-button linear-button-primary w-full gap-2"
+            type="submit"
+            disabled={isPending}
+            className="linear-button linear-button-primary w-full gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Send size={16} />
-            Send Message
+            {isPending ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+            {isPending ? "Sending..." : "Send Message"}
           </button>
         </form>
       </section>
