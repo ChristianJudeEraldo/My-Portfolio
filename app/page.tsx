@@ -42,6 +42,7 @@ export default function Home() {
               src="/profile.jpg" 
               alt="Christian Jude Profile" 
               fill 
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover dark:opacity-0 dark:invisible transition-opacity duration-700 delay-150 ease-in-out"
               priority 
               unoptimized
@@ -51,6 +52,7 @@ export default function Home() {
               src="/profile2.jpg" 
               alt="Christian Jude Profile - Dark Mode" 
               fill 
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover opacity-0 invisible dark:opacity-100 dark:visible transition-opacity duration-700 delay-150 ease-in-out"
               unoptimized
             />
