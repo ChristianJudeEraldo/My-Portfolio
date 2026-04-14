@@ -66,10 +66,10 @@ export function TodoList() {
           <li key={index} className="flex items-center justify-between p-3 bg-foreground/5 rounded-xl border border-foreground/5">
             <span className="flex-1 font-medium">{task}</span>
             <div className="flex gap-1">
-              <button onClick={() => moveTaskUp(index)} className="p-2 text-[hsl(185,100%,50%)] hover:bg-foreground/5 rounded-md">
+              <button onClick={() => moveTaskUp(index)} className="p-2 text-[hsl(240,100%,72%)] hover:bg-foreground/5 rounded-md">
                 <ArrowUp size={16} />
               </button>
-              <button onClick={() => moveTaskDown(index)} className="p-2 text-[hsl(185,100%,50%)] hover:bg-foreground/5 rounded-md">
+              <button onClick={() => moveTaskDown(index)} className="p-2 text-[hsl(240,100%,72%)] hover:bg-foreground/5 rounded-md">
                 <ArrowDown size={16} />
               </button>
               <button onClick={() => handleDeleteTask(index)} className="p-2 text-[hsl(0,83%,37%)] hover:bg-foreground/5 rounded-md">
