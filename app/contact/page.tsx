@@ -111,6 +111,11 @@ export default function ContactPage() {
 
         <form onSubmit={handleSubmit} className="linear-card space-y-5 p-6 md:p-8">
           <h2 className="text-[20px] font-[590] tracking-[-0.012em]">Send a Message</h2>
+          
+          {/* Honeypot field: Hidden from users, bots will try to fill it. */}
+          <div className="hidden" aria-hidden="true">
+            <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" />
+          </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
