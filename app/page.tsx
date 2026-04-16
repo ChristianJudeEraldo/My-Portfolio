@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Briefcase, GraduationCap, Award, Database, Code, 
-  Code2, Globe, Terminal, Cpu, CheckCircle2, Bot } from "lucide-react";
+  Code2, Globe, Terminal, Cpu, CheckCircle2, Bot, Camera } from "lucide-react";
 
 export default function Home() {
   const skills = [
@@ -141,7 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-8">
+      <section className="space-y-8 pb-20">
         <div className="flex items-center gap-3">
           <Briefcase className="text-(--accent)" size={28} />
           <h2 className="text-[32px] font-[510] tracking-[-0.022em]">Featured Work</h2>
@@ -169,6 +169,43 @@ export default function Home() {
             </div>
           </article>
         </Link>
+      </section>
+
+      <section className="space-y-8">
+        <div className="flex items-center gap-3">
+          <Camera className="text-(--accent)" size={28} />
+          <h2 className="text-[32px] font-[510] tracking-[-0.022em]">Gallery</h2>
+        </div>
+
+        <div className="grid max-w-3xl gap-4 md:gap-6 sm:grid-cols-2 md:grid-cols-3">
+          <div className="group relative aspect-square overflow-hidden rounded-xl border border-(--border-subtle) bg-[rgba(113,112,255,0.05)]">
+            <Image
+              src="/profile.jpg"
+              alt="Gallery Image 1"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div className="group relative aspect-square overflow-hidden rounded-xl border border-(--border-subtle) bg-[rgba(113,112,255,0.05)]">
+            <Image
+              src="/profile2.jpg"
+              alt="Gallery Image 2"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div className="group relative aspect-square overflow-hidden rounded-xl border border-(--border-subtle) bg-[rgba(113,112,255,0.05)]">
+            <Image
+              src="/profile.jpg"
+              alt="Gallery Image 3"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        </div>
       </section>
     </div>
   );
