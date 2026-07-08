@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 
-const inter = Inter({
+const geistSans = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist-sans",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
@@ -33,16 +38,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} linear-bg-aurora antialiased selection:bg-[#7170ff]/30`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-(--background) text-(--ink)`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
         >
-          <div className="relative flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-col lg:flex-row relative">
             <SiteHeader />
-            <main className="linear-shell flex-1 py-8 md:py-10">
-              {children}
+            <main className="flex-1 w-full lg:pl-[14rem]">
+              <div className="mx-auto w-full max-w-[42rem] px-4 py-8 md:px-6 md:py-16">
+                {children}
+              </div>
             </main>
           </div>
         </ThemeProvider>

@@ -3,24 +3,24 @@ import type { MDXComponents } from 'mdx/types'
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-      <h1 className="mb-5 mt-8 text-[40px] font-[510] leading-[1.04] tracking-[-0.04em] md:text-[56px]">
+      <h1 className="mb-8 mt-12 font-mono text-4xl sm:text-5xl font-bold tracking-tight lowercase leading-[1.05] max-w-2xl text-[var(--ink)]">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="mb-4 mt-8 text-[24px] font-[510] tracking-[-0.018em]">{children}</h2>
+      <h2 className="mb-6 mt-12 text-[17px] font-semibold tracking-tight text-[var(--ink)]">{children}</h2>
     ),
-    p: ({ children }) => <p className="mb-4 text-[15px] leading-relaxed linear-muted">{children}</p>,
-    ul: ({ children }) => <ul className="mb-6 list-disc space-y-2 pl-5 text-[15px] linear-muted">{children}</ul>,
-    li: ({ children }) => <li>{children}</li>,
-    hr: () => <hr className="my-8 border-(--border-subtle)" />,
+    p: ({ children }) => <p className="mb-6 text-[15px] leading-relaxed text-[var(--gray-500)]">{children}</p>,
+    ul: ({ children }) => <ul className="mb-8 list-none space-y-2 text-[15px] text-[var(--gray-500)]">{children}</ul>,
+    li: ({ children }) => <li className="flex gap-2 before:content-['—'] before:text-[var(--gray-400)]">{children}</li>,
+    hr: () => <hr className="my-10 border-t border-[var(--gray-200)]" />,
     blockquote: ({ children }) => (
-      <blockquote className="my-6 border-l border-(--accent)/80 pl-4 text-[15px] linear-muted">
+      <blockquote className="my-8 border-l border-[var(--gray-300)] pl-5 text-[17px] font-serif italic leading-relaxed text-[var(--gray-500)]">
         {children}
       </blockquote>
     ),
     code: ({ children }) => (
-      <code className="rounded bg-[rgba(255,255,255,0.04)] px-1.5 py-0.5 text-[13px] text-(--foreground)">
+      <code className="rounded-md border border-[var(--gray-200)] bg-[var(--background)] px-1.5 py-0.5 text-[13px] font-mono text-[var(--ink)]">
         {children}
       </code>
     ),

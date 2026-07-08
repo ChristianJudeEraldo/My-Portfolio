@@ -15,7 +15,7 @@ export default function ContactPage() {
     const formData = new FormData(e.currentTarget);
     const result = await sendEmail(formData);
 
-    if (result.error) {
+    if (result?.error) {
       toast.error(result.error);
     } else {
       toast.success("Message sent successfully! I'll be in touch soon.");
@@ -26,43 +26,45 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="pb-20 pt-6 md:pt-10">
-      <Toaster position="bottom-right" theme="dark" />
-      <section className="space-y-4 border-b border-(--border-subtle) pb-8">
-        <p className="linear-eyebrow">
-          Contact
+    <div className="pb-20 pt-8 animate-fade-up stagger-1">
+      <Toaster position="bottom-right" theme="system" />
+      <section className="space-y-6">
+        <p className="bryl-label">
+          01 &mdash; CONTACT
         </p>
-        <h1 className="max-w-3xl text-[40px] font-[510] tracking-[-0.04em] md:text-[56px]">
-          Let&apos;s build something meaningful.
+        <h1 className="font-mono text-4xl sm:text-5xl font-bold tracking-tight lowercase leading-[1.05] max-w-2xl text-[var(--ink)]">
+          let&apos;s build something meaningful.
         </h1>
-        <p className="max-w-3xl text-[16px] leading-relaxed linear-muted md:text-[18px]">
+        <p className="max-w-2xl text-[17px] font-serif leading-relaxed text-[var(--gray-500)]">
           If you&apos;re hiring, collaborating, or discussing a project, I&apos;m open to
           conversations around full-stack web development, AI-integrated systems, and
           product-focused engineering.
         </p>
       </section>
 
-      <section className="grid gap-12 pt-10 md:grid-cols-[0.95fr_1.05fr] md:gap-16">
-        <div className="space-y-8">
+      <div className="bryl-hairline my-12 animate-fade-up stagger-2" />
+
+      <section className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 animate-fade-up stagger-3">
+        <div className="space-y-10">
           <div className="space-y-3">
-            <h2 className="text-[20px] font-[590] tracking-[-0.012em]">Reach Me Directly</h2>
-            <p className="text-[15px] leading-relaxed linear-muted">
+            <h2 className="text-[17px] font-semibold tracking-tight text-[var(--ink)]">Reach Me Directly</h2>
+            <p className="text-[15px] leading-relaxed text-[var(--gray-500)]">
               I usually respond within 24-48 hours. For faster coordination, email is the
               best channel.
             </p>
           </div>
 
-          <ul className="linear-card overflow-hidden">
+          <ul className="space-y-0 border-t border-[var(--gray-200)]">
             <li>
               <a
                 href="mailto:christian.eraldo@lpunetwork.edu.ph"
-                className="group flex items-center justify-between gap-4 border-b border-(--border-subtle) px-5 py-4"
+                className="group flex items-center justify-between gap-4 border-b border-[var(--gray-200)] py-4"
               >
-                <div className="flex items-center gap-3">
-                  <Mail size={18} className="text-(--accent)" />
-                  <span className="text-[14px] font-[510]">Email</span>
+                <div className="flex items-center gap-4 text-[var(--gray-400)]">
+                  <Mail size={18} strokeWidth={1.5} />
+                  <span className="text-[15px] font-medium text-[var(--ink)]">Email</span>
                 </div>
-                <span className="text-[12px] text-(--text-tertiary) group-hover:text-(--text-secondary)">
+                <span className="bryl-label group-hover:text-[var(--ink)] transition-colors">
                   christian.eraldo@lpunetwork.edu.ph
                 </span>
               </a>
@@ -72,14 +74,14 @@ export default function ContactPage() {
                 href="https://www.linkedin.com/in/christian-jude-eraldo-012718251/"
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center justify-between gap-4 border-b border-(--border-subtle) px-5 py-4"
+                className="group flex items-center justify-between gap-4 border-b border-[var(--gray-200)] py-4"
               >
-                <div className="flex items-center gap-3">
-                  <Globe size={18} className="text-(--accent)" />
-                  <span className="text-[14px] font-[510]">LinkedIn</span>
+                <div className="flex items-center gap-4 text-[var(--gray-400)]">
+                  <Globe size={18} strokeWidth={1.5} />
+                  <span className="text-[15px] font-medium text-[var(--ink)]">LinkedIn</span>
                 </div>
-                <span className="text-[12px] text-(--text-tertiary) group-hover:text-(--text-secondary)">
-                  christian-jude-eraldo-012718251
+                <span className="bryl-label group-hover:text-[var(--ink)] transition-colors">
+                  Profile ↗
                 </span>
               </a>
             </li>
@@ -88,38 +90,37 @@ export default function ContactPage() {
                 href="https://github.com/ChristianJudeEraldo"
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center justify-between gap-4 border-b border-(--border-subtle) px-5 py-4"
+                className="group flex items-center justify-between gap-4 border-b border-[var(--gray-200)] py-4"
               >
-                <div className="flex items-center gap-3">
-                  <GitBranch size={18} className="text-(--accent)" />
-                  <span className="text-[14px] font-[510]">GitHub</span>
+                <div className="flex items-center gap-4 text-[var(--gray-400)]">
+                  <GitBranch size={18} strokeWidth={1.5} />
+                  <span className="text-[15px] font-medium text-[var(--ink)]">GitHub</span>
                 </div>
-                <span className="text-[12px] text-(--text-tertiary) group-hover:text-(--text-secondary)">
-                  @ChristianJudeEraldo
+                <span className="bryl-label group-hover:text-[var(--ink)] transition-colors">
+                  @ChristianJudeEraldo ↗
                 </span>
               </a>
             </li>
-            <li className="flex items-center justify-between gap-4 px-5 py-4">
-              <div className="flex items-center gap-3">
-                <MapPin size={18} className="text-(--accent)" />
-                <span className="text-[14px] font-[510]">Location</span>
+            <li className="flex items-center justify-between gap-4 py-4 border-b border-[var(--gray-200)]">
+              <div className="flex items-center gap-4 text-[var(--gray-400)]">
+                <MapPin size={18} strokeWidth={1.5} />
+                <span className="text-[15px] font-medium text-[var(--ink)]">Location</span>
               </div>
-              <span className="text-[12px] text-(--text-tertiary)">Philippines</span>
+              <span className="bryl-label">Philippines</span>
             </li>
           </ul>
         </div>
 
-        <form onSubmit={handleSubmit} className="linear-card space-y-5 p-6 md:p-8">
-          <h2 className="text-[20px] font-[590] tracking-[-0.012em]">Send a Message</h2>
+        <form onSubmit={handleSubmit} className="bryl-card space-y-6">
+          <h2 className="text-[17px] font-semibold tracking-tight text-[var(--ink)]">Send a Message</h2>
           
-          {/* Honeypot field: Hidden from users, bots will try to fill it. */}
           <div className="hidden" aria-hidden="true">
             <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" />
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <label htmlFor="name" className="text-[12px] font-[510] uppercase tracking-[0.14em] text-(--text-tertiary)">
+              <label htmlFor="name" className="bryl-label">
                 Name
               </label>
               <input
@@ -128,11 +129,11 @@ export default function ContactPage() {
                 required
                 type="text"
                 placeholder="John Doe"
-                className="w-full rounded-md border border-(--border-standard) bg-[rgba(255,255,255,0.02)] px-4 py-3 text-[14px] text-(--text-secondary) outline-none focus:border-(--accent)"
+                className="w-full rounded-md border border-[var(--gray-200)] bg-[var(--background)] px-4 py-3 text-[14px] text-[var(--ink)] outline-none focus:border-[var(--gray-400)] transition-colors"
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="email" className="text-[12px] font-[510] uppercase tracking-[0.14em] text-(--text-tertiary)">
+              <label htmlFor="email" className="bryl-label">
                 Email
               </label>
               <input
@@ -141,13 +142,13 @@ export default function ContactPage() {
                 required
                 type="email"
                 placeholder="john@example.com"
-                className="w-full rounded-md border border-(--border-standard) bg-[rgba(255,255,255,0.02)] px-4 py-3 text-[14px] text-(--text-secondary) outline-none focus:border-(--accent)"
+                className="w-full rounded-md border border-[var(--gray-200)] bg-[var(--background)] px-4 py-3 text-[14px] text-[var(--ink)] outline-none focus:border-[var(--gray-400)] transition-colors"
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="message" className="text-[12px] font-[510] uppercase tracking-[0.14em] text-(--text-tertiary)">
+            <label htmlFor="message" className="bryl-label">
               Message
             </label>
             <textarea
@@ -156,16 +157,16 @@ export default function ContactPage() {
               required
               rows={5}
               placeholder="Tell me briefly about your project or opportunity."
-              className="w-full resize-none rounded-md border border-(--border-standard) bg-[rgba(255,255,255,0.02)] px-4 py-3 text-[14px] leading-relaxed text-(--text-secondary) outline-none focus:border-(--accent)"
+              className="w-full resize-none rounded-md border border-[var(--gray-200)] bg-[var(--background)] px-4 py-3 text-[14px] leading-relaxed text-[var(--ink)] outline-none focus:border-[var(--gray-400)] transition-colors"
             />
           </div>
 
           <button
             type="submit"
             disabled={isPending}
-            className="linear-button linear-button-primary w-full gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bryl-button w-full gap-2 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-widest font-mono text-[11px]"
           >
-            {isPending ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+            {isPending ? <Loader2 size={16} className="animate-spin" /> : <Send size={14} />}
             {isPending ? "Sending..." : "Send Message"}
           </button>
         </form>
