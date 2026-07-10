@@ -176,7 +176,7 @@ export default function Home() {
       
       {/* Gallery Section */}
       <section className="animate-fade-up stagger-5 space-y-8">
-        <p className="bryl-label">05 &mdash; SNAPSHOTS</p>
+        <p className="bryl-label">05 &mdash; GALLERY</p>
         <GallerySection />
       </section>
 
