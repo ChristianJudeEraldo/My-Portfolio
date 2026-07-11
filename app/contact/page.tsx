@@ -44,7 +44,7 @@ export default function ContactPage() {
 
       <div className="bryl-hairline my-12 animate-fade-up stagger-2" />
 
-      <section className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 animate-fade-up stagger-3">
+      <section className="flex flex-col gap-12 animate-fade-up stagger-3">
         <div className="space-y-10">
           <div className="space-y-3">
             <h2 className="text-[17px] font-semibold tracking-tight text-[var(--ink)]">Reach Me Directly</h2>
