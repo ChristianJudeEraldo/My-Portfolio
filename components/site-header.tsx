@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ModeToggle } from "@/components/mode-toggle"
+import { SoundToggle } from "@/components/sound-toggle"
 import { useState, useEffect } from "react"
 
 export function SiteHeader() {
@@ -51,8 +52,9 @@ export function SiteHeader() {
               {item.name}
             </Link>
           ))}
-          <div className="mt-8">
+          <div className="mt-8 flex items-center gap-3">
             <ModeToggle />
+            <SoundToggle />
           </div>
         </div>
       )}
@@ -87,8 +89,9 @@ export function SiteHeader() {
           </nav>
         </div>
         
-        <div>
+        <div className="flex items-center gap-3">
           <ModeToggle />
+          <SoundToggle />
         </div>
       </aside>
     </>

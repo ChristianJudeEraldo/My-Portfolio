@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SoundProvider } from "@/components/sound-provider";
 import { SiteHeader } from "@/components/site-header";
 
 const geistSans = Geist({
@@ -44,14 +45,16 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
-          <div className="flex min-h-screen flex-col lg:flex-row relative">
-            <SiteHeader />
-            <main className="flex-1 w-full lg:pl-[14rem]">
-              <div className="mx-auto w-full max-w-[42rem] px-4 py-8 md:px-6 md:py-16">
-                {children}
-              </div>
-            </main>
-          </div>
+          <SoundProvider>
+            <div className="flex min-h-screen flex-col lg:flex-row relative">
+              <SiteHeader />
+              <main className="flex-1 w-full lg:pl-[14rem]">
+                <div className="mx-auto w-full max-w-[42rem] px-4 py-8 md:px-6 md:py-16">
+                  {children}
+                </div>
+              </main>
+            </div>
+          </SoundProvider>
         </ThemeProvider>
       </body>
     </html>
