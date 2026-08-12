@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SoundProvider } from "@/components/sound-provider";
 import { SiteHeader } from "@/components/site-header";
+import { ScrollProgress } from "@/components/scroll-progress";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default function RootLayout({
           enableSystem
         >
           <SoundProvider>
+            <ScrollProgress />
             <div className="flex min-h-screen flex-col lg:flex-row relative">
               <SiteHeader />
               <main className="flex-1 w-full lg:pl-[14rem]">

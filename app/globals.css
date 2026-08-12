@@ -72,12 +72,12 @@ body {
 
 /* Base resets & scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  background: transparent;
+  display: none;
 }
-::-webkit-scrollbar-thumb {
-  background: var(--gray-300);
-  border-radius: 9999px;
+
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 ::selection {
