@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     const updateProgress = () => {
@@ -22,12 +24,16 @@ export function ScrollProgress() {
     
     // Initial calculation
     updateProgress();
+    
+    // Fallback to ensure it's calculated after DOM mutations from route changes
+    const timeout = setTimeout(updateProgress, 150);
 
     return () => {
       window.removeEventListener("scroll", updateProgress);
       window.removeEventListener("resize", updateProgress);
+      clearTimeout(timeout);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <div className="fixed top-0 left-0 right-0 h-1 z-50 pointer-events-none">

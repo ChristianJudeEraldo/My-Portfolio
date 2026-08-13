@@ -32,10 +32,10 @@ export default function ContactPage() {
         <p className="bryl-label">
           01 &mdash; CONTACT
         </p>
-        <h1 className="font-mono text-4xl sm:text-5xl font-bold tracking-tight lowercase leading-[1.05] max-w-2xl text-[var(--ink)]">
+        <h1 className="font-mono text-4xl sm:text-5xl font-bold tracking-tight lowercase leading-[1.05] max-w-2xl text-(--ink)">
           let&apos;s build something meaningful.
         </h1>
-        <p className="max-w-2xl text-[17px] font-serif leading-relaxed text-[var(--gray-500)]">
+        <p className="max-w-2xl text-[17px] font-serif leading-relaxed text-(--gray-500)">
           If you&apos;re hiring, collaborating, or discussing a project, I&apos;m open to
           conversations around full-stack web development, AI-integrated systems, and
           product-focused engineering.
@@ -47,25 +47,25 @@ export default function ContactPage() {
       <section className="flex flex-col gap-12 animate-fade-up stagger-3">
         <div className="space-y-10">
           <div className="space-y-3">
-            <h2 className="text-[17px] font-semibold tracking-tight text-[var(--ink)]">Reach Me Directly</h2>
-            <p className="text-[15px] leading-relaxed text-[var(--gray-500)]">
+            <h2 className="text-[17px] font-semibold tracking-tight text-(--ink)">Reach Me Directly</h2>
+            <p className="text-[15px] leading-relaxed text-(--gray-500)">
               I usually respond within 24-48 hours. For faster coordination, email is the
               best channel.
             </p>
           </div>
 
-          <ul className="space-y-0 border-t border-[var(--gray-200)]">
+          <ul className="space-y-0 border-t border-(--gray-200)">
             <li>
               <a
                 href="mailto:christian.eraldo@lpunetwork.edu.ph"
-                className="group flex items-center justify-between gap-4 border-b border-[var(--gray-200)] py-4"
+                className="group flex items-center justify-between gap-4 border-b border-(--gray-200) py-4"
               >
-                <div className="flex items-center gap-4 text-[var(--gray-400)]">
+                <div className="flex items-center gap-4 text-(--gray-400)">
                   <Mail size={18} strokeWidth={1.5} />
-                  <span className="text-[15px] font-medium text-[var(--ink)]">Email</span>
+                  <span className="text-[15px] font-medium text-(--ink)">Email</span>
                 </div>
-                <span className="bryl-label group-hover:text-[var(--ink)] transition-colors">
-                  christian.eraldo@lpunetwork.edu.ph
+                <span className="bryl-label group-hover:text-(--ink) transition-colors">
+                  cjeraldo@outlook.ph
                 </span>
               </a>
             </li>
@@ -74,13 +74,13 @@ export default function ContactPage() {
                 href="https://www.linkedin.com/in/christian-jude-eraldo-012718251/"
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center justify-between gap-4 border-b border-[var(--gray-200)] py-4"
+                className="group flex items-center justify-between gap-4 border-b border-(--gray-200) py-4"
               >
-                <div className="flex items-center gap-4 text-[var(--gray-400)]">
+                <div className="flex items-center gap-4 text-(--gray-400)">
                   <Globe size={18} strokeWidth={1.5} />
-                  <span className="text-[15px] font-medium text-[var(--ink)]">LinkedIn</span>
+                  <span className="text-[15px] font-medium text-(--ink)">LinkedIn</span>
                 </div>
-                <span className="bryl-label group-hover:text-[var(--ink)] transition-colors">
+                <span className="bryl-label group-hover:text-(--ink) transition-colors">
                   Profile ↗
                 </span>
               </a>
@@ -90,21 +90,21 @@ export default function ContactPage() {
                 href="https://github.com/ChristianJudeEraldo"
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center justify-between gap-4 border-b border-[var(--gray-200)] py-4"
+                className="group flex items-center justify-between gap-4 border-b border-(--gray-200) py-4"
               >
-                <div className="flex items-center gap-4 text-[var(--gray-400)]">
+                <div className="flex items-center gap-4 text-(--gray-400)">
                   <GitBranch size={18} strokeWidth={1.5} />
-                  <span className="text-[15px] font-medium text-[var(--ink)]">GitHub</span>
+                  <span className="text-[15px] font-medium text-(--ink)">GitHub</span>
                 </div>
-                <span className="bryl-label group-hover:text-[var(--ink)] transition-colors">
+                <span className="bryl-label group-hover:text-(--ink) transition-colors">
                   @ChristianJudeEraldo ↗
                 </span>
               </a>
             </li>
-            <li className="flex items-center justify-between gap-4 py-4 border-b border-[var(--gray-200)]">
-              <div className="flex items-center gap-4 text-[var(--gray-400)]">
+            <li className="flex items-center justify-between gap-4 py-4 border-b border-(--gray-200)">
+              <div className="flex items-center gap-4 text-(--gray-400)">
                 <MapPin size={18} strokeWidth={1.5} />
-                <span className="text-[15px] font-medium text-[var(--ink)]">Location</span>
+                <span className="text-[15px] font-medium text-(--ink)">Location</span>
               </div>
               <span className="bryl-label">Philippines</span>
             </li>
@@ -112,7 +112,7 @@ export default function ContactPage() {
         </div>
 
         <form onSubmit={handleSubmit} className="bryl-card space-y-6">
-          <h2 className="text-[17px] font-semibold tracking-tight text-[var(--ink)]">Send a Message</h2>
+          <h2 className="text-[17px] font-semibold tracking-tight text-(--ink)">Send a Message</h2>
           
           <div className="hidden" aria-hidden="true">
             <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" />
@@ -129,7 +129,7 @@ export default function ContactPage() {
                 required
                 type="text"
                 placeholder="John Doe"
-                className="w-full rounded-md border border-[var(--gray-200)] bg-[var(--background)] px-4 py-3 text-[14px] text-[var(--ink)] outline-none focus:border-[var(--gray-400)] transition-colors"
+                className="w-full rounded-md border border-(--gray-200) bg-(--background) px-4 py-3 text-[14px] text-(--ink) outline-none focus:border-(--gray-400) transition-colors"
               />
             </div>
             <div className="space-y-2">
@@ -142,7 +142,7 @@ export default function ContactPage() {
                 required
                 type="email"
                 placeholder="john@example.com"
-                className="w-full rounded-md border border-[var(--gray-200)] bg-[var(--background)] px-4 py-3 text-[14px] text-[var(--ink)] outline-none focus:border-[var(--gray-400)] transition-colors"
+                className="w-full rounded-md border border-(--gray-200) bg-(--background) px-4 py-3 text-[14px] text-(--ink) outline-none focus:border-(--gray-400) transition-colors"
               />
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function ContactPage() {
               required
               rows={5}
               placeholder="Tell me briefly about your project or opportunity."
-              className="w-full resize-none rounded-md border border-[var(--gray-200)] bg-[var(--background)] px-4 py-3 text-[14px] leading-relaxed text-[var(--ink)] outline-none focus:border-[var(--gray-400)] transition-colors"
+              className="w-full resize-none rounded-md border border-(--gray-200) bg-(--background) px-4 py-3 text-[14px] leading-relaxed text-(--ink) outline-none focus:border-(--gray-400) transition-colors"
             />
           </div>
 

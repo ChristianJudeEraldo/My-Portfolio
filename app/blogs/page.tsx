@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blogs — Jude",
-  description: "Thoughts, write-ups, and technical deep-dives by Christian Jude Eraldo. Coming soon.",
+  description: "Thoughts, write-ups, and technical deep-dives by Jude. Coming soon.",
 };
 
 export default function BlogsPage() {

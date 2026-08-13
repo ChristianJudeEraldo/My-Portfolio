@@ -50,8 +50,8 @@ export default function RootLayout({
             <ScrollProgress />
             <div className="flex min-h-screen flex-col lg:flex-row relative">
               <SiteHeader />
-              <main className="flex-1 w-full lg:pl-[14rem]">
-                <div className="mx-auto w-full max-w-[42rem] px-4 py-8 md:px-6 md:py-16">
+              <main className="flex-1 w-full lg:pl-56">
+                <div className="mx-auto w-full max-w-2xl px-4 py-8 md:px-6 md:py-16">
                   {children}
                 </div>
               </main>
