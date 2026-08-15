@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ModeToggle } from "@/components/mode-toggle"
 import { SoundToggle } from "@/components/sound-toggle"
+import { SiteLogo } from "@/components/site-logo"
 import { useState, useEffect } from "react"
 
 export function SiteHeader() {
@@ -26,9 +27,7 @@ export function SiteHeader() {
     <>
       {/* Mobile Top Bar */}
       <header className="lg:hidden sticky top-0 z-50 flex h-14 items-center justify-between border-b border-(--gray-200) bg-(--background)/90 px-4 backdrop-blur-md">
-        <Link href="/" className="font-mono text-[13px] font-bold tracking-tight text-(--ink) uppercase">
-          Jude
-        </Link>
+        <SiteLogo size="sm" showSubtitle={false} />
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="bryl-label p-2"
@@ -40,9 +39,7 @@ export function SiteHeader() {
       {/* Mobile Fullscreen Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-40 bg-(--background)/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 animate-fade-up">
-          <Link href="/" className="font-mono text-[11px] uppercase tracking-widest text-(--gray-500) mb-4">
-            Home
-          </Link>
+          <SiteLogo size="lg" showSubtitle={true} onClick={() => setIsMobileMenuOpen(false)} />
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -62,9 +59,9 @@ export function SiteHeader() {
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex fixed inset-y-0 left-0 w-56 flex-col border-r border-(--gray-200) bg-(--background) py-10 px-8 justify-between z-30">
         <div>
-          <Link href="/" className="font-mono text-[13px] font-bold tracking-tight text-(--ink) uppercase mb-14 block">
-            Jude
-          </Link>
+          <div className="mb-12">
+            <SiteLogo size="md" showSubtitle={true} />
+          </div>
           <nav className="flex flex-col">
             {navItems.map((item, index) => {
               const isActive = pathname.startsWith(item.href)
