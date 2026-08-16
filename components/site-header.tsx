@@ -27,7 +27,7 @@ export function SiteHeader() {
     <>
       {/* Mobile Top Bar */}
       <header className="lg:hidden sticky top-0 z-50 flex h-14 items-center justify-between border-b border-(--gray-200) bg-(--background)/90 px-4 backdrop-blur-md">
-        <SiteLogo size="sm" showSubtitle={false} />
+        <SiteLogo size="sm" showSubtitle={true} />
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="bryl-label p-2"

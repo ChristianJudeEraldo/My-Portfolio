@@ -19,7 +19,7 @@ export default function Home() {
       
       {/* Intro Section */}
       <section className="animate-fade-up stagger-1 relative pt-8 pb-12 rounded-xl flex flex-col md:flex-row gap-8 items-start">
-        <div className="space-y-6 flex-1">
+        <div className="space-y-6 flex-1 order-2 md:order-1">
           <p className="bryl-label">01 &mdash; INTRODUCTION</p>
           <h1 className="font-mono text-4xl sm:text-5xl font-bold tracking-tight lowercase leading-[1.05] max-w-2xl text-(--ink)">
             hi i am jude a developer who builds systems that stay fast, clear, and reliable.
@@ -37,7 +37,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-full border border-(--gray-200) overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-500">
+        <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-full border border-(--gray-200) overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-500 order-1 md:order-2 self-center md:self-start">
            <Image 
               src="/profile.jpg" 
               alt="Christian Jude Profile" 
