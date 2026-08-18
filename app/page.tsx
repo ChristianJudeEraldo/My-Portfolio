@@ -1,18 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Briefcase, GraduationCap, Award, Database, Code, 
-  Code2, Globe, Terminal, Cpu, Bot } from "lucide-react";
+import { GraduationCap, Award, Database, Code } from "lucide-react";
 import { GallerySection } from "@/components/gallery-section";
+import { TechStackSection } from "@/components/tech-stack";
 
 export default function Home() {
-  const skills = [
-    { name: "Python", area: "AI & Scripting", icon: Terminal, certified: true },
-    { name: "MySQL", area: "Database Management", icon: Database, certified: true },
-    { name: "PHP", area: "Backend Logic", icon: Code2, certified: false },
-    { name: "JavaScript", area: "Interactive Web", icon: Code2, certified: false },
-    { name: "HTML5 / CSS3", area: "Responsive Design", icon: Globe, certified: false },
-    { name: "Agentic AI Workflows", area: "Automation & Orchestration", icon: Bot, certified: false },
-  ];
 
   return (
     <div className="space-y-16 pb-20">
@@ -114,31 +106,19 @@ export default function Home() {
 
       <div className="bryl-hairline animate-fade-up stagger-4" />
 
-      {/* Technical Skills */}
-      <section className="animate-fade-up stagger-4 space-y-8">
-        <p className="bryl-label">03 &mdash; CAPABILITIES</p>
-
-        <div className="grid gap-px bg-(--gray-200) sm:grid-cols-2 lg:grid-cols-3 rounded-xl overflow-hidden border border-(--gray-200)">
-          {skills.map((skill) => {
-            const Icon = skill.icon;
-            return (
-              <article key={skill.name} className="bg-(--background) p-6 hover:bg-(--gray-50) transition-colors">
-                <div className="mb-4 flex items-start justify-between">
-                  <div className="text-(--gray-400)">
-                    <Icon size={18} strokeWidth={1.5} />
-                  </div>
-                  {skill.certified && (
-                    <span className="bryl-pill bryl-pill-inverted">
-                      CERTIFIED
-                    </span>
-                  )}
-                </div>
-                <h3 className="text-[15px] font-medium tracking-tight text-(--ink)">{skill.name}</h3>
-                <p className="mt-1 text-[13px] text-(--gray-500)">{skill.area}</p>
-              </article>
-            );
-          })}
+      {/* Technical Skills & Tech Stack */}
+      <section className="animate-fade-up stagger-4 space-y-6">
+        <div>
+          <p className="bryl-label">03 &mdash; TECH STACK & CAPABILITIES</p>
+          <h2 className="font-mono text-2xl font-bold tracking-tight lowercase text-(--ink) mt-1">
+            core technologies & toolchain
+          </h2>
+          <p className="text-[14px] font-serif text-(--gray-500) mt-1 max-w-xl">
+            Interactive breakdown of my primary development stack, frameworks, and engineering tools.
+          </p>
         </div>
+
+        <TechStackSection />
       </section>
 
       <div className="bryl-hairline animate-fade-up stagger-5" />
