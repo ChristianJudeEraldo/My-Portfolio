@@ -15,11 +15,11 @@ export function GallerySection() {
   };
 
   const images = [
-    { src: "/profile.jpg", alt: "Gallery Image 1" },
-    { src: "/profile2.jpg", alt: "Gallery Image 2" },
-    { src: "/profile.jpg", alt: "Gallery Image 3" },
-    { src: "/profile2.jpg", alt: "Gallery Image 4" },
-    { src: "/profile.jpg", alt: "Gallery Image 5" },
+    { src: "/newprofile1.jpg", alt: "Gallery Image 1" },
+    { src: "/newprofile2.jpg", alt: "Gallery Image 2" },
+    { src: "/newprofile1.jpg", alt: "Gallery Image 3" },
+    { src: "/newprofile2.jpg", alt: "Gallery Image 4" },
+    { src: "/newprofile1.jpg", alt: "Gallery Image 5" },
   ];
 
   return (
@@ -42,13 +42,13 @@ export function GallerySection() {
             key={index}
             className="relative aspect-4/3 w-56 shrink-0 sm:w-64 md:w-80 snap-center rounded-xl border border-(--gray-200) bryl-card p-1"
           >
-            <div className="relative w-full h-full rounded-lg overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 group-hover/img:scale-[1.04] group/img">
+            <div className="relative w-full h-full rounded-lg overflow-hidden transition-all duration-500 group-hover/img:scale-[1.04] group/img">
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover bryl-image-hover"
+                className="object-cover object-top bryl-image-hover"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-(--background) to-transparent pointer-events-none opacity-50" />
             </div>

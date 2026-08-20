@@ -17,8 +17,8 @@ export default function Home() {
             hi i am jude a developer who builds systems that stay fast, clear, and reliable.
           </h1>
           <p className="max-w-xl text-[17px] font-serif leading-relaxed text-(--gray-500)">
-            Graduating BSCPE engineer focused on high-performance web applications,
-            AI-assisted workflows, and practical delivery from prototype to production.
+           Computer Engineering Graduate specializing in high-performance web development, AI integration, 
+           and end-to-end software delivery.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
             <Link href="/projects" className="bryl-button font-mono text-[11px] tracking-widest uppercase">
@@ -29,23 +29,22 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-full border border-(--gray-200) overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-500 order-1 md:order-2 self-center md:self-start">
+        <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-full border border-(--gray-200) overflow-hidden relative transition-all duration-500 order-1 md:order-2 self-center md:self-start shadow-xs">
            <Image 
-              src="/profile.jpg" 
+              src="/newprofile1.jpg" 
               alt="Christian Jude Profile" 
               fill 
               sizes="(max-width: 768px) 96px, 128px"
-              className="object-cover dark:opacity-0 transition-opacity duration-500"
+              className="object-cover object-top dark:opacity-0 transition-opacity duration-500"
               priority 
-              unoptimized
             />
             <Image 
-              src="/profile2.jpg" 
+              src="/newprofile2.jpg" 
               alt="Christian Jude Profile - Dark Mode" 
               fill 
               sizes="(max-width: 768px) 96px, 128px"
-              className="object-cover opacity-0 dark:opacity-100 transition-opacity duration-500"
-              unoptimized
+              className="object-cover object-top opacity-0 dark:opacity-100 transition-opacity duration-500"
+              priority
             />
         </div>
       </section>

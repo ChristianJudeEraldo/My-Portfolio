@@ -13,10 +13,9 @@ export default function AboutPage() {
               computer engineer focused on modern web systems and applied ai.
             </h1>
             <p className="max-w-4xl text-[17px] font-serif leading-relaxed text-(--gray-500)">
-              I am Christian Jude Eraldo, a graduating Computer Engineering student who builds
-              production-ready software with a strong systems mindset. My work sits at the
-              intersection of performant frontend engineering, backend reliability, and
-              AI-assisted product development.
+              I am Christian Jude Eraldo, a Computer Engineering graduate, building production-ready software with a strong 
+              systems mindset. My expertise spans performant frontend engineering, reliable backend architecture, and 
+              practical AI integration.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <a
@@ -81,17 +80,24 @@ export default function AboutPage() {
         </div>
 
         <aside className="space-y-8 animate-fade-up stagger-4 lg:pt-2">
-          <figure className="relative mx-auto w-full max-w-56 rounded-xl overflow-hidden border border-(--gray-200) grayscale hover:grayscale-0 transition-all duration-500 aspect-4/5 bryl-card p-1">
+          <figure className="relative mx-auto w-full max-w-56 rounded-xl overflow-hidden border border-(--gray-200) transition-all duration-500 aspect-4/5 bryl-card p-1">
             <div className="relative w-full h-full rounded-lg overflow-hidden group">
               <Image
-                src="/profile.jpg"
+                src="/newprofile1.jpg"
                 alt="Christian Jude Eraldo"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover bryl-image-hover"
+                className="object-cover object-top bryl-image-hover dark:opacity-0 transition-opacity duration-500"
                 priority
               />
-              <div className="absolute inset-0 bryl-halftone opacity-60 mix-blend-overlay pointer-events-none transition-opacity group-hover:opacity-20" />
+              <Image
+                src="/newprofile2.jpg"
+                alt="Christian Jude Eraldo - Dark Mode"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover object-top bryl-image-hover opacity-0 dark:opacity-100 transition-opacity duration-500"
+                priority
+              />
             </div>
           </figure>
 
