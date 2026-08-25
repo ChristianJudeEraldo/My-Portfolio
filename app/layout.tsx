@@ -23,6 +23,13 @@ export const metadata: Metadata = {
   },
   description: "Graduating BSCPE student and certified Python & Database developer specializing in AI-driven systems and cybersecurity solutions.",
   metadataBase: new URL("https://my-portfolio-gules-seven-lxpwm7vyqd.vercel.app/"), 
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Christian Jude | Computer Engineering Portfolio",
     description: "Explore the projects and technical expertise of Christian Jude, a certified developer focused on AI (CNN), Cybersecurity, and Full-stack development.",
