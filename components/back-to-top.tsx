@@ -1,35 +1,103 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import { usePathname } from "next/navigation"
 import { ArrowUp } from "lucide-react"
 
 export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const circleRef = useRef<SVGCircleElement>(null)
+  const pathname = usePathname()
+
+  // Radius is 16, circumference = 2 * PI * 16 ≈ 100.53
+  const circumference = 100.53
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop
+    let rafId: number | null = null
+    let lastVisible = false
+
+    const getScrollInfo = () => {
+      const lenis = (window as any).__lenis
+      if (lenis && typeof lenis.progress === "number" && typeof lenis.scroll === "number") {
+        return {
+          scrollTop: lenis.scroll,
+          progress: Math.min(Math.max(lenis.progress, 0), 1),
+        }
+      }
+
+      const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0
       const scrollHeight =
-        document.documentElement.scrollHeight - document.documentElement.clientHeight
+        (document.documentElement.scrollHeight || document.body.scrollHeight || 0) -
+        document.documentElement.clientHeight
+      const progress = scrollHeight > 0 ? Math.min(Math.max(scrollTop / scrollHeight, 0), 1) : 0
 
-      // Show button once user has scrolled past 260px
-      setIsVisible(scrollTop > 260)
+      return { scrollTop, progress }
+    }
 
-      if (scrollHeight > 0) {
-        setScrollProgress(Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100)))
+    const update = (forcedProgress?: number, forcedScrollTop?: number) => {
+      const info =
+        forcedProgress !== undefined && forcedScrollTop !== undefined
+          ? { progress: forcedProgress, scrollTop: forcedScrollTop }
+          : getScrollInfo()
+
+      if (circleRef.current) {
+        const offset = circumference * (1 - info.progress)
+        circleRef.current.style.strokeDashoffset = `${offset}`
+      }
+
+      const shouldBeVisible = info.scrollTop > 260
+      if (shouldBeVisible !== lastVisible) {
+        lastVisible = shouldBeVisible
+        setIsVisible(shouldBeVisible)
+      }
+    }
+
+    const handleScroll = () => {
+      if (rafId !== null) return
+      rafId = requestAnimationFrame(() => {
+        update()
+        rafId = null
+      })
+    }
+
+    // Connect to Lenis if active
+    const lenis = (window as any).__lenis
+    let unsubscribeLenis: (() => void) | null = null
+
+    if (lenis && typeof lenis.on === "function") {
+      const onLenisScroll = (e: any) => {
+        const p =
+          typeof e.progress === "number"
+            ? Math.min(Math.max(e.progress, 0), 1)
+            : getScrollInfo().progress
+        const s = typeof e.scroll === "number" ? e.scroll : getScrollInfo().scrollTop
+        update(p, s)
+      }
+      lenis.on("scroll", onLenisScroll)
+      unsubscribeLenis = () => {
+        if (typeof lenis.off === "function") {
+          lenis.off("scroll", onLenisScroll)
+        }
       }
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
     window.addEventListener("resize", handleScroll, { passive: true })
-    handleScroll()
+
+    // Initial calculation and post-navigation updates
+    update()
+    const t1 = setTimeout(() => update(), 50)
+    const t2 = setTimeout(() => update(), 250)
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("resize", handleScroll)
+      if (unsubscribeLenis) unsubscribeLenis()
+      if (rafId !== null) cancelAnimationFrame(rafId)
+      clearTimeout(t1)
+      clearTimeout(t2)
     }
-  }, [])
+  }, [pathname])
 
   const scrollToTop = () => {
     const lenis = (window as any).__lenis
@@ -45,10 +113,6 @@ export function BackToTop() {
       })
     }
   }
-
-  // Radius is 16, circumference = 2 * PI * 16 ≈ 100.53
-  const circumference = 100.53
-  const strokeDashoffset = circumference - (scrollProgress / 100) * circumference
 
   return (
     <div
@@ -80,6 +144,7 @@ export function BackToTop() {
             className="opacity-30"
           />
           <circle
+            ref={circleRef}
             cx="18"
             cy="18"
             r="16"
@@ -87,9 +152,9 @@ export function BackToTop() {
             stroke="var(--ink)"
             strokeWidth="1.5"
             strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
+            strokeDashoffset={circumference}
             strokeLinecap="round"
-            className="transition-[stroke-dashoffset] duration-150 ease-out"
+            className="will-change-[stroke-dashoffset]"
           />
         </svg>
 
