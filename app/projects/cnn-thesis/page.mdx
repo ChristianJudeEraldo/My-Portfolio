@@ -1,20 +1,30 @@
-# cnn facial recognition thesis
+# CNN-Based Facial Recognition for Sleep Deprivation Detection
 
-This project focuses on detecting early signs of sleep deprivation in students. 
+An undergraduate Computer Engineering thesis applying deep learning and computer vision to classify physiological markers of fatigue and sleep deprivation in students.
 
-## Tech Stack
-- Python (TensorFlow/Keras)
-- Next.js 16
-- Tailwind v4
+---
 
-> [!TIP]
-> This is a blockquote in MDX!
+## Project Overview
 
-You can even use your ModeToggle here:
+Sleep deprivation directly affects cognitive focus, physical reaction time, and academic performance. This project explores automated detection of fatigue through real-time facial feature extraction and deep convolutional neural networks.
+
+## Technical Architecture & Methodology
+
+- **Data Pipeline & Preprocessing**: Facial landmarks and ocular region extraction with OpenCV and MediaPipe.
+- **Model Architecture**: Convolutional Neural Network (CNN) pipeline implemented in TensorFlow/Keras for multi-class fatigue classification (alert, moderately fatigued, sleep-deprived).
+- **Inference & UI**: Lightweight inference dashboard built with Next.js and Tailwind CSS for real-time telemetry and logging.
+
+## Core Toolchain
+- **Deep Learning**: Python, TensorFlow, Keras
+- **Computer Vision**: OpenCV, MediaPipe
+- **Application & Dashboard**: Next.js 16, TypeScript, Tailwind CSS
+
+---
 
 import { ModeToggle } from "@/components/mode-toggle"
 
-<div className="bryl-card my-10 p-8 flex flex-col items-center justify-center">
-  <p className="bryl-label mb-6">Test the theme directly in this project log:</p>
+<div className="bryl-card my-10 p-8 flex flex-col items-center justify-center text-center space-y-4">
+  <p className="bryl-label">Interactive Interface Verification</p>
+  <p className="text-[14px] text-(--gray-500) font-serif max-w-md">Toggle themes to inspect how telemetry and data readouts adapt across high-contrast monochrome states.</p>
   <ModeToggle />
 </div>

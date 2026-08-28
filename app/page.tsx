@@ -123,28 +123,47 @@ export default function Home() {
       <div className="bryl-hairline animate-fade-up stagger-5" />
 
       {/* Featured Work */}
-      <section className="animate-fade-up stagger-5 space-y-8">
-        <p className="bryl-label">04 &mdash; FEATURED WORK</p>
+      <section className="animate-fade-up stagger-5 space-y-6">
+        <div className="flex items-center justify-between">
+          <p className="bryl-label">04 &mdash; FEATURED WORK</p>
+          <Link 
+            href="/projects" 
+            className="font-mono text-[11px] uppercase tracking-widest text-(--gray-400) hover:text-(--ink) transition-colors"
+          >
+            All Projects ↗
+          </Link>
+        </div>
 
         <Link href="/projects/cnn-thesis" className="block group">
-          <article className="bryl-card overflow-hidden p-0 relative">
-            <div className="p-8 md:p-10 z-10 relative bg-linear-to-b from-transparent to-(--gray-50)">
-              <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-                <div className="space-y-4 max-w-xl">
-                  <div className="flex items-center gap-3">
-                    <span className="bryl-pill">Major Thesis</span>
-                  </div>
-                  <h3 className="font-mono text-2xl font-bold tracking-tight lowercase text-(--ink) group-hover:underline decoration-(--gray-300) underline-offset-4">
-                    cnn-based facial recognition
-                  </h3>
-                  <p className="text-[15px] leading-relaxed text-(--gray-500) font-serif">
-                    A deep learning system designed to detect early signs of sleep deprivation in students
-                    using Convolutional Neural Networks.
-                  </p>
+          <article className="bryl-card p-6 sm:p-8 relative overflow-hidden transition-all duration-300">
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="bryl-label text-[11px]">
+                  01 &mdash; MAJOR THESIS & AI RESEARCH
+                </span>
+                <span className="font-mono text-[11px] text-(--gray-400)">
+                  Python &middot; TensorFlow &middot; Next.js
+                </span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-(--ink) group-hover:text-(--gray-700) dark:group-hover:text-(--gray-300) transition-colors">
+                CNN-Based Facial Recognition for Sleep Deprivation Detection
+              </h3>
+
+              <p className="text-[15px] leading-relaxed text-(--gray-500) font-serif max-w-2xl">
+                A deep learning computer vision system designed to detect early physiological signs of sleep 
+                deprivation in students using Convolutional Neural Networks and facial feature analysis.
+              </p>
+
+              <div className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-(--gray-200) mt-6">
+                <div className="flex flex-wrap gap-2">
+                  <span className="font-mono text-[11px] text-(--gray-500)">[ Computer Vision ]</span>
+                  <span className="font-mono text-[11px] text-(--gray-500)">[ Neural Networks ]</span>
+                  <span className="font-mono text-[11px] text-(--gray-500)">[ Next.js 16 ]</span>
                 </div>
-                <div className="font-mono text-[11px] uppercase tracking-widest text-(--gray-500) group-hover:text-(--ink) transition-colors">
+                <span className="font-mono text-[11px] uppercase tracking-widest text-(--ink) flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   Read Case Study ↗
-                </div>
+                </span>
               </div>
             </div>
           </article>
