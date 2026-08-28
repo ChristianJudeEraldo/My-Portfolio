@@ -6,11 +6,8 @@ import { ArrowUp } from "lucide-react"
 
 export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false)
-  const circleRef = useRef<SVGCircleElement>(null)
+  const percentRef = useRef<HTMLSpanElement>(null)
   const pathname = usePathname()
-
-  // Radius is 16, circumference = 2 * PI * 16 ≈ 100.53
-  const circumference = 100.53
 
   useEffect(() => {
     let rafId: number | null = null
@@ -40,9 +37,8 @@ export function BackToTop() {
           ? { progress: forcedProgress, scrollTop: forcedScrollTop }
           : getScrollInfo()
 
-      if (circleRef.current) {
-        const offset = circumference * (1 - info.progress)
-        circleRef.current.style.strokeDashoffset = `${offset}`
+      if (percentRef.current) {
+        percentRef.current.textContent = `${Math.round(info.progress * 100)}%`
       }
 
       const shouldBeVisible = info.scrollTop > 260
@@ -119,7 +115,7 @@ export function BackToTop() {
       className={`fixed bottom-6 right-6 z-40 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] md:bottom-8 md:right-8 ${
         isVisible
           ? "opacity-100 translate-y-0 pointer-events-auto"
-          : "opacity-0 translate-y-4 pointer-events-none"
+          : "opacity-0 translate-y-3 pointer-events-none"
       }`}
     >
       <button
@@ -127,39 +123,19 @@ export function BackToTop() {
         onClick={scrollToTop}
         aria-label="Back to top"
         title="Back to top"
-        className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-(--gray-200) bg-(--background)/90 text-(--ink) backdrop-blur-md shadow-xs transition-all duration-300 hover:border-(--gray-400) hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--gray-400) active:scale-95 cursor-pointer"
+        className="group flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-(--gray-200) bg-(--gray-50) text-(--ink) shadow-xs transition-all duration-300 hover:border-(--ink) hover:bg-(--gray-100) hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer select-none"
       >
-        {/* Circular scroll progress ring */}
-        <svg
-          className="absolute inset-0 h-full w-full -rotate-90 text-(--gray-200)"
-          viewBox="0 0 36 36"
+        <ArrowUp className="h-3.5 w-3.5 text-(--gray-500) transition-all duration-200 group-hover:text-(--ink) group-hover:-translate-y-0.5" />
+        <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-(--gray-500) group-hover:text-(--ink) transition-colors">
+          TOP
+        </span>
+        <span className="w-px h-2.5 bg-(--gray-200)" />
+        <span
+          ref={percentRef}
+          className="font-mono text-[10px] font-semibold text-(--ink) tabular-nums tracking-tight min-w-[24px] text-right"
         >
-          <circle
-            cx="18"
-            cy="18"
-            r="16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            className="opacity-30"
-          />
-          <circle
-            ref={circleRef}
-            cx="18"
-            cy="18"
-            r="16"
-            fill="none"
-            stroke="var(--ink)"
-            strokeWidth="1.5"
-            strokeDasharray={circumference}
-            strokeDashoffset={circumference}
-            strokeLinecap="round"
-            className="will-change-[stroke-dashoffset]"
-          />
-        </svg>
-
-        {/* Up Arrow Icon with upward hover nudge */}
-        <ArrowUp className="h-4 w-4 relative z-10 text-(--gray-500) transition-all duration-200 group-hover:text-(--ink) group-hover:-translate-y-0.5" />
+          0%
+        </span>
       </button>
     </div>
   )
