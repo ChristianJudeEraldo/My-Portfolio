@@ -43,10 +43,16 @@ export function SmoothScroll() {
     }
   }, [])
 
-  // On route change, reset scroll position smoothly / immediately
+  // On route change or initial hash load, handle scroll position
   useEffect(() => {
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true })
+    if (typeof window !== "undefined" && window.location.hash) {
+      const hash = window.location.hash
+      const target = document.querySelector(hash)
+      if (target && lenisRef.current) {
+        setTimeout(() => {
+          lenisRef.current?.scrollTo(target as HTMLElement, { offset: -24, duration: 1.0 })
+        }, 150)
+      }
     }
   }, [pathname])
 

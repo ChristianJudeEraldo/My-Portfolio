@@ -114,7 +114,7 @@ const TECH_STACK: TechItem[] = [
     role: "Async Logic & Web APIs",
     summary: "Modern ES6+ syntax, Web Audio API synthesis, asynchronous flows, and DOM logic.",
     tags: ["ES6+ Modern", "Web Audio API", "Async / Await"],
-    projectHref: "/projects/todo",
+    projectHref: "#projects-todo",
     projectTitle: "To-Do List",
     icon: JsIcon,
   },
@@ -125,7 +125,7 @@ const TECH_STACK: TechItem[] = [
     role: "Component Architecture",
     summary: "Declarative UI engineering, custom hooks, fine-grained state, and fast re-renders.",
     tags: ["React 19", "Custom Hooks", "State Architecture"],
-    projectHref: "/projects/todo",
+    projectHref: "#projects-todo",
     projectTitle: "Interactive UI",
     icon: ReactIcon,
   },
@@ -145,7 +145,7 @@ const TECH_STACK: TechItem[] = [
     role: "Full-Stack App Router",
     summary: "React Server Components, SSG static pre-rendering, Turbopack, and API routes.",
     tags: ["App Router", "Server Components", "Turbopack"],
-    projectHref: "/",
+    projectHref: "#intro",
     projectTitle: "Portfolio Engine",
     icon: NextjsIcon,
   },
@@ -157,7 +157,7 @@ const TECH_STACK: TechItem[] = [
     summary: "Convolutional Neural Networks, OpenCV computer vision, and backend scripting.",
     tags: ["CNN / Keras", "Computer Vision", "Automation"],
     certified: true,
-    projectHref: "/projects/cnn-thesis",
+    projectHref: "#projects-cnn",
     projectTitle: "CNN Thesis",
     icon: PythonIcon,
   },
@@ -289,13 +289,30 @@ export function TechStackSection() {
                 </div>
 
                 {tech.projectHref && (
-                  <Link
+                  <a
                     href={tech.projectHref}
-                    className="font-mono text-[10px] uppercase tracking-wider text-(--gray-400) hover:text-(--ink) flex items-center gap-0.5 transition-colors"
+                    onClick={(e) => {
+                      if (tech.projectHref?.startsWith("#")) {
+                        e.preventDefault();
+                        const target = document.querySelector(tech.projectHref);
+                        if (target) {
+                          const lenis = (window as any).__lenis;
+                          if (lenis) {
+                            lenis.scrollTo(target, { offset: -24, duration: 1.0 });
+                          } else {
+                            target.scrollIntoView({ behavior: "smooth" });
+                          }
+                          if (window.history.pushState) {
+                            window.history.pushState(null, "", tech.projectHref);
+                          }
+                        }
+                      }
+                    }}
+                    className="font-mono text-[10px] uppercase tracking-wider text-(--gray-400) hover:text-(--ink) flex items-center gap-0.5 transition-colors cursor-pointer"
                   >
                     <span>{tech.projectTitle}</span>
                     <ArrowUpRight size={11} />
-                  </Link>
+                  </a>
                 )}
               </div>
 

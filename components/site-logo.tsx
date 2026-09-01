@@ -5,7 +5,7 @@ import Link from "next/link"
 interface SiteLogoProps {
   className?: string
   showSubtitle?: boolean
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
   size?: "sm" | "md" | "lg"
 }
 

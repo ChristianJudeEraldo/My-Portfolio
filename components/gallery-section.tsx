@@ -34,13 +34,13 @@ export function GallerySection() {
 
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
+        className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar py-1"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {images.map((image, index) => (
           <div
             key={index}
-            className="relative aspect-4/3 w-56 shrink-0 sm:w-64 md:w-80 snap-center rounded-xl border border-(--gray-200) bryl-card p-1"
+            className="relative aspect-4/3 w-44 shrink-0 sm:w-52 md:w-60 snap-center rounded-xl border border-(--gray-200) bryl-card p-1"
           >
             <div className="relative w-full h-full rounded-lg overflow-hidden transition-all duration-500 group-hover/img:scale-[1.04] group/img">
               <Image
