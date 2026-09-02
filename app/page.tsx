@@ -75,12 +75,12 @@ export default function Home() {
         <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-8 items-start justify-between">
           <div className="space-y-4 flex-1">
             <div className="flex items-center gap-2">
-              <span className="bryl-label">01 &mdash; INTRODUCTION</span>
+              <span className="bryl-label">INTRODUCTION</span>
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-(--gray-400) animate-pulse-slow" />
             </div>
             
             <h1 className="font-mono text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight lowercase leading-[1.08] text-(--ink)">
-              hi i am jude &mdash; building fast, reliable web systems and applied ai.
+              hi i am jude i build fast, reliable web systems and applied ai.
             </h1>
             
             <p className="text-[15px] sm:text-[16px] font-serif leading-relaxed text-(--gray-500) max-w-xl">
@@ -154,7 +154,7 @@ export default function Home() {
       {/* ─── SECTION 02: BACKGROUND & CREDENTIALS ─── */}
       <section id="about" className="animate-fade-up stagger-2 space-y-5">
         <div className="flex items-center justify-between">
-          <p className="bryl-label">02 &mdash; BACKGROUND & CREDENTIALS</p>
+          <p className="bryl-label">BACKGROUND & CREDENTIALS</p>
           <span className="font-mono text-[10px] text-(--gray-400) uppercase tracking-widest">
             Profile & Education
           </span>
@@ -257,10 +257,7 @@ export default function Home() {
       <section id="skills" className="animate-fade-up stagger-3 space-y-5">
         <div>
           <div className="flex items-center justify-between">
-            <p className="bryl-label">03 &mdash; TECH STACK & TOOLCHAIN</p>
-            <span className="font-mono text-[10px] text-(--gray-400) uppercase tracking-widest">
-              Core Skills
-            </span>
+            <p className="bryl-label">TECH STACK & TOOLS</p>
           </div>
           <h2 className="font-mono text-xl sm:text-2xl font-bold tracking-tight lowercase text-(--ink) mt-1">
             core technologies & toolchain
@@ -276,7 +273,7 @@ export default function Home() {
       <section id="projects" className="animate-fade-up stagger-4 space-y-6">
         <div>
           <div className="flex items-center justify-between">
-            <p className="bryl-label">04 &mdash; FEATURED WORK & RESEARCH</p>
+            <p className="bryl-label">FEATURED WORK & RESEARCH</p>
             <span className="font-mono text-[10px] text-(--gray-400) uppercase tracking-widest">
               2 Key Projects
             </span>
@@ -294,9 +291,6 @@ export default function Home() {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="bryl-label text-[11px]">
                   01 &mdash; MAJOR THESIS & AI RESEARCH
-                </span>
-                <span className="font-mono text-[10px] text-(--gray-400) uppercase tracking-wider">
-                  Thesis Project &bull; Real-time Processing
                 </span>
               </div>
 
@@ -391,9 +385,6 @@ export default function Home() {
                 <span className="bryl-label text-[11px]">
                   02 &mdash; FRONTEND ARCHITECTURE & STATE
                 </span>
-                <span className="font-mono text-[10px] text-(--gray-400) uppercase tracking-wider">
-                  Client State &bull; Zero External UI Deps
-                </span>
               </div>
 
               <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-(--ink)">
@@ -437,10 +428,7 @@ export default function Home() {
       {/* ─── SECTION 05: GALLERY & MILESTONES ─── */}
       <section id="gallery" className="animate-fade-up stagger-5 space-y-4">
         <div className="flex items-center justify-between">
-          <p className="bryl-label">05 &mdash; GALLERY & MILESTONES</p>
-          <span className="font-mono text-[10px] text-(--gray-400) uppercase tracking-widest">
-            Snap Scroll
-          </span>
+          <p className="bryl-label">GALLERY & MILESTONES</p>
         </div>
         <GallerySection />
       </section>
@@ -451,10 +439,7 @@ export default function Home() {
       <section id="contact" className="animate-fade-up stagger-5 space-y-6">
         <div>
           <div className="flex items-center justify-between">
-            <p className="bryl-label">06 &mdash; GET IN TOUCH</p>
-            <span className="font-mono text-[10px] text-(--gray-400) uppercase tracking-widest">
-              Direct & Message
-            </span>
+            <p className="bryl-label">GET IN TOUCH</p>
           </div>
           <h2 className="font-mono text-xl sm:text-2xl font-bold tracking-tight lowercase text-(--ink) mt-1">
             let&apos;s build something meaningful.
