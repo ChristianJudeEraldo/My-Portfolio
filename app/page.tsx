@@ -428,7 +428,7 @@ export default function Home() {
       {/* ─── SECTION 05: GALLERY & MILESTONES ─── */}
       <section id="gallery" className="animate-fade-up stagger-5 space-y-4">
         <div className="flex items-center justify-between">
-          <p className="bryl-label">GALLERY & MILESTONES</p>
+          <p className="bryl-label">GALLERY</p>
         </div>
         <GallerySection />
       </section>

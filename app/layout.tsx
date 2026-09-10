@@ -6,7 +6,6 @@ import { SoundProvider } from "@/components/sound-provider";
 import { SiteHeader } from "@/components/site-header";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { SmoothScroll } from "@/components/smooth-scroll";
-import { BackToTop } from "@/components/back-to-top";
 import { CircularReveal } from "@/components/circular-reveal";
 import { Toaster } from "sonner";
 
@@ -70,7 +69,6 @@ export default function RootLayout({
                 </div>
               </main>
             </div>
-            <BackToTop />
           </SoundProvider>
         </ThemeProvider>
       </body>
