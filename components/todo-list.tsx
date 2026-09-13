@@ -71,7 +71,7 @@ export function TodoList() {
       </div>
 
       {/* Input row */}
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2">
         <input
           type="text"
           placeholder="Add a new task..."
@@ -83,12 +83,12 @@ export function TodoList() {
               handleAddTask()
             }
           }}
-          className="flex-1 px-3.5 py-2 bg-black/3 dark:bg-white/5 border border-black/8 dark:border-white/12 rounded-xl focus:outline-none focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all text-[13px] text-(--ink) placeholder:text-(--ink-tertiary)"
+          className="min-w-0 flex-1 px-3.5 py-2 bg-black/3 dark:bg-white/5 border border-black/8 dark:border-white/12 rounded-xl focus:outline-none focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all text-[13px] text-(--ink) placeholder:text-(--ink-tertiary)"
         />
         <button
           type="button"
           onClick={handleAddTask}
-          className="apple-button-primary px-4 gap-1.5 font-sans text-[12px] font-medium cursor-pointer"
+          className="apple-button-primary shrink-0 px-3.5 sm:px-4 gap-1.5 font-sans text-[12px] font-medium cursor-pointer"
           aria-label="Add task"
         >
           <Plus size={14} />

@@ -297,7 +297,7 @@ export default function Home() {
             <div className="space-y-2.5">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-[11px] font-semibold text-(--apple-blue) tracking-wide">
-                  01 &mdash; MAJOR THESIS & AI RESEARCH
+                  01 &mdash; MACHINE LEARNING THESIS
                 </span>
               </div>
 
@@ -421,7 +421,7 @@ export default function Home() {
 
             {/* Live Embedded Interactive Component */}
             <div className="pt-4 border-t border-black/6 dark:border-white/8">
-              <div className="p-4 sm:p-5 rounded-2xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-black/40 backdrop-blur-md">
+              <div className="p-3 sm:p-5 rounded-2xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-black/40 backdrop-blur-md">
                 <TodoList />
               </div>
             </div>
