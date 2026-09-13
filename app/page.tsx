@@ -16,11 +16,8 @@ import {
   ChevronDown, 
   ChevronUp, 
   Cpu, 
-  Layers, 
-  Activity, 
-  CheckCircle2, 
-  Sparkles,
-  ArrowDown
+  ArrowUpRight,
+  Sparkles
 } from "lucide-react";
 import { GallerySection } from "@/components/gallery-section";
 import { TechStackSection } from "@/components/tech-stack";
@@ -68,32 +65,32 @@ export default function Home() {
   }
 
   return (
-    <div className="space-y-12 pb-16">
+    <div className="space-y-14 pb-20">
       
       {/* ─── SECTION 01: INTRODUCTION & HERO ─── */}
-      <section id="intro" className="animate-fade-up stagger-1 pt-4 pb-2">
-        <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-8 items-start justify-between">
-          <div className="space-y-4 flex-1">
+      <section id="intro" className="animate-fade-up stagger-1 pt-6 pb-2">
+        <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-10 items-start justify-between">
+          <div className="space-y-5 flex-1">
             <div className="flex items-center gap-2">
-              <span className="bryl-label">INTRODUCTION</span>
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-(--gray-400) animate-pulse-slow" />
+              <span className="bryl-label">Introduction</span>
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-(--apple-green) animate-pulse-slow" />
             </div>
             
-            <h1 className="font-mono text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight lowercase leading-[1.08] text-(--ink)">
-              hi i am jude i build fast, reliable web systems and applied ai.
+            <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-(--ink) leading-[1.12]">
+              Hi, I am Jude. I build fast, reliable web systems and applied AI.
             </h1>
             
-            <p className="text-[15px] sm:text-[16px] font-serif leading-relaxed text-(--gray-500) max-w-xl">
+            <p className="text-[16px] sm:text-[17px] leading-relaxed text-(--ink-secondary) max-w-xl font-normal">
               Computer Engineering Graduate specializing in high-performance web development, 
               machine learning (CNN) integration, and production-grade software delivery.
             </p>
 
-            {/* Fast Action Buttons */}
+            {/* Apple HIG Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 type="button"
                 onClick={() => scrollToAnchor("projects")}
-                className="bryl-button font-mono text-[11px] tracking-wider uppercase cursor-pointer"
+                className="apple-button-primary cursor-pointer"
               >
                 Explore Work ↓
               </button>
@@ -102,37 +99,39 @@ export default function Home() {
                 href="/resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="px-3.5 py-2 rounded-md border border-(--gray-200) bg-(--gray-50) text-(--ink) font-mono text-[11px] tracking-wider uppercase hover:border-(--gray-400) transition-colors flex items-center gap-1"
+                className="apple-button-secondary gap-1.5"
               >
-                Resume ↗
+                <span>Resume</span>
+                <ArrowUpRight size={13} />
               </a>
               
               <a 
                 href="/resume.pdf" 
                 download="Christian_Jude_Eraldo_Resume.pdf"
-                className="px-3 py-2 text-(--gray-500) hover:text-(--ink) font-mono text-[11px] tracking-wider uppercase transition-colors flex items-center gap-1"
+                className="apple-button-secondary gap-1.5"
               >
-                PDF ↓
+                <span>PDF ↓</span>
               </a>
 
               <button
                 type="button"
                 onClick={() => scrollToAnchor("contact")}
-                className="px-3 py-2 text-(--gray-500) hover:text-(--ink) font-mono text-[11px] tracking-wider uppercase transition-colors flex items-center gap-1 cursor-pointer"
+                className="px-4 py-2 text-(--ink-secondary) hover:text-(--ink) text-[13px] font-medium transition-colors flex items-center gap-1 cursor-pointer"
               >
-                Contact ↗
+                <span>Contact</span>
+                <ArrowUpRight size={13} />
               </button>
             </div>
           </div>
 
-          {/* Dual Theme Profile Photo */}
-          <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 shrink-0 rounded-2xl border border-(--gray-200) overflow-hidden relative transition-all duration-500 shadow-xs p-1 bg-(--gray-50) self-center md:self-start">
-            <div className="relative w-full h-full rounded-xl overflow-hidden">
+          {/* Apple Squircle Profile Image Container */}
+          <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 shrink-0 rounded-[28px] border border-black/8 dark:border-white/12 overflow-hidden relative transition-all duration-300 shadow-md p-1.5 bg-white/80 dark:bg-white/8 self-center md:self-start">
+            <div className="relative w-full h-full rounded-[20px] overflow-hidden">
               <Image 
                 src="/newprofile1.jpg" 
                 alt="Christian Jude Profile - Light" 
                 fill 
-                sizes="(max-width: 768px) 96px, 128px"
+                sizes="(max-width: 768px) 112px, 144px"
                 className="object-cover object-top dark:opacity-0 transition-opacity duration-500"
                 priority 
               />
@@ -140,7 +139,7 @@ export default function Home() {
                 src="/newprofile2.jpg" 
                 alt="Christian Jude Profile - Dark" 
                 fill 
-                sizes="(max-width: 768px) 96px, 128px"
+                sizes="(max-width: 768px) 112px, 144px"
                 className="object-cover object-top opacity-0 dark:opacity-100 transition-opacity duration-500"
                 priority
               />
@@ -152,98 +151,106 @@ export default function Home() {
       <div className="bryl-hairline animate-fade-up stagger-2" />
 
       {/* ─── SECTION 02: BACKGROUND & CREDENTIALS ─── */}
-      <section id="about" className="animate-fade-up stagger-2 space-y-5">
+      <section id="about" className="animate-fade-up stagger-2 space-y-6">
         <div className="flex items-center justify-between">
-          <p className="bryl-label">BACKGROUND & CREDENTIALS</p>
-          <span className="font-mono text-[10px] text-(--gray-400) uppercase tracking-widest">
+          <p className="bryl-label">Background & Credentials</p>
+          <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/8 text-(--ink-secondary)">
             Profile & Education
           </span>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2">
           {/* Degree & Pearson Certifications */}
-          <article className="bryl-card p-4 sm:p-5 flex flex-col justify-between space-y-4">
+          <article className="bryl-card flex flex-col justify-between space-y-5">
             <div className="space-y-4">
-              <div className="flex items-center gap-2.5 text-(--gray-400)">
-                <GraduationCap size={20} strokeWidth={1.5} />
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--ink) font-bold">
+              <div className="flex items-center gap-3 text-(--ink-secondary)">
+                <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-(--apple-blue)/10 text-(--apple-blue)">
+                  <GraduationCap size={18} strokeWidth={2} />
+                </div>
+                <span className="font-sans text-[13px] font-semibold text-(--ink)">
                   Academic Foundation
                 </span>
               </div>
               
               <div>
-                <h3 className="text-[16px] font-semibold tracking-tight text-(--ink)">
+                <h3 className="text-[17px] font-semibold tracking-tight text-(--ink)">
                   B.S. in Computer Engineering
                 </h3>
-                <p className="bryl-label text-[10px] mt-0.5">Graduate</p>
-                <p className="mt-2.5 text-[13px] leading-relaxed text-(--gray-500) font-serif">
+                <p className="text-[12px] font-medium text-(--ink-secondary) mt-0.5">Graduate</p>
+                <p className="mt-2.5 text-[14px] leading-relaxed text-(--ink-secondary)">
                   Software-focused engineer building high-performance systems,
                   backed by a BSCPE foundation and practical implementation discipline.
                 </p>
               </div>
             </div>
 
-            <div className="pt-3.5 border-t border-(--gray-200) space-y-3">
-              <div className="flex items-start gap-3">
-                <div className="mt-0.5 text-(--gray-400) shrink-0">
-                  <Code size={16} strokeWidth={1.5} />
-                </div>
-                <div className="flex-1 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <div className="pt-4 border-t border-black/6 dark:border-white/8 space-y-3">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5 text-(--ink)">
+                  <div className="text-(--ink-tertiary)">
+                    <Code size={16} strokeWidth={2} />
+                  </div>
                   <p className="text-[14px] font-medium text-(--ink)">Python Programming</p>
-                  <p className="bryl-label text-[10px]">Pearson VUE Certified</p>
                 </div>
+                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-medium bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
+                  Pearson VUE Certified
+                </span>
               </div>
               
-              <div className="bryl-hairline opacity-60" />
+              <div className="bryl-hairline opacity-50" />
 
-              <div className="flex items-start gap-3">
-                <div className="mt-0.5 text-(--gray-400) shrink-0">
-                  <Database size={16} strokeWidth={1.5} />
-                </div>
-                <div className="flex-1 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5 text-(--ink)">
+                  <div className="text-(--ink-tertiary)">
+                    <Database size={16} strokeWidth={2} />
+                  </div>
                   <p className="text-[14px] font-medium text-(--ink)">Database Management</p>
-                  <p className="bryl-label text-[10px]">Pearson VUE Certified</p>
                 </div>
+                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-medium bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
+                  Pearson VUE Certified
+                </span>
               </div>
             </div>
           </article>
 
           {/* Specialization & Industry Focus */}
-          <article className="bryl-card p-4 sm:p-5 flex flex-col justify-between space-y-4">
-            <div className="space-y-3">
-              <div className="flex items-center gap-2.5 text-(--gray-400)">
-                <Award size={20} strokeWidth={1.5} />
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--ink) font-bold">
+          <article className="bryl-card flex flex-col justify-between space-y-5">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-(--ink-secondary)">
+                <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                  <Award size={18} strokeWidth={2} />
+                </div>
+                <span className="font-sans text-[13px] font-semibold text-(--ink)">
                   Core Competencies
                 </span>
               </div>
 
-              <div className="space-y-2 text-[13px] leading-relaxed">
+              <div className="space-y-3 text-[13px] leading-relaxed">
                 <div>
                   <span className="bryl-label text-[10px] block">Specialization</span>
-                  <p className="text-(--gray-500) mt-0.5">
+                  <p className="text-(--ink-secondary) mt-0.5">
                     Full-stack web systems, AI-driven features, and efficient architectures.
                   </p>
                 </div>
                 
-                <div className="pt-1.5 border-t border-(--gray-200)">
+                <div className="pt-2 border-t border-black/6 dark:border-white/8">
                   <span className="bryl-label text-[10px] block">Experience & Focus</span>
-                  <p className="text-(--gray-500) mt-0.5">
+                  <p className="text-(--ink-secondary) mt-0.5">
                     3+ years project experience across web builds, thesis ML models & real-time telemetry.
                   </p>
                 </div>
 
-                <div className="pt-1.5 border-t border-(--gray-200)">
+                <div className="pt-2 border-t border-black/6 dark:border-white/8">
                   <span className="bryl-label text-[10px] block">Collaboration</span>
-                  <p className="text-(--gray-500) mt-0.5">
+                  <p className="text-(--ink-secondary) mt-0.5">
                     Feedback-driven development, clear documentation, and rapid iteration.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-(--gray-200)">
-              <p className="text-[12px] font-serif italic text-(--gray-500) leading-snug">
+            <div className="pt-3 border-t border-black/6 dark:border-white/8">
+              <p className="text-[13px] italic text-(--ink-secondary) leading-snug">
                 &ldquo;Refining how ideas move from prototype to reliable product.&rdquo;
               </p>
             </div>
@@ -254,13 +261,13 @@ export default function Home() {
       <div className="bryl-hairline animate-fade-up stagger-3" />
 
       {/* ─── SECTION 03: TECH STACK & TOOLCHAIN ─── */}
-      <section id="skills" className="animate-fade-up stagger-3 space-y-5">
+      <section id="skills" className="animate-fade-up stagger-3 space-y-6">
         <div>
           <div className="flex items-center justify-between">
-            <p className="bryl-label">TECH STACK & TOOLS</p>
+            <p className="bryl-label">Tech Stack & Tools</p>
           </div>
-          <h2 className="font-mono text-xl sm:text-2xl font-bold tracking-tight lowercase text-(--ink) mt-1">
-            core technologies & toolchain
+          <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-(--ink) mt-1.5">
+            Core Technologies & Toolchain
           </h2>
         </div>
 
@@ -273,101 +280,101 @@ export default function Home() {
       <section id="projects" className="animate-fade-up stagger-4 space-y-6">
         <div>
           <div className="flex items-center justify-between">
-            <p className="bryl-label">FEATURED WORK & RESEARCH</p>
-            <span className="font-mono text-[10px] text-(--gray-400) uppercase tracking-widest">
+            <p className="bryl-label">Featured Work & Research</p>
+            <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/8 text-(--ink-secondary)">
               2 Key Projects
             </span>
           </div>
-          <h2 className="font-mono text-xl sm:text-2xl font-bold tracking-tight lowercase text-(--ink) mt-1">
-            engineering projects & live demos
+          <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-(--ink) mt-1.5">
+            Engineering Projects & Live Demos
           </h2>
         </div>
 
         <div className="space-y-6">
           
           {/* Project 1: CNN Thesis Research */}
-          <article id="projects-cnn" className="bryl-card p-5 sm:p-6 space-y-4">
-            <div className="space-y-2">
+          <article id="projects-cnn" className="bryl-card space-y-4">
+            <div className="space-y-2.5">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="bryl-label text-[11px]">
+                <span className="text-[11px] font-semibold text-(--apple-blue) tracking-wide">
                   01 &mdash; MAJOR THESIS & AI RESEARCH
                 </span>
               </div>
 
-              <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-(--ink)">
+              <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-(--ink)">
                 CNN-Based Facial Recognition for Sleep Deprivation Detection
               </h3>
 
-              <p className="text-[14px] leading-relaxed text-(--gray-500) font-serif">
+              <p className="text-[14px] leading-relaxed text-(--ink-secondary)">
                 A deep learning computer vision system designed to classify early physiological signs of sleep 
                 deprivation in students using Convolutional Neural Networks and facial landmark telemetry.
               </p>
 
               <div className="flex flex-wrap gap-1.5 pt-1">
-                <span className="px-2 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[11px] font-mono text-(--gray-500)">
-                  [ Python ]
+                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
+                  Python
                 </span>
-                <span className="px-2 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[11px] font-mono text-(--gray-500)">
-                  [ TensorFlow / Keras ]
+                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
+                  TensorFlow / Keras
                 </span>
-                <span className="px-2 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[11px] font-mono text-(--gray-500)">
-                  [ OpenCV ]
+                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
+                  OpenCV
                 </span>
-                <span className="px-2 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[11px] font-mono text-(--gray-500)">
-                  [ MediaPipe ]
+                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
+                  MediaPipe
                 </span>
-                <span className="px-2 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[11px] font-mono text-(--gray-500)">
-                  [ Next.js 16 ]
+                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
+                  Next.js 16
                 </span>
               </div>
             </div>
 
             {/* Case Study Inline Expandable Drawer */}
-            <div className="pt-3 border-t border-(--gray-200)">
+            <div className="pt-3 border-t border-black/6 dark:border-white/8">
               <button
                 type="button"
                 onClick={() => setIsCnnExpanded(!isCnnExpanded)}
-                className="flex items-center justify-between w-full py-1 text-left font-mono text-[11px] uppercase tracking-widest text-(--ink) hover:text-(--gray-600) transition-colors cursor-pointer"
+                className="flex items-center justify-between w-full py-2 px-3 rounded-xl bg-black/2 dark:bg-white/4 hover:bg-black/5 dark:hover:bg-white/8 text-left text-[12px] font-medium text-(--ink) transition-colors cursor-pointer"
                 aria-expanded={isCnnExpanded}
               >
                 <span className="flex items-center gap-2">
-                  <Cpu size={14} className="text-(--gray-400)" />
+                  <Cpu size={15} className="text-(--apple-blue)" />
                   {isCnnExpanded ? "Hide Technical Architecture & Methodology" : "View Technical Architecture & Methodology"}
                 </span>
-                {isCnnExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                {isCnnExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
               </button>
 
               {isCnnExpanded && (
-                <div className="mt-4 pt-4 border-t border-(--gray-200) space-y-4 text-[13px] leading-relaxed text-(--gray-500) animate-fade-up">
+                <div className="mt-4 pt-4 border-t border-black/6 dark:border-white/8 space-y-4 text-[13px] leading-relaxed text-(--ink-secondary) animate-fade-up">
                   <div className="grid gap-3 sm:grid-cols-3">
-                    <div className="p-3 rounded-lg border border-(--gray-200) bg-(--background)/60 space-y-1">
-                      <p className="bryl-label text-[9px] text-(--ink)">1. Data Pipeline</p>
-                      <p className="text-[12px] font-serif">
+                    <div className="p-3.5 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 space-y-1">
+                      <p className="text-[11px] font-semibold text-(--ink)">1. Data Pipeline</p>
+                      <p className="text-[12px] leading-relaxed">
                         Facial landmark tracking and ocular region extraction with OpenCV and MediaPipe mesh coordinates.
                       </p>
                     </div>
                     
-                    <div className="p-3 rounded-lg border border-(--gray-200) bg-(--background)/60 space-y-1">
-                      <p className="bryl-label text-[9px] text-(--ink)">2. CNN Model</p>
-                      <p className="text-[12px] font-serif">
+                    <div className="p-3.5 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 space-y-1">
+                      <p className="text-[11px] font-semibold text-(--ink)">2. CNN Model</p>
+                      <p className="text-[12px] leading-relaxed">
                         Multi-class fatigue classification (alert, moderately fatigued, sleep-deprived) built with TensorFlow/Keras.
                       </p>
                     </div>
 
-                    <div className="p-3 rounded-lg border border-(--gray-200) bg-(--background)/60 space-y-1">
-                      <p className="bryl-label text-[9px] text-(--ink)">3. UI & Telemetry</p>
-                      <p className="text-[12px] font-serif">
+                    <div className="p-3.5 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 space-y-1">
+                      <p className="text-[11px] font-semibold text-(--ink)">3. UI & Telemetry</p>
+                      <p className="text-[12px] leading-relaxed">
                         Real-time logging dashboard engineered with Next.js 16 and responsive high-contrast telemetry states.
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-3.5 rounded-lg border border-(--gray-200) bg-(--background) flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                  <div className="p-4 rounded-xl border border-black/6 dark:border-white/8 bg-white/80 dark:bg-[#1c1c1e]/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
                     <div>
-                      <p className="font-mono text-[11px] font-bold text-(--ink) uppercase">
+                      <p className="text-[12px] font-semibold text-(--ink)">
                         Interactive Contrast Verification
                       </p>
-                      <p className="text-[12px] font-serif text-(--gray-500)">
+                      <p className="text-[12px] text-(--ink-secondary)">
                         Toggle themes to inspect how telemetry and data readouts adapt across high-contrast monochrome states.
                       </p>
                     </div>
@@ -379,42 +386,42 @@ export default function Home() {
           </article>
 
           {/* Project 2: Interactive Task & State Management System */}
-          <article id="projects-todo" className="bryl-card p-5 sm:p-6 space-y-5">
-            <div className="space-y-2">
+          <article id="projects-todo" className="bryl-card space-y-5">
+            <div className="space-y-2.5">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="bryl-label text-[11px]">
+                <span className="text-[11px] font-semibold text-(--apple-blue) tracking-wide">
                   02 &mdash; FRONTEND ARCHITECTURE & STATE
                 </span>
               </div>
 
-              <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-(--ink)">
+              <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-(--ink)">
                 Interactive Task & State Management System
               </h3>
 
-              <p className="text-[14px] leading-relaxed text-(--gray-500) font-serif">
+              <p className="text-[14px] leading-relaxed text-(--ink-secondary)">
                 A focused software architecture study on immutable state transitions, dynamic priority reordering, 
                 and zero-dependency client state manipulation in React 19.
               </p>
 
               <div className="flex flex-wrap gap-1.5 pt-1">
-                <span className="px-2 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[11px] font-mono text-(--gray-500)">
-                  [ React 19 ]
+                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
+                  React 19
                 </span>
-                <span className="px-2 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[11px] font-mono text-(--gray-500)">
-                  [ TypeScript ]
+                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
+                  TypeScript
                 </span>
-                <span className="px-2 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[11px] font-mono text-(--gray-500)">
-                  [ Tailwind CSS ]
+                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
+                  Tailwind CSS
                 </span>
-                <span className="px-2 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[11px] font-mono text-(--gray-500)">
-                  [ Pure State Updates ]
+                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
+                  Pure State Updates
                 </span>
               </div>
             </div>
 
             {/* Live Embedded Interactive Component */}
-            <div className="pt-4 border-t border-(--gray-200)">
-              <div className="p-4 rounded-xl border border-(--gray-200) bg-(--background)/80 backdrop-blur-xs">
+            <div className="pt-4 border-t border-black/6 dark:border-white/8">
+              <div className="p-4 sm:p-5 rounded-2xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-black/40 backdrop-blur-md">
                 <TodoList />
               </div>
             </div>
@@ -428,7 +435,7 @@ export default function Home() {
       {/* ─── SECTION 05: GALLERY & MILESTONES ─── */}
       <section id="gallery" className="animate-fade-up stagger-5 space-y-4">
         <div className="flex items-center justify-between">
-          <p className="bryl-label">GALLERY</p>
+          <p className="bryl-label">Gallery</p>
         </div>
         <GallerySection />
       </section>
@@ -439,12 +446,12 @@ export default function Home() {
       <section id="contact" className="animate-fade-up stagger-5 space-y-6">
         <div>
           <div className="flex items-center justify-between">
-            <p className="bryl-label">GET IN TOUCH</p>
+            <p className="bryl-label">Get In Touch</p>
           </div>
-          <h2 className="font-mono text-xl sm:text-2xl font-bold tracking-tight lowercase text-(--ink) mt-1">
-            let&apos;s build something meaningful.
+          <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-(--ink) mt-1.5">
+            Let&apos;s build something meaningful.
           </h2>
-          <p className="text-[14px] font-serif text-(--gray-500) mt-1 max-w-xl">
+          <p className="text-[15px] text-(--ink-secondary) mt-1 max-w-xl">
             If you&apos;re hiring, collaborating, or discussing a project, I&apos;m open to conversations
             around full-stack web development, AI integration, and software engineering.
           </p>
@@ -452,80 +459,88 @@ export default function Home() {
 
         <div className="grid gap-6 sm:grid-cols-2 items-start">
           
-          {/* Left Column: Direct Contact & Channels */}
+          {/* Left Column: Direct Contact & Channels (Apple Settings Grouped List) */}
           <div className="space-y-4">
             <h3 className="text-[15px] font-semibold tracking-tight text-(--ink)">
               Reach Me Directly
             </h3>
 
-            <ul className="space-y-0 border-t border-(--gray-200) text-[13px]">
-              <li>
-                <a
-                  href="mailto:cjeraldo@outlook.ph"
-                  className="group flex items-center justify-between gap-3 border-b border-(--gray-200) py-3 transition-colors hover:text-(--ink)"
-                >
-                  <div className="flex items-center gap-3 text-(--gray-400)">
-                    <Mail size={16} strokeWidth={1.5} />
-                    <span className="font-medium text-(--ink)">Email</span>
+            <div className="rounded-2xl overflow-hidden border border-black/6 dark:border-white/8 bg-white/80 dark:bg-[#1c1c1e]/80 backdrop-blur-xl divide-y divide-black/6 dark:divide-white/8 text-[13px]">
+              <a
+                href="mailto:cjeraldo@outlook.ph"
+                className="group flex items-center justify-between gap-3 p-3.5 transition-colors hover:bg-black/2 dark:hover:bg-white/3"
+              >
+                <div className="flex items-center gap-3 text-(--ink)">
+                  <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-(--apple-blue)/10 text-(--apple-blue)">
+                    <Mail size={15} strokeWidth={2} />
                   </div>
-                  <span className="bryl-label text-[10px] group-hover:text-(--ink) transition-colors">
-                    cjeraldo@outlook.ph
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/christian-jude-eraldo-012718251/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-center justify-between gap-3 border-b border-(--gray-200) py-3 transition-colors hover:text-(--ink)"
-                >
-                  <div className="flex items-center gap-3 text-(--gray-400)">
-                    <Globe size={16} strokeWidth={1.5} />
-                    <span className="font-medium text-(--ink)">LinkedIn</span>
+                  <span className="font-medium text-(--ink)">Email</span>
+                </div>
+                <span className="text-[12px] text-(--ink-secondary) group-hover:text-(--apple-blue) transition-colors flex items-center gap-1">
+                  cjeraldo@outlook.ph
+                  <ArrowUpRight size={12} />
+                </span>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/christian-jude-eraldo-012718251/"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-between gap-3 p-3.5 transition-colors hover:bg-black/2 dark:hover:bg-white/3"
+              >
+                <div className="flex items-center gap-3 text-(--ink)">
+                  <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-(--apple-blue)/10 text-(--apple-blue)">
+                    <Globe size={15} strokeWidth={2} />
                   </div>
-                  <span className="bryl-label text-[10px] group-hover:text-(--ink) transition-colors">
-                    Profile ↗
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/ChristianJudeEraldo"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-center justify-between gap-3 border-b border-(--gray-200) py-3 transition-colors hover:text-(--ink)"
-                >
-                  <div className="flex items-center gap-3 text-(--gray-400)">
-                    <GitBranch size={16} strokeWidth={1.5} />
-                    <span className="font-medium text-(--ink)">GitHub</span>
+                  <span className="font-medium text-(--ink)">LinkedIn</span>
+                </div>
+                <span className="text-[12px] text-(--ink-secondary) group-hover:text-(--apple-blue) transition-colors flex items-center gap-1">
+                  Profile
+                  <ArrowUpRight size={12} />
+                </span>
+              </a>
+
+              <a
+                href="https://github.com/ChristianJudeEraldo"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-between gap-3 p-3.5 transition-colors hover:bg-black/2 dark:hover:bg-white/3"
+              >
+                <div className="flex items-center gap-3 text-(--ink)">
+                  <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-(--apple-blue)/10 text-(--apple-blue)">
+                    <GitBranch size={15} strokeWidth={2} />
                   </div>
-                  <span className="bryl-label text-[10px] group-hover:text-(--ink) transition-colors">
-                    @ChristianJudeEraldo ↗
-                  </span>
-                </a>
-              </li>
-              <li className="flex items-center justify-between gap-3 py-3 border-b border-(--gray-200)">
-                <div className="flex items-center gap-3 text-(--gray-400)">
-                  <MapPin size={16} strokeWidth={1.5} />
+                  <span className="font-medium text-(--ink)">GitHub</span>
+                </div>
+                <span className="text-[12px] text-(--ink-secondary) group-hover:text-(--apple-blue) transition-colors flex items-center gap-1">
+                  @ChristianJudeEraldo
+                  <ArrowUpRight size={12} />
+                </span>
+              </a>
+
+              <div className="flex items-center justify-between gap-3 p-3.5">
+                <div className="flex items-center gap-3 text-(--ink)">
+                  <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    <MapPin size={15} strokeWidth={2} />
+                  </div>
                   <span className="font-medium text-(--ink)">Location</span>
                 </div>
-                <span className="bryl-label text-[10px]">Philippines</span>
-              </li>
-            </ul>
+                <span className="text-[12px] font-medium text-(--ink-secondary)">Philippines</span>
+              </div>
+            </div>
 
-            {/* Micro Blog / Notes Status Badge */}
-            <div className="p-3 rounded-lg border border-(--gray-200) bg-(--gray-50) flex items-center justify-between">
-              <span className="bryl-label text-[9px]">TECHNICAL WRITE-UPS</span>
-              <span className="font-mono text-[9px] uppercase tracking-wider text-(--gray-400) flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-(--gray-400) animate-pulse" />
+            {/* Technical Write-ups Status Pill */}
+            <div className="p-3 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 flex items-center justify-between">
+              <span className="bryl-label text-[10px]">Technical Write-ups</span>
+              <span className="text-[11px] font-medium text-(--ink-secondary) flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-(--apple-blue) animate-pulse" />
                 Coming Soon
               </span>
             </div>
           </div>
 
           {/* Right Column: Send a Message Form */}
-          <form onSubmit={handleContactSubmit} className="bryl-card p-4 sm:p-5 space-y-3.5">
+          <form onSubmit={handleContactSubmit} className="bryl-card space-y-4">
             <h3 className="text-[15px] font-semibold tracking-tight text-(--ink)">
               Send a Quick Message
             </h3>
@@ -534,8 +549,8 @@ export default function Home() {
               <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" />
             </div>
 
-            <div className="space-y-1">
-              <label htmlFor="name" className="bryl-label text-[10px]">
+            <div className="space-y-1.5">
+              <label htmlFor="name" className="text-[12px] font-medium text-(--ink-secondary)">
                 Name
               </label>
               <input
@@ -544,12 +559,12 @@ export default function Home() {
                 required
                 type="text"
                 placeholder="Your Name"
-                className="w-full rounded-md border border-(--gray-200) bg-(--background) px-3 py-2 text-[13px] text-(--ink) outline-none focus:border-(--gray-400) transition-colors"
+                className="w-full rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
               />
             </div>
 
-            <div className="space-y-1">
-              <label htmlFor="email" className="bryl-label text-[10px]">
+            <div className="space-y-1.5">
+              <label htmlFor="email" className="text-[12px] font-medium text-(--ink-secondary)">
                 Email
               </label>
               <input
@@ -558,12 +573,12 @@ export default function Home() {
                 required
                 type="email"
                 placeholder="your.email@example.com"
-                className="w-full rounded-md border border-(--gray-200) bg-(--background) px-3 py-2 text-[13px] text-(--ink) outline-none focus:border-(--gray-400) transition-colors"
+                className="w-full rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
               />
             </div>
 
-            <div className="space-y-1">
-              <label htmlFor="message" className="bryl-label text-[10px]">
+            <div className="space-y-1.5">
+              <label htmlFor="message" className="text-[12px] font-medium text-(--ink-secondary)">
                 Message
               </label>
               <textarea
@@ -572,32 +587,32 @@ export default function Home() {
                 required
                 rows={3}
                 placeholder="Tell me briefly about your project or opportunity."
-                className="w-full resize-none rounded-md border border-(--gray-200) bg-(--background) px-3 py-2 text-[13px] leading-relaxed text-(--ink) outline-none focus:border-(--gray-400) transition-colors"
+                className="w-full resize-none rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-[13px] leading-relaxed text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
               />
             </div>
 
             <button
               type="submit"
               disabled={isPending}
-              className="bryl-button w-full gap-2 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-widest font-mono text-[11px] cursor-pointer"
+              className="apple-button-primary w-full gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
-              {isPending ? <Loader2 size={14} className="animate-spin" /> : <Send size={13} />}
-              {isPending ? "Sending..." : "Send Message"}
+              {isPending ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
+              <span>{isPending ? "Sending..." : "Send Message"}</span>
             </button>
           </form>
 
         </div>
       </section>
 
-      {/* ─── COMPACT FOOTER ─── */}
-      <footer className="pt-8 border-t border-(--gray-200) flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-        <p className="font-mono text-[10px] text-(--gray-400) uppercase tracking-wider">
+      {/* ─── FOOTER ─── */}
+      <footer className="pt-8 border-t border-black/6 dark:border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <p className="text-[12px] text-(--ink-secondary)">
           &copy; {new Date().getFullYear()} Christian Jude Eraldo &middot; Built with Next.js & React 19
         </p>
         <button
           type="button"
           onClick={() => scrollToAnchor("intro")}
-          className="font-mono text-[10px] uppercase tracking-widest text-(--gray-400) hover:text-(--ink) transition-colors cursor-pointer"
+          className="text-[12px] font-medium text-(--ink-secondary) hover:text-(--ink) transition-colors cursor-pointer"
         >
           Back to Top ↑
         </button>

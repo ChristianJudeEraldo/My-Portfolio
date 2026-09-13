@@ -4,11 +4,13 @@ import { useState, useEffect, useCallback } from "react"
 import { ModeToggle } from "@/components/mode-toggle"
 import { SoundToggle } from "@/components/sound-toggle"
 import { SiteLogo } from "@/components/site-logo"
+import { User, Wrench, FolderGit2, Mail, Menu, X } from "lucide-react"
 
 interface NavItem {
   name: string
   href: string
   id: string
+  icon: React.ComponentType<{ size?: number; className?: string }>
 }
 
 export function SiteHeader() {
@@ -16,13 +18,13 @@ export function SiteHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navItems: NavItem[] = [
-    { name: "About", href: "#about", id: "about" },
-    { name: "Skills", href: "#skills", id: "skills" },
-    { name: "Projects", href: "#projects", id: "projects" },
-    { name: "Contact", href: "#contact", id: "contact" },
+    { name: "About", href: "#about", id: "about", icon: User },
+    { name: "Skills", href: "#skills", id: "skills", icon: Wrench },
+    { name: "Projects", href: "#projects", id: "projects", icon: FolderGit2 },
+    { name: "Contact", href: "#contact", id: "contact", icon: Mail },
   ]
 
-  // Track active section via IntersectionObserver and scroll position
+  // Track active section via scroll position
   useEffect(() => {
     const sectionIds = ["intro", "about", "skills", "projects", "gallery", "contact"]
     
@@ -35,7 +37,6 @@ export function SiteHeader() {
         if (element) {
           const top = element.offsetTop
           if (scrollPosition >= top) {
-            // Map 'gallery' to 'projects' or keep active
             if (id === "gallery") {
               setActiveSection("projects")
             } else {
@@ -70,7 +71,6 @@ export function SiteHeader() {
         window.scrollTo({ top, behavior: "smooth" })
       }
       
-      // Update browser history hash without jump
       if (window.history.pushState) {
         window.history.pushState(null, "", `#${targetId}`)
       }
@@ -95,86 +95,107 @@ export function SiteHeader() {
 
   return (
     <>
-      {/* Mobile Top Bar */}
-      <header className="lg:hidden sticky top-0 z-50 flex h-14 items-center justify-between border-b border-(--gray-200) bg-(--background)/90 px-4 backdrop-blur-md">
+      {/* Mobile Top Bar (iOS Frosted Glass Navigation Bar) */}
+      <header className="lg:hidden sticky top-0 z-50 flex h-14 items-center justify-between border-b border-black/6 dark:border-white/8 bg-(--surface-translucent) px-4 backdrop-blur-2xl">
         <SiteLogo size="sm" showSubtitle={true} onClick={(e: any) => scrollToTop(e)} />
         <div className="flex items-center gap-2">
           <ModeToggle />
           <SoundToggle />
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="bryl-label p-2 ml-1 cursor-pointer"
+            className="flex items-center justify-center w-8 h-8 rounded-full bg-black/4 dark:bg-white/8 text-(--ink) transition-colors hover:bg-black/8 dark:hover:bg-white/14 cursor-pointer"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMobileMenuOpen ? "CLOSE" : "MENU"}
+            {isMobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Fullscreen Menu */}
+      {/* Mobile Fullscreen Menu (iOS Modal Sheet Blur) */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-(--background)/95 backdrop-blur-md flex flex-col items-center justify-center gap-7 animate-fade-up">
+        <div className="lg:hidden fixed inset-0 z-40 bg-white/90 dark:bg-black/90 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 animate-fade-up px-6">
           <SiteLogo size="lg" showSubtitle={true} onClick={(e: any) => scrollToTop(e)} />
-          <div className="flex flex-col items-center gap-6 my-4">
+          <div className="flex flex-col items-stretch w-full max-w-xs gap-2 my-4">
             {navItems.map((item) => {
               const isActive = activeSection === item.id
+              const Icon = item.icon
               return (
                 <a
                   key={item.id}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.id)}
-                  className={`text-2xl font-mono lowercase tracking-tight transition-colors ${
-                    isActive ? "text-(--ink) font-bold" : "text-(--gray-500) hover:text-(--ink)"
+                  className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-medium transition-all ${
+                    isActive 
+                      ? "bg-[#0071e3] text-white shadow-xs" 
+                      : "text-(--ink-secondary) hover:text-(--ink) hover:bg-black/4 dark:hover:bg-white/6"
                   }`}
                 >
-                  {isActive && <span className="mr-2 text-(--ink)">→</span>}
-                  {item.name}
+                  <Icon size={18} />
+                  <span>{item.name}</span>
                 </a>
               )
             })}
           </div>
+
+          <div className="flex items-center gap-3 p-2 rounded-full bg-black/4 dark:bg-white/8 border border-black/6 dark:border-white/8">
+            <ModeToggle />
+            <SoundToggle />
+          </div>
         </div>
       )}
 
-      {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex fixed inset-y-0 left-0 w-56 flex-col border-r border-(--gray-200) bg-(--background) py-10 px-8 justify-between z-30">
+      {/* Desktop Sidebar (macOS Sequoia / Sonoma Translucent Glass Sidebar) */}
+      <aside className="hidden lg:flex fixed inset-y-0 left-0 w-60 flex-col border-r border-black/6 dark:border-white/8 bg-white/70 dark:bg-[#121214]/70 backdrop-blur-2xl py-8 px-5 justify-between z-30">
         <div>
-          <div className="mb-12">
+          <div className="mb-10 px-2">
             <SiteLogo size="md" showSubtitle={true} onClick={(e: any) => scrollToTop(e)} />
           </div>
-          <nav className="flex flex-col" aria-label="Main Navigation">
-            {navItems.map((item, index) => {
-              const isActive = activeSection === item.id
 
-              return (
-                <div key={item.id} className="group flex flex-col">
-                  {index > 0 && <div className="bryl-hairline my-2.5 opacity-60" />}
+          <div className="space-y-1">
+            <p className="px-3 pb-2 text-[11px] font-semibold tracking-wider text-(--ink-tertiary) uppercase">
+              Navigation
+            </p>
+            <nav className="flex flex-col gap-1" aria-label="Main Navigation">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.id
+                const Icon = item.icon
+
+                return (
                   <a
+                    key={item.id}
                     href={item.href}
                     onClick={(e) => scrollToSection(e, item.id)}
-                    className={`flex items-center gap-2 py-1 text-[13px] font-mono tracking-tight transition-colors ${
-                      isActive ? "text-(--ink) font-semibold" : "text-(--gray-500) hover:text-(--ink)"
+                    className={`group flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] font-medium transition-all duration-150 ${
+                      isActive 
+                        ? "bg-[#0071e3]/10 text-[#0071e3] dark:bg-[#2997ff]/15 dark:text-[#2997ff] font-semibold" 
+                        : "text-(--ink-secondary) hover:text-(--ink) hover:bg-black/4 dark:hover:bg-white/6"
                     }`}
                   >
-                    <span className={`text-[14px] font-serif leading-none transition-opacity ${isActive ? "opacity-100 text-(--ink)" : "opacity-0 group-hover:opacity-100 text-(--gray-300)"}`}>
-                      →
-                    </span>
-                    {item.name}
+                    <Icon 
+                      size={16} 
+                      className={`transition-colors ${
+                        isActive 
+                          ? "text-[#0071e3] dark:text-[#2997ff]" 
+                          : "text-(--ink-tertiary) group-hover:text-(--ink)"
+                      }`} 
+                    />
+                    <span>{item.name}</span>
                   </a>
-                </div>
-              )
-            })}
-          </nav>
+                )
+              })}
+            </nav>
+          </div>
         </div>
         
-        <div className="space-y-4">
-          <div className="bryl-hairline opacity-60" />
-          <div className="flex items-center justify-between">
-            <span className="bryl-label text-[9px]">THEME & AUDIO</span>
-            <div className="flex items-center gap-2">
-              <ModeToggle />
-              <SoundToggle />
-            </div>
+        {/* Apple Control Center Style Theme & Sound Bar */}
+        <div className="p-3 rounded-2xl bg-black/3 dark:bg-white/5 border border-black/4 dark:border-white/6 space-y-2">
+          <div className="flex items-center justify-between text-[11px] font-medium text-(--ink-tertiary) px-1">
+            <span>Controls</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-(--apple-green)" />
+          </div>
+          <div className="flex items-center justify-between pt-1">
+            <ModeToggle />
+            <SoundToggle />
           </div>
         </div>
       </aside>

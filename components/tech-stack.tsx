@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { ShieldCheck, ArrowUpRight } from "lucide-react";
 
-// ─── Precision Monochrome Brand SVG Icons ───
+// ─── Precision Brand SVG Icons ───
 
 function HtmlIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -32,7 +31,7 @@ function JsIcon({ className = "w-5 h-5" }: { className?: string }) {
 
 function ReactIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className} aria-label="React">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={className} aria-label="React">
       <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none" />
       <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(0 12 12)" />
       <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" />
@@ -187,101 +186,96 @@ export function TechStackSection() {
   return (
     <div className="space-y-6">
       
-      {/* Category Pills - Quick 1-click Filter */}
-      <div className="flex items-center gap-1.5 p-1 bg-(--gray-100) rounded-lg border border-(--gray-200) w-fit">
+      {/* Apple iOS/macOS Segmented Control */}
+      <div className="inline-flex p-1 bg-black/5 dark:bg-white/8 rounded-full border border-black/4 dark:border-white/6 backdrop-blur-md overflow-x-auto max-w-full">
         <button
           onClick={() => setActiveFilter("all")}
-          className={`px-3 py-1 text-[11px] font-mono tracking-wider uppercase rounded transition-all cursor-pointer ${
+          className={`px-3.5 py-1.5 text-[12px] font-medium rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer ${
             activeFilter === "all"
-              ? "bg-(--ink) text-(--background) font-semibold shadow-xs"
-              : "text-(--gray-500) hover:text-(--ink)"
+              ? "bg-white dark:bg-[#2c2c2e] text-(--ink) shadow-xs font-semibold"
+              : "text-(--ink-secondary) hover:text-(--ink)"
           }`}
         >
-          All [{TECH_STACK.length}]
+          All ({TECH_STACK.length})
         </button>
         <button
           onClick={() => setActiveFilter("frontend")}
-          className={`px-3 py-1 text-[11px] font-mono tracking-wider uppercase rounded transition-all cursor-pointer ${
+          className={`px-3.5 py-1.5 text-[12px] font-medium rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer ${
             activeFilter === "frontend"
-              ? "bg-(--ink) text-(--background) font-semibold shadow-xs"
-              : "text-(--gray-500) hover:text-(--ink)"
+              ? "bg-white dark:bg-[#2c2c2e] text-(--ink) shadow-xs font-semibold"
+              : "text-(--ink-secondary) hover:text-(--ink)"
           }`}
         >
           Frontend
         </button>
         <button
           onClick={() => setActiveFilter("languages")}
-          className={`px-3 py-1 text-[11px] font-mono tracking-wider uppercase rounded transition-all cursor-pointer ${
+          className={`px-3.5 py-1.5 text-[12px] font-medium rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer ${
             activeFilter === "languages"
-              ? "bg-(--ink) text-(--background) font-semibold shadow-xs"
-              : "text-(--gray-500) hover:text-(--ink)"
+              ? "bg-white dark:bg-[#2c2c2e] text-(--ink) shadow-xs font-semibold"
+              : "text-(--ink-secondary) hover:text-(--ink)"
           }`}
         >
           Languages
         </button>
         <button
           onClick={() => setActiveFilter("cloud")}
-          className={`px-3 py-1 text-[11px] font-mono tracking-wider uppercase rounded transition-all cursor-pointer ${
+          className={`px-3.5 py-1.5 text-[12px] font-medium rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer ${
             activeFilter === "cloud"
-              ? "bg-(--ink) text-(--background) font-semibold shadow-xs"
-              : "text-(--gray-500) hover:text-(--ink)"
+              ? "bg-white dark:bg-[#2c2c2e] text-(--ink) shadow-xs font-semibold"
+              : "text-(--ink-secondary) hover:text-(--ink)"
           }`}
         >
           Cloud & AI
         </button>
       </div>
 
-      {/* Direct, Straight-to-the-Point 8-Tech Grid */}
-      <div className="grid gap-3 sm:grid-cols-2">
+      {/* Apple App Feature Grid */}
+      <div className="grid gap-3.5 sm:grid-cols-2">
         {filteredItems.map((tech) => {
           const Icon = tech.icon;
           return (
             <article
               key={tech.id}
-              className="bryl-card p-4.5 group relative flex flex-col justify-between transition-all duration-300 hover:border-(--gray-300) overflow-hidden"
+              className="bryl-card group relative flex flex-col justify-between p-5 transition-all duration-200"
             >
-              {/* Subtle Halftone Effect on Hover */}
-              <div className="absolute inset-0 bryl-halftone opacity-0 group-hover:opacity-15 pointer-events-none transition-opacity duration-300" />
-
-              <div className="relative z-10 space-y-3">
-                
-                {/* Header: Icon + Name + Badge */}
-                <div className="flex items-start justify-between">
+              <div className="space-y-3">
+                {/* Header: App Squircle Icon + Name + Badge */}
+                <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg border border-(--gray-200) bg-(--background) text-(--ink) group-hover:border-(--gray-400) transition-colors">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-black/3 dark:bg-white/6 border border-black/5 dark:border-white/8 text-(--ink) group-hover:scale-105 transition-transform duration-200">
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="font-mono text-[15px] font-bold text-(--ink) leading-tight">
+                      <h3 className="font-sans text-[15px] font-semibold text-(--ink) leading-tight">
                         {tech.name}
                       </h3>
-                      <p className="bryl-label text-[10px] mt-0.5">
+                      <p className="text-[12px] text-(--ink-secondary) mt-0.5 font-medium">
                         {tech.role}
                       </p>
                     </div>
                   </div>
 
                   {tech.certified && (
-                    <span className="bryl-pill bryl-pill-inverted text-[8px] flex items-center gap-1 shrink-0">
-                      <ShieldCheck size={10} /> CERTIFIED
+                    <span className="rounded-full px-2.5 py-0.5 text-[10px] font-medium bg-[#0071e3]/10 text-[#0071e3] dark:bg-[#2997ff]/15 dark:text-[#2997ff] flex items-center gap-1 shrink-0">
+                      <ShieldCheck size={11} /> Certified
                     </span>
                   )}
                 </div>
 
                 {/* Direct Summary */}
-                <p className="text-[13px] leading-relaxed text-(--gray-500) font-serif">
+                <p className="text-[13px] leading-relaxed text-(--ink-secondary)">
                   {tech.summary}
                 </p>
-
               </div>
 
-              {/* Footer: Tags + Optional Direct Project Link */}
-              <div className="relative z-10 pt-3 mt-3 border-t border-(--gray-200) flex flex-wrap items-center justify-between gap-2">
-                <div className="flex flex-wrap gap-1">
+              {/* Footer: Tags + Project Link */}
+              <div className="pt-3.5 mt-3.5 border-t border-black/6 dark:border-white/8 flex flex-wrap items-center justify-between gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {tech.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-1.5 py-0.5 rounded bg-(--background) border border-(--gray-200) text-[10px] font-mono text-(--gray-500)"
+                      className="px-2.5 py-0.5 rounded-full bg-black/3 dark:bg-white/5 border border-black/4 dark:border-white/6 text-[11px] font-medium text-(--ink-secondary)"
                     >
                       {tag}
                     </span>
@@ -308,10 +302,10 @@ export function TechStackSection() {
                         }
                       }
                     }}
-                    className="font-mono text-[10px] uppercase tracking-wider text-(--gray-400) hover:text-(--ink) flex items-center gap-0.5 transition-colors cursor-pointer"
+                    className="text-[12px] font-medium text-(--apple-blue) hover:underline flex items-center gap-0.5 transition-colors cursor-pointer"
                   >
                     <span>{tech.projectTitle}</span>
-                    <ArrowUpRight size={11} />
+                    <ArrowUpRight size={12} />
                   </a>
                 )}
               </div>

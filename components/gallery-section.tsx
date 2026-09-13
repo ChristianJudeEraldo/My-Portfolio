@@ -15,53 +15,56 @@ export function GallerySection() {
   };
 
   const images = [
-    { src: "/newprofile1.jpg", alt: "Gallery Image 1" },
-    { src: "/newprofile2.jpg", alt: "Gallery Image 2" },
-    { src: "/newprofile1.jpg", alt: "Gallery Image 3" },
-    { src: "/newprofile2.jpg", alt: "Gallery Image 4" },
-    { src: "/newprofile1.jpg", alt: "Gallery Image 5" },
+    { src: "/newprofile1.jpg", alt: "Christian Jude - Engineering Profile 1" },
+    { src: "/newprofile2.jpg", alt: "Christian Jude - Engineering Profile 2" },
+    { src: "/newprofile1.jpg", alt: "Christian Jude - Engineering Profile 3" },
+    { src: "/newprofile2.jpg", alt: "Christian Jude - Engineering Profile 4" },
+    { src: "/newprofile1.jpg", alt: "Christian Jude - Engineering Profile 5" },
   ];
 
   return (
     <div className="relative group">
+      {/* Apple Frosted Navigation Button Left */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-0 top-1/2 z-10 -translate-y-1/2 bg-(--background) border border-(--gray-200) p-2 rounded-full text-(--ink) opacity-0 transition-opacity hover:bg-(--gray-50) group-hover:opacity-100 shadow-sm"
+        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 backdrop-blur-xl bg-white/85 dark:bg-black/85 border border-black/8 dark:border-white/12 p-2.5 rounded-full text-(--ink) opacity-0 transition-all duration-200 hover:scale-105 group-hover:opacity-100 shadow-md cursor-pointer"
         aria-label="Scroll left"
       >
-        <ChevronLeft size={16} />
+        <ChevronLeft size={16} strokeWidth={2.5} />
       </button>
 
+      {/* Carousel Track */}
       <div
         ref={scrollRef}
-        className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar py-1"
+        className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 px-1"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {images.map((image, index) => (
           <div
             key={index}
-            className="relative aspect-4/3 w-44 shrink-0 sm:w-52 md:w-60 snap-center rounded-xl border border-(--gray-200) bryl-card p-1"
+            className="relative aspect-4/3 w-48 shrink-0 sm:w-56 md:w-64 snap-center rounded-2xl border border-black/6 dark:border-white/8 bg-white dark:bg-[#1c1c1e] p-1.5 shadow-xs transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/card"
           >
-            <div className="relative w-full h-full rounded-lg overflow-hidden transition-all duration-500 group-hover/img:scale-[1.04] group/img">
+            <div className="relative w-full h-full rounded-[14px] overflow-hidden">
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover object-top bryl-image-hover"
+                className="object-cover object-top transition-transform duration-500 group-hover/card:scale-105"
               />
-              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-(--background) to-transparent pointer-events-none opacity-50" />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/40 to-transparent pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
             </div>
           </div>
         ))}
       </div>
 
+      {/* Apple Frosted Navigation Button Right */}
       <button
         onClick={() => scroll("right")}
-        className="absolute right-0 top-1/2 z-10 -translate-y-1/2 bg-(--background) border border-(--gray-200) p-2 rounded-full text-(--ink) opacity-0 transition-opacity hover:bg-(--gray-50) group-hover:opacity-100 shadow-sm"
+        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 backdrop-blur-xl bg-white/85 dark:bg-black/85 border border-black/8 dark:border-white/12 p-2.5 rounded-full text-(--ink) opacity-0 transition-all duration-200 hover:scale-105 group-hover:opacity-100 shadow-md cursor-pointer"
         aria-label="Scroll right"
       >
-        <ChevronRight size={16} />
+        <ChevronRight size={16} strokeWidth={2.5} />
       </button>
     </div>
   );

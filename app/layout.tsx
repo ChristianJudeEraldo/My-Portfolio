@@ -63,7 +63,7 @@ export default function RootLayout({
             <Toaster position="bottom-right" theme="system" />
             <div className="flex min-h-screen flex-col lg:flex-row relative">
               <SiteHeader />
-              <main className="flex-1 w-full lg:pl-56">
+              <main className="flex-1 w-full lg:pl-60">
                 <div className="mx-auto w-full max-w-3xl px-4 py-6 md:px-8 md:py-10">
                   {children}
                 </div>
