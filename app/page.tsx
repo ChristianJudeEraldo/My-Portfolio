@@ -192,7 +192,7 @@ export default function Home() {
                   </div>
                   <p className="text-[14px] font-medium text-(--ink)">Python Programming</p>
                 </div>
-                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-medium bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
+                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-medium whitespace-nowrap shrink-0 bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
                   Pearson VUE Certified
                 </span>
               </div>
@@ -206,7 +206,7 @@ export default function Home() {
                   </div>
                   <p className="text-[14px] font-medium text-(--ink)">Database Management</p>
                 </div>
-                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-medium bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
+                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-medium whitespace-nowrap shrink-0 bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
                   Pearson VUE Certified
                 </span>
               </div>
