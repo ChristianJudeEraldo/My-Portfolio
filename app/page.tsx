@@ -13,22 +13,19 @@ import {
   MapPin, 
   Send, 
   Loader2, 
-  ChevronDown, 
-  ChevronUp, 
   Cpu, 
   ArrowUpRight,
   Sparkles
 } from "lucide-react";
 import { GallerySection } from "@/components/gallery-section";
 import { TechStackSection } from "@/components/tech-stack";
-import { TodoList } from "@/components/todo-list";
+import { ProjectsSection } from "@/components/projects-section";
 import { ModeToggle } from "@/components/mode-toggle";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { toast } from "sonner";
 
 export default function Home() {
   const [isPending, setIsPending] = useState(false);
-  const [isCnnExpanded, setIsCnnExpanded] = useState(false);
 
   const scrollToAnchor = (id: string) => {
     const el = document.getElementById(id);
@@ -276,159 +273,8 @@ export default function Home() {
 
       <div className="bryl-hairline animate-fade-up stagger-4" />
 
-      {/* ─── SECTION 04: FEATURED WORK & RESEARCH ─── */}
-      <section id="projects" className="animate-fade-up stagger-4 space-y-6">
-        <div>
-          <div className="flex items-center justify-between">
-            <p className="bryl-label">Featured Work & Research</p>
-            <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/8 text-(--ink-secondary)">
-              2 Key Projects
-            </span>
-          </div>
-          <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-(--ink) mt-1.5">
-            Engineering Projects & Live Demos
-          </h2>
-        </div>
-
-        <div className="space-y-6">
-          
-          {/* Project 1: CNN Thesis Research */}
-          <article id="projects-cnn" className="bryl-card space-y-4">
-            <div className="space-y-2.5">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="text-[11px] font-semibold text-(--apple-blue) tracking-wide">
-                  01 &mdash; MACHINE LEARNING THESIS
-                </span>
-              </div>
-
-              <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-(--ink)">
-                CNN-Based Facial Recognition for Sleep Deprivation Detection
-              </h3>
-
-              <p className="text-[14px] leading-relaxed text-(--ink-secondary)">
-                A deep learning computer vision system designed to classify early physiological signs of sleep 
-                deprivation in students using Convolutional Neural Networks and facial landmark telemetry.
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
-                  Python
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
-                  TensorFlow / Keras
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
-                  OpenCV
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
-                  MediaPipe
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
-                  Next.js 16
-                </span>
-              </div>
-            </div>
-
-            {/* Case Study Inline Expandable Drawer */}
-            <div className="pt-3 border-t border-black/6 dark:border-white/8">
-              <button
-                type="button"
-                onClick={() => setIsCnnExpanded(!isCnnExpanded)}
-                className="flex items-center justify-between w-full py-2 px-3 rounded-xl bg-black/2 dark:bg-white/4 hover:bg-black/5 dark:hover:bg-white/8 text-left text-[12px] font-medium text-(--ink) transition-colors cursor-pointer"
-                aria-expanded={isCnnExpanded}
-              >
-                <span className="flex items-center gap-2">
-                  <Cpu size={15} className="text-(--apple-blue)" />
-                  {isCnnExpanded ? "Hide Technical Architecture & Methodology" : "View Technical Architecture & Methodology"}
-                </span>
-                {isCnnExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-              </button>
-
-              {isCnnExpanded && (
-                <div className="mt-4 pt-4 border-t border-black/6 dark:border-white/8 space-y-4 text-[13px] leading-relaxed text-(--ink-secondary) animate-fade-up">
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    <div className="p-3.5 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 space-y-1">
-                      <p className="text-[11px] font-semibold text-(--ink)">1. Data Pipeline</p>
-                      <p className="text-[12px] leading-relaxed">
-                        Facial landmark tracking and ocular region extraction with OpenCV and MediaPipe mesh coordinates.
-                      </p>
-                    </div>
-                    
-                    <div className="p-3.5 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 space-y-1">
-                      <p className="text-[11px] font-semibold text-(--ink)">2. CNN Model</p>
-                      <p className="text-[12px] leading-relaxed">
-                        Multi-class fatigue classification (alert, moderately fatigued, sleep-deprived) built with TensorFlow/Keras.
-                      </p>
-                    </div>
-
-                    <div className="p-3.5 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 space-y-1">
-                      <p className="text-[11px] font-semibold text-(--ink)">3. UI & Telemetry</p>
-                      <p className="text-[12px] leading-relaxed">
-                        Real-time logging dashboard engineered with Next.js 16 and responsive high-contrast telemetry states.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-4 rounded-xl border border-black/6 dark:border-white/8 bg-white/80 dark:bg-[#1c1c1e]/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-                    <div>
-                      <p className="text-[12px] font-semibold text-(--ink)">
-                        Interactive Contrast Verification
-                      </p>
-                      <p className="text-[12px] text-(--ink-secondary)">
-                        Toggle themes to inspect how telemetry and data readouts adapt across high-contrast monochrome states.
-                      </p>
-                    </div>
-                    <ModeToggle />
-                  </div>
-                </div>
-              )}
-            </div>
-          </article>
-
-          {/* Project 2: Interactive Task & State Management System */}
-          <article id="projects-todo" className="bryl-card space-y-5">
-            <div className="space-y-2.5">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="text-[11px] font-semibold text-(--apple-blue) tracking-wide">
-                  02 &mdash; FRONTEND ARCHITECTURE & STATE
-                </span>
-              </div>
-
-              <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-(--ink)">
-                Interactive Task & State Management System
-              </h3>
-
-              <p className="text-[14px] leading-relaxed text-(--ink-secondary)">
-                A focused software architecture study on immutable state transitions, dynamic priority reordering, 
-                and zero-dependency client state manipulation in React 19.
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
-                  React 19
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
-                  TypeScript
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
-                  Tailwind CSS
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/6 text-[11px] font-medium text-(--ink-secondary)">
-                  Pure State Updates
-                </span>
-              </div>
-            </div>
-
-            {/* Live Embedded Interactive Component */}
-            <div className="pt-4 border-t border-black/6 dark:border-white/8">
-              <div className="p-3 sm:p-5 rounded-2xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-black/40 backdrop-blur-md">
-                <TodoList />
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </section>
+      {/* ─── SECTION 04: FEATURED WORK & PROJECTS ─── */}
+      <ProjectsSection />
 
       <div className="bryl-hairline animate-fade-up stagger-5" />
       

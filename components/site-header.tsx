@@ -75,12 +75,18 @@ export function SiteHeader() {
         window.history.pushState(null, "", `#${targetId}`)
       }
       setActiveSection(targetId)
+    } else {
+      window.location.href = `/#${targetId}`
     }
   }, [])
 
   const scrollToTop = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     setIsMobileMenuOpen(false)
+    if (window.location.pathname !== "/") {
+      window.location.href = "/"
+      return
+    }
     const lenis = (window as any).__lenis
     if (lenis) {
       lenis.scrollTo(0, { duration: 1.0 })
