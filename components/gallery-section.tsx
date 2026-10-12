@@ -1,71 +1,98 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export function GallerySection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = direction === "left" ? -300 : 300;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const images = [
     { src: "/newprofile1.jpg", alt: "Christian Jude - Engineering Profile 1" },
     { src: "/newprofile2.jpg", alt: "Christian Jude - Engineering Profile 2" },
-    { src: "/newprofile1.jpg", alt: "Christian Jude - Engineering Profile 3" },
-    { src: "/newprofile2.jpg", alt: "Christian Jude - Engineering Profile 4" },
-    { src: "/newprofile1.jpg", alt: "Christian Jude - Engineering Profile 5" },
+    { src: "/profile.jpg", alt: "Christian Jude - Campus & Engineering 3" },
+    { src: "/profile2.jpg", alt: "Christian Jude - Software Engineering 4" },
+    { src: "/newprofile1.jpg", alt: "Christian Jude - Milestones 5" },
   ];
 
-  return (
-    <div className="relative group">
-      {/* Apple Frosted Navigation Button Left */}
-      <button
-        onClick={() => scroll("left")}
-        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 backdrop-blur-xl bg-white/85 dark:bg-black/85 border border-black/8 dark:border-white/12 p-2.5 rounded-full text-(--ink) opacity-0 transition-all duration-200 hover:scale-105 group-hover:opacity-100 shadow-md cursor-pointer"
-        aria-label="Scroll left"
-      >
-        <ChevronLeft size={16} strokeWidth={2.5} />
-      </button>
+  const count = images.length;
+  const half = Math.floor(count / 2);
 
-      {/* Carousel Track */}
+  const handleCardClick = (index: number) => {
+    if (index === activeIndex) {
+      // If clicking the current center card, cycle to the next photo
+      setActiveIndex((prev) => (prev + 1) % count);
+    } else {
+      setActiveIndex(index);
+    }
+  };
+
+  return (
+    <div className="photo-stack flex flex-col items-center py-6 sm:py-8 space-y-4 select-none [--step:34px] sm:[--step:54px] md:[--step:62px] overflow-hidden sm:overflow-visible">
+      {/* ─── Fanned Cards Deck ─── */}
       <div
-        ref={scrollRef}
-        className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 px-1"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        className="relative w-full h-72.5 sm:h-90 md:h-97.5 flex items-center justify-center"
+        role="region"
+        aria-label="Photo Stack Gallery"
       >
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className="relative aspect-4/3 w-48 shrink-0 sm:w-56 md:w-64 snap-center rounded-2xl border border-black/6 dark:border-white/8 bg-white dark:bg-[#1c1c1e] p-1.5 shadow-xs transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/card"
-          >
-            <div className="relative w-full h-full rounded-[14px] overflow-hidden">
+        {images.map((image, index) => {
+          // Circular relative distance from activeIndex
+          const d = ((index - activeIndex + half + count) % count) - half;
+          const a = Math.abs(d);
+          const zIndex = 10 - a;
+          const isCurrent = d === 0;
+
+          return (
+            <button
+              key={index}
+              type="button"
+              onClick={() => handleCardClick(index)}
+              aria-label={`Photo ${index + 1} of ${count}`}
+              aria-current={isCurrent}
+              style={{
+                zIndex,
+                transform: `translateX(calc(${d} * var(--step))) translateY(calc(${a} * 6px)) rotate(calc(${d} * 4.5deg)) scale(calc(1 - ${a} * 0.065))`,
+                boxShadow: isCurrent
+                  ? "0 10px 30px -5px rgba(0, 0, 0, 0.22), 0 4px 12px -2px rgba(0, 0, 0, 0.12)"
+                  : `0 calc(10px - ${a} * 2px) calc(24px - ${a} * 4px) rgba(0, 0, 0, calc(0.18 - ${a} * 0.03))`,
+              }}
+              className="absolute top-0 left-1/2 -ml-25 sm:-ml-32.5 md:-ml-36.25 w-50 h-66.25 sm:w-65 sm:h-83.75 md:w-72.5 md:h-91.25 rounded-[22px] border-[3.5px] border-white/90 dark:border-[#242428] bg-[#e4e4e1] dark:bg-[#1c1c20] overflow-hidden cursor-pointer will-change-transform transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:brightness-105 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--apple-blue)"
+            >
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover object-top transition-transform duration-500 group-hover/card:scale-105"
+                sizes="(max-width: 640px) 200px, 290px"
+                className="object-cover object-top pointer-events-none select-none"
+                priority={isCurrent}
               />
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/40 to-transparent pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* ─── Pagination Dots ─── */}
+      <div className="flex items-center gap-1.5 pt-1" aria-hidden="true">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => setActiveIndex(index)}
+            aria-label={`Go to photo ${index + 1}`}
+            className={`h-1.5 rounded-full transition-all duration-400 cursor-pointer ${
+              index === activeIndex
+                ? "w-5 bg-(--ink)"
+                : "w-1.5 bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40"
+            }`}
+          />
         ))}
       </div>
 
-      {/* Apple Frosted Navigation Button Right */}
-      <button
-        onClick={() => scroll("right")}
-        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 backdrop-blur-xl bg-white/85 dark:bg-black/85 border border-black/8 dark:border-white/12 p-2.5 rounded-full text-(--ink) opacity-0 transition-all duration-200 hover:scale-105 group-hover:opacity-100 shadow-md cursor-pointer"
-        aria-label="Scroll right"
-      >
-        <ChevronRight size={16} strokeWidth={2.5} />
-      </button>
+      {/* ─── Interaction Hint ─── */}
+      <p className="text-[12px] text-(--ink-secondary) tracking-tight flex items-center gap-1.5">
+        <Sparkles size={13} className="text-(--apple-blue)" />
+        <span>Click the stack to shuffle</span>
+      </p>
     </div>
   );
 }
