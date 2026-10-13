@@ -10,9 +10,7 @@ export function GallerySection() {
   const images = [
     { src: "/newprofile1.jpg", alt: "Christian Jude - Engineering Profile 1" },
     { src: "/newprofile2.jpg", alt: "Christian Jude - Engineering Profile 2" },
-    { src: "/profile.jpg", alt: "Christian Jude - Campus & Engineering 3" },
-    { src: "/profile2.jpg", alt: "Christian Jude - Software Engineering 4" },
-    { src: "/newprofile1.jpg", alt: "Christian Jude - Milestones 5" },
+    { src: "/newprofile3.jpg", alt: "Christian Jude - Academic & Engineering Graduation" },
   ];
 
   const count = images.length;

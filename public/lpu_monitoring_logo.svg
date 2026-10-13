@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="100%" height="100%">
+  <defs>
+    <!-- Rich LPU Maroon Gradient -->
+    <linearGradient id="lpuMaroon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#96101C" />
+      <stop offset="50%" stop-color="#840A14" />
+      <stop offset="100%" stop-color="#6E060F" />
+    </linearGradient>
+
+    <!-- Metallic Gold Gradient -->
+    <linearGradient id="lpuGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3CF7A" />
+      <stop offset="40%" stop-color="#D4A744" />
+      <stop offset="100%" stop-color="#BA8E2D" />
+    </linearGradient>
+
+    <!-- Subtle Inner Border Highlight -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.25" />
+    </linearGradient>
+  </defs>
+
+  <!-- Full Bleed Squircle Background: Occupies entire thumbnail canvas -->
+  <rect width="1024" height="1024" rx="224" fill="url(#lpuMaroon)" />
+  <rect x="8" y="8" width="1008" height="1008" rx="216" fill="none" stroke="url(#borderGrad)" stroke-width="16" />
+
+  <!-- Centered Emblem Scaled to Boldly Fill the App Icon Canvas -->
+  <g transform="translate(512, 512) scale(1.4) translate(-512, -512)">
+    <!-- Shield Outline -->
+    <path d="M 512 292
+             C 475 306 385 328 346 338
+             C 340 340 334 346 334 353
+             L 334 485
+             C 334 605 440 690 512 731
+             C 584 690 690 605 690 485
+             L 690 353
+             C 690 346 684 340 678 338
+             C 639 328 549 306 512 292 Z"
+          fill="none"
+          stroke="url(#lpuGold)"
+          stroke-width="16"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+
+    <!-- LPU Serif Text -->
+    <text x="512" y="384"
+          text-anchor="middle"
+          fill="#FFFFFF"
+          font-family="'Times New Roman', Times, 'Playfair Display', Georgia, serif"
+          font-size="62"
+          font-weight="500"
+          letter-spacing="5">LPU</text>
+
+    <!-- Crescent Moon -->
+    <path d="M 470 420
+             C 392 445 372 558 438 616
+             C 472 645 520 635 556 612
+             C 496 626 442 594 424 550
+             C 405 502 433 445 470 420 Z"
+          fill="none"
+          stroke="url(#lpuGold)"
+          stroke-width="16"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+
+    <!-- ECG Pulse Waveform -->
+    <path d="M 456 515
+             L 504 515
+             L 528 472
+             L 552 546
+             L 577 420
+             L 611 574
+             L 636 476
+             L 655 515
+             L 726 515"
+          fill="none"
+          stroke="url(#lpuGold)"
+          stroke-width="18"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+  </g>
+</svg>

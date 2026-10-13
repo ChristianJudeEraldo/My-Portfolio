@@ -37,11 +37,11 @@ export const projects: Project[] = [
     thumbnail: "/projects/sleep-deprivation/thumb.svg",
     images: [
       {
-        src: "/projects/sleep-deprivation/preview-1.svg",
+        src: "/lpuhealth.png",
         caption: "Live facial landmark mesh and ocular aspect ratio telemetry pipeline."
       },
       {
-        src: "/projects/sleep-deprivation/preview-2.svg",
+        src: "/lpuhealth2.png",
         caption: "Longitudinal student sleep deprivation metrics and clinic health portal."
       }
     ],
@@ -88,14 +88,14 @@ export const projects: Project[] = [
     tag: "AI & Data Platform",
     badge: "Featured Web App",
     liveUrl: "https://aipamilihan.vercel.app/",
-    thumbnail: "/projects/pamilihan-ai/thumb.svg",
+    thumbnail: "/projects/pamilihan-ai/thumb.png",
     images: [
       {
-        src: "/projects/pamilihan-ai/preview-1.svg",
+        src: "/aipamilihan.png",
         caption: "Automated ingredient pricing calculation and serving cost breakdown for local dishes."
       },
       {
-        src: "/projects/pamilihan-ai/preview-2.svg",
+        src: "/aipamilihan2.png",
         caption: "Regional Philippine market variance analysis and commodity inflation tracking."
       }
     ],
@@ -145,11 +145,11 @@ export const projects: Project[] = [
     thumbnail: "/projects/subtrace/thumb.svg",
     images: [
       {
-        src: "/projects/subtrace/preview-1.svg",
+        src: "/subtrace.png",
         caption: "Executive financial dashboard with MRR, annual commitments, and renewal alert badges."
       },
       {
-        src: "/projects/subtrace/preview-2.svg",
+        src: "/subtrace2.png",
         caption: "Category spend analytics and portfolio breakdown across infrastructure, AI, and utilities."
       }
     ],
