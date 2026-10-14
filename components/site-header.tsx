@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { ModeToggle } from "@/components/mode-toggle"
 import { SoundToggle } from "@/components/sound-toggle"
 import { SiteLogo } from "@/components/site-logo"
-import { User, Wrench, FolderGit2, Images, Mail, Menu, X } from "lucide-react"
+import { User, Wrench, FolderGit2, Award, Images, Mail, Menu, X } from "lucide-react"
 
 interface NavItem {
   name: string
@@ -21,13 +21,14 @@ export function SiteHeader() {
     { name: "About", href: "#about", id: "about", icon: User },
     { name: "Skills", href: "#skills", id: "skills", icon: Wrench },
     { name: "Projects", href: "#projects", id: "projects", icon: FolderGit2 },
+    { name: "Certificates", href: "#certificates", id: "certificates", icon: Award },
     { name: "Gallery", href: "#gallery", id: "gallery", icon: Images },
     { name: "Contact", href: "#contact", id: "contact", icon: Mail },
   ]
 
   // Track active section via scroll position
   useEffect(() => {
-    const sectionIds = ["intro", "about", "skills", "projects", "gallery", "contact"]
+    const sectionIds = ["intro", "about", "skills", "projects", "certificates", "gallery", "contact"]
     
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 180

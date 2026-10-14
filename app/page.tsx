@@ -18,6 +18,7 @@ import {
 import { GallerySection } from "@/components/gallery-section";
 import { TechStackSection } from "@/components/tech-stack";
 import { ProjectsSection } from "@/components/projects-section";
+import { CertificatesDeck } from "@/components/certificates-deck";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { toast } from "sonner";
 
@@ -231,8 +232,18 @@ export default function Home() {
       <ProjectsSection />
 
       <div className="bryl-hairline animate-fade-up stagger-5" />
+
+      {/* ─── SECTION 05: CERTIFICATES & CREDENTIALS ─── */}
+      <section id="certificates" className="animate-fade-up stagger-5 space-y-4">
+        <div className="flex items-center justify-between">
+          <p className="bryl-label">Certificates</p>
+        </div>
+        <CertificatesDeck />
+      </section>
+
+      <div className="bryl-hairline animate-fade-up stagger-5" />
       
-      {/* ─── SECTION 05: GALLERY & MILESTONES ─── */}
+      {/* ─── SECTION 06: GALLERY & MILESTONES ─── */}
       <section id="gallery" className="animate-fade-up stagger-5 space-y-4">
         <div className="flex items-center justify-between">
           <p className="bryl-label">Gallery</p>
