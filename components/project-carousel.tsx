@@ -30,7 +30,7 @@ export function ProjectCarousel({ images, title }: ProjectCarouselProps) {
   return (
     <div className="space-y-2.5">
       {/* Main Image Viewport */}
-      <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 bg-black/4 dark:bg-white/4 shadow-sm group">
+      <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 bg-black/4 dark:bg-white/4 shadow-sm group">
         <Image
           src={currentImage.src}
           alt={currentImage.caption || `${title} screenshot ${currentIndex + 1}`}
@@ -74,14 +74,11 @@ export function ProjectCarousel({ images, title }: ProjectCarouselProps) {
         )}
       </div>
 
-      {/* Caption & Placeholder Notice */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-[12px] text-(--ink-secondary) px-1">
+      {/* Caption */}
+      <div className="text-[12px] text-(--ink-secondary) px-1">
         <p className="font-medium italic">
           {currentImage.caption || `Screenshot preview of ${title}`}
         </p>
-        <span className="text-[11px] opacity-75">
-          Temporary placeholder &middot; User image drop-in ready
-        </span>
       </div>
     </div>
   );

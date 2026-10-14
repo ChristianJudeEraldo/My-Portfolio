@@ -13,14 +13,11 @@ import {
   MapPin, 
   Send, 
   Loader2, 
-  Cpu, 
-  ArrowUpRight,
-  Sparkles
+  ArrowUpRight
 } from "lucide-react";
 import { GallerySection } from "@/components/gallery-section";
 import { TechStackSection } from "@/components/tech-stack";
 import { ProjectsSection } from "@/components/projects-section";
-import { ModeToggle } from "@/components/mode-toggle";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { toast } from "sonner";
 
@@ -78,8 +75,7 @@ export default function Home() {
             </h1>
             
             <p className="text-[16px] sm:text-[17px] leading-relaxed text-(--ink-secondary) max-w-xl font-normal">
-              Computer Engineering Graduate specializing in high-performance web development, 
-              machine learning (CNN) integration, and production-grade software delivery.
+              Computer Engineering graduate focused on full-stack web applications and applied machine learning.
             </p>
 
             {/* Apple HIG Action Buttons */}
@@ -101,23 +97,6 @@ export default function Home() {
                 <span>Resume</span>
                 <ArrowUpRight size={13} />
               </a>
-              
-              <a 
-                href="/resume.pdf" 
-                download="Christian_Jude_Eraldo_Resume.pdf"
-                className="apple-button-secondary gap-1.5"
-              >
-                <span>PDF ↓</span>
-              </a>
-
-              <button
-                type="button"
-                onClick={() => scrollToAnchor("contact")}
-                className="px-4 py-2 text-(--ink-secondary) hover:text-(--ink) text-[13px] font-medium transition-colors flex items-center gap-1 cursor-pointer"
-              >
-                <span>Contact</span>
-                <ArrowUpRight size={13} />
-              </button>
             </div>
           </div>
 
@@ -149,11 +128,8 @@ export default function Home() {
 
       {/* ─── SECTION 02: BACKGROUND & CREDENTIALS ─── */}
       <section id="about" className="animate-fade-up stagger-2 space-y-6">
-        <div className="flex items-center justify-between">
+        <div>
           <p className="bryl-label">Background & Credentials</p>
-          <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-black/4 dark:bg-white/8 text-(--ink-secondary)">
-            Profile & Education
-          </span>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
@@ -173,11 +149,6 @@ export default function Home() {
                 <h3 className="text-[17px] font-semibold tracking-tight text-(--ink)">
                   B.S. in Computer Engineering
                 </h3>
-                <p className="text-[12px] font-medium text-(--ink-secondary) mt-0.5">Graduate</p>
-                <p className="mt-2.5 text-[14px] leading-relaxed text-(--ink-secondary)">
-                  Software-focused engineer building high-performance systems,
-                  backed by a BSCPE foundation and practical implementation discipline.
-                </p>
               </div>
             </div>
 
@@ -224,32 +195,20 @@ export default function Home() {
 
               <div className="space-y-3 text-[13px] leading-relaxed">
                 <div>
-                  <span className="bryl-label text-[10px] block">Specialization</span>
-                  <p className="text-(--ink-secondary) mt-0.5">
-                    Full-stack web systems, AI-driven features, and efficient architectures.
-                  </p>
+                  <span className="font-semibold text-(--ink)">Full-Stack Systems</span>
+                  <span className="text-(--ink-secondary)"> — Next.js, React, TypeScript & relational databases</span>
                 </div>
                 
                 <div className="pt-2 border-t border-black/6 dark:border-white/8">
-                  <span className="bryl-label text-[10px] block">Experience & Focus</span>
-                  <p className="text-(--ink-secondary) mt-0.5">
-                    3+ years project experience across web builds, thesis ML models & real-time telemetry.
-                  </p>
+                  <span className="font-semibold text-(--ink)">Applied AI / ML</span>
+                  <span className="text-(--ink-secondary)"> — Computer vision (CNN) & LLM data pipelines</span>
                 </div>
 
                 <div className="pt-2 border-t border-black/6 dark:border-white/8">
-                  <span className="bryl-label text-[10px] block">Collaboration</span>
-                  <p className="text-(--ink-secondary) mt-0.5">
-                    Feedback-driven development, clear documentation, and rapid iteration.
-                  </p>
+                  <span className="font-semibold text-(--ink)">Experience</span>
+                  <span className="text-(--ink-secondary)"> — 3+ years building academic research & production web apps</span>
                 </div>
               </div>
-            </div>
-
-            <div className="pt-3 border-t border-black/6 dark:border-white/8">
-              <p className="text-[13px] italic text-(--ink-secondary) leading-snug">
-                &ldquo;Refining how ideas move from prototype to reliable product.&rdquo;
-              </p>
             </div>
           </article>
         </div>
@@ -260,12 +219,7 @@ export default function Home() {
       {/* ─── SECTION 03: TECH STACK & TOOLCHAIN ─── */}
       <section id="skills" className="animate-fade-up stagger-3 space-y-6">
         <div>
-          <div className="flex items-center justify-between">
-            <p className="bryl-label">Tech Stack & Tools</p>
-          </div>
-          <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-(--ink) mt-1.5">
-            Core Technologies & Toolchain
-          </h2>
+          <p className="bryl-label">Tech Stack</p>
         </div>
 
         <TechStackSection />
@@ -291,26 +245,16 @@ export default function Home() {
       {/* ─── SECTION 06: CONTACT & INQUIRIES ─── */}
       <section id="contact" className="animate-fade-up stagger-5 space-y-6">
         <div>
-          <div className="flex items-center justify-between">
-            <p className="bryl-label">Get In Touch</p>
-          </div>
+          <p className="bryl-label">Contact</p>
           <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-(--ink) mt-1.5">
             Let&apos;s build something meaningful.
           </h2>
-          <p className="text-[15px] text-(--ink-secondary) mt-1 max-w-xl">
-            If you&apos;re hiring, collaborating, or discussing a project, I&apos;m open to conversations
-            around full-stack web development, AI integration, and software engineering.
-          </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 items-start">
           
           {/* Left Column: Direct Contact & Channels (Apple Settings Grouped List) */}
           <div className="space-y-4">
-            <h3 className="text-[15px] font-semibold tracking-tight text-(--ink)">
-              Reach Me Directly
-            </h3>
-
             <div className="rounded-2xl overflow-hidden border border-black/6 dark:border-white/8 bg-white/80 dark:bg-[#1c1c1e]/80 backdrop-blur-xl divide-y divide-black/6 dark:divide-white/8 text-[13px]">
               <a
                 href="mailto:cjeraldo@outlook.ph"
@@ -374,22 +318,10 @@ export default function Home() {
                 <span className="text-[12px] font-medium text-(--ink-secondary)">Philippines</span>
               </div>
             </div>
-
-            {/* Technical Write-ups Status Pill */}
-            <div className="p-3 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 flex items-center justify-between">
-              <span className="bryl-label text-[10px]">Technical Write-ups</span>
-              <span className="text-[11px] font-medium text-(--ink-secondary) flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-(--apple-blue) animate-pulse" />
-                Coming Soon
-              </span>
-            </div>
           </div>
 
           {/* Right Column: Send a Message Form */}
           <form onSubmit={handleContactSubmit} className="bryl-card space-y-4">
-            <h3 className="text-[15px] font-semibold tracking-tight text-(--ink)">
-              Send a Quick Message
-            </h3>
             
             <div className="hidden" aria-hidden="true">
               <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" />

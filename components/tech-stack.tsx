@@ -280,24 +280,19 @@ export function TechStackSection() {
               </div>
 
               {/* Text Meta */}
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center justify-between gap-1">
-                  <span className="font-sans text-[12px] sm:text-[13px] font-semibold text-(--ink) truncate group-hover:text-(--apple-blue) transition-colors">
-                    {tech.name}
+              <div className="min-w-0 flex-1 flex items-center justify-between gap-1">
+                <span className="font-sans text-[12px] sm:text-[13px] font-semibold text-(--ink) truncate group-hover:text-(--apple-blue) transition-colors">
+                  {tech.name}
+                </span>
+                {tech.certified && (
+                  <span 
+                    className="px-1 sm:px-1.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-semibold bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 shrink-0 flex items-center gap-0.5"
+                    title="Pearson Certified"
+                  >
+                    <ShieldCheck size={9} />
+                    <span className="hidden sm:inline">Certified</span>
                   </span>
-                  {tech.certified && (
-                    <span 
-                      className="px-1 sm:px-1.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-semibold bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 shrink-0 flex items-center gap-0.5"
-                      title="Pearson Certified"
-                    >
-                      <ShieldCheck size={9} />
-                      <span className="hidden sm:inline">Certified</span>
-                    </span>
-                  )}
-                </div>
-                <p className="text-[10px] sm:text-[11px] text-(--ink-secondary) truncate font-normal mt-0.5">
-                  {tech.role}
-                </p>
+                )}
               </div>
             </div>
           );

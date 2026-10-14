@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, CheckCircle2, Cpu, ExternalLink, Layers, Sparkles } from "lucide-react";
+import { CheckCircle2, Cpu, ExternalLink, Layers, Sparkles } from "lucide-react";
 import { ProjectCarousel } from "@/components/project-carousel";
 import type { Project } from "@/data/projects";
 
@@ -59,9 +59,7 @@ export function ProjectDetailContent({ project, showBackLink }: ProjectDetailCon
           <span>Project Overview</span>
         </h2>
         <div className="space-y-3 text-[14px] sm:text-[15px] leading-relaxed text-(--ink-secondary)">
-          {project.overview.map((paragraph, idx) => (
-            <p key={idx}>{paragraph}</p>
-          ))}
+          <p>{project.overview[0]}</p>
         </div>
       </section>
 
@@ -73,7 +71,7 @@ export function ProjectDetailContent({ project, showBackLink }: ProjectDetailCon
             <span>Key Capabilities & Features</span>
           </h2>
           <ul className="grid gap-2.5 sm:grid-cols-1">
-            {project.features.map((feature, idx) => (
+            {project.features.slice(0, 4).map((feature, idx) => (
               <li
                 key={idx}
                 className="flex items-start gap-2.5 text-[13px] sm:text-[14px] leading-relaxed text-(--ink-secondary) p-2.5 rounded-xl bg-black/2 dark:bg-white/4 border border-black/4 dark:border-white/6"
@@ -139,29 +137,6 @@ export function ProjectDetailContent({ project, showBackLink }: ProjectDetailCon
           ))}
         </div>
       </section>
-
-      {/* ─── Direct Live Action Banner ─── */}
-      {project.liveUrl && (
-        <div className="p-4 rounded-2xl border border-black/8 dark:border-white/10 bg-black/2 dark:bg-white/4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <div>
-            <p className="text-[13px] font-semibold text-(--ink)">
-              Experience {project.shortTitle} in Production
-            </p>
-            <p className="text-[12px] text-(--ink-secondary)">
-              Explore the live application, interactive datasets, and production features.
-            </p>
-          </div>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="apple-button-primary gap-1 text-[12px] py-1.5 px-4 shrink-0"
-          >
-            <span>Launch App</span>
-            <ArrowUpRight size={14} />
-          </a>
-        </div>
-      )}
     </div>
   );
 }

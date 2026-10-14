@@ -29,19 +29,11 @@ export function ProjectRow({ project }: ProjectRowProps) {
 
         {/* Title & Short Summary */}
         <div className="min-w-0 flex-1 space-y-0.5 sm:space-y-1">
-          <div className="flex flex-wrap items-center gap-2">
-            <h3 className="font-sans font-semibold text-[15px] sm:text-[16px] text-(--ink) group-hover:text-(--apple-blue) transition-colors truncate">
-              {project.shortTitle}
-            </h3>
+          <h3 className="font-sans font-semibold text-[15px] sm:text-[16px] text-(--ink) group-hover:text-(--apple-blue) transition-colors truncate">
+            {project.shortTitle}
+          </h3>
 
-            {project.badge && (
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 shrink-0">
-                {project.badge}
-              </span>
-            )}
-          </div>
-
-          <p className="text-[13px] text-(--ink-secondary) leading-snug line-clamp-1 sm:line-clamp-2 font-normal">
+          <p className="text-[13px] text-(--ink-secondary) leading-snug line-clamp-1 font-normal">
             {project.summary}
           </p>
         </div>
