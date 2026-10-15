@@ -272,8 +272,8 @@ html, body {
 .apple-button-primary {
   background-color: var(--apple-blue);
   color: #ffffff;
-  height: 38px;
-  padding: 0 18px;
+  min-height: 36px;
+  padding: 0 14px;
   border-radius: 9999px;
   font-size: 13px;
   font-weight: 500;
@@ -299,8 +299,8 @@ html, body {
 .apple-button-secondary {
   background-color: var(--fill);
   color: var(--ink);
-  height: 36px;
-  padding: 0 16px;
+  min-height: 36px;
+  padding: 0 14px;
   border-radius: 9999px;
   font-size: 13px;
   font-weight: 500;

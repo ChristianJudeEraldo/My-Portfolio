@@ -2,95 +2,221 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, Activity, ArrowUpRight } from "lucide-react";
+
+interface Artifact {
+  title: string;
+  category: string;
+  badge: string;
+  caption: string;
+  src: string;
+  alt: string;
+  projectHref?: string;
+}
+
+const ARTIFACTS: Artifact[] = [
+  {
+    title: "Facial Landmark Mesh & Ocular Telemetry",
+    category: "Computer Vision / CNN Thesis",
+    badge: "60 FPS · 94.8% Accuracy",
+    caption: "Real-time Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR) extraction via MediaPipe FaceMesh for cognitive fatigue detection.",
+    src: "/lpuhealth.png",
+    alt: "Live facial landmark mesh and ocular aspect ratio telemetry pipeline",
+    projectHref: "/projects/sleep-deprivation-detection",
+  },
+  {
+    title: "Longitudinal Clinical Sleep Portal",
+    category: "Clinical Telemetry System",
+    badge: "Full-Stack Portal · LPU-C",
+    caption: "Student sleep deprivation tracking dashboard with role-based access control, longitudinal trend logs, and ambient clinic optimization.",
+    src: "/lpuhealth2.png",
+    alt: "Longitudinal student sleep deprivation metrics and clinic health portal",
+    projectHref: "/projects/sleep-deprivation-detection",
+  },
+  {
+    title: "Philippine Commodity Pricing Engine",
+    category: "Pamilihan AI Data Platform",
+    badge: "17 Regions · WFP HDX",
+    caption: "Automated ingredient pricing calculation and serving cost breakdown grounded in United Nations World Food Programme market datasets.",
+    src: "/aipamilihan.png",
+    alt: "Automated ingredient pricing calculation and serving cost breakdown for local dishes",
+    projectHref: "/projects/pamilihan-ai",
+  },
+  {
+    title: "Executive Recurring Expense Dashboard",
+    category: "SubTrace Financial SaaS",
+    badge: "Local-First · Apple HIG",
+    caption: "Deterministic Monthly Run Rate (MRR) projection, annual commitments forecasting, and renewal urgencies across software subscriptions.",
+    src: "/subtrace.png",
+    alt: "Executive financial dashboard with MRR and annual commitments",
+    projectHref: "/projects/subtrace",
+  },
+];
 
 export function GallerySection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  const images = [
-    { src: "/newprofile1.jpg", alt: "Christian Jude - Engineering Profile 1" },
-    { src: "/newprofile2.jpg", alt: "Christian Jude - Engineering Profile 2" },
-    { src: "/newprofile3.jpg", alt: "Christian Jude - Academic & Engineering Graduation" },
-  ];
+  const active = ARTIFACTS[activeIndex];
+  const count = ARTIFACTS.length;
 
-  const count = images.length;
-  const half = Math.floor(count / 2);
+  const next = () => setActiveIndex((prev) => (prev + 1) % count);
+  const prev = () => setActiveIndex((prev) => (prev - 1 + count) % count);
 
-  const handleCardClick = (index: number) => {
-    if (index === activeIndex) {
-      // If clicking the current center card, cycle to the next photo
-      setActiveIndex((prev) => (prev + 1) % count);
-    } else {
-      setActiveIndex(index);
+  // Mobile Touch Swipe Handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const distance = touchStart - touchEnd;
+    if (distance > 45) {
+      next();
+    } else if (distance < -45) {
+      prev();
     }
+    setTouchStart(null);
   };
 
   return (
-    <div className="photo-stack flex flex-col items-center py-6 sm:py-8 space-y-4 select-none [--step:34px] sm:[--step:54px] md:[--step:62px] overflow-hidden sm:overflow-visible">
-      {/* ─── Fanned Cards Deck ─── */}
-      <div
-        className="relative w-full h-72.5 sm:h-90 md:h-97.5 flex items-center justify-center"
-        role="region"
-        aria-label="Photo Stack Gallery"
+    <div className="space-y-3 sm:space-y-4">
+      {/* ─── Main Artifact Display Card ─── */}
+      <div 
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className="relative rounded-2xl sm:rounded-3xl border border-black/8 dark:border-white/12 bg-white/70 dark:bg-[#1c1c1e]/70 backdrop-blur-xl overflow-hidden shadow-xs transition-all duration-300"
       >
-        {images.map((image, index) => {
-          // Circular relative distance from activeIndex
-          const d = ((index - activeIndex + half + count) % count) - half;
-          const a = Math.abs(d);
-          const zIndex = 10 - a;
-          const isCurrent = d === 0;
+        
+        {/* Top Header Bar inside Card */}
+        <div className="flex items-center justify-between gap-1.5 px-3.5 py-2.5 sm:px-6 sm:py-3.5 border-b border-black/6 dark:border-white/8 bg-black/2 dark:bg-white/4">
+          <div className="flex items-center gap-1.5 min-w-0">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono tracking-tight font-medium bg-(--apple-blue)/10 text-(--apple-blue) truncate">
+              <Activity size={11} className="animate-pulse-slow shrink-0" />
+              <span className="truncate">{active.category}</span>
+            </span>
+            <span className="text-[10px] sm:text-[11px] font-mono text-(--ink-tertiary) shrink-0">
+              [{activeIndex + 1}/{count}]
+            </span>
+          </div>
 
+          <div className="flex items-center gap-1.5 shrink-0">
+            <span className="hidden xs:inline-block text-[10px] sm:text-[11px] font-mono font-medium px-1.5 py-0.5 rounded-md bg-black/5 dark:bg-white/8 text-(--ink-secondary)">
+              {active.badge}
+            </span>
+            {active.projectHref && (
+              <a
+                href={active.projectHref}
+                className="inline-flex items-center gap-0.5 text-[10px] sm:text-[11px] font-medium text-(--apple-blue) hover:underline pl-1"
+              >
+                <span>Details</span>
+                <ArrowUpRight size={11} />
+              </a>
+            )}
+          </div>
+        </div>
+
+        {/* Screenshot Viewport Container with Touch Navigation */}
+        <div className="relative w-full aspect-16/10 sm:aspect-video bg-black/5 dark:bg-black/40 overflow-hidden group">
+          <Image
+            src={active.src}
+            alt={active.alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 800px"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            priority
+          />
+
+          {/* Navigation Overlay Arrows */}
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Previous artifact"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/45 dark:bg-black/65 text-white backdrop-blur-md flex items-center justify-center opacity-85 hover:opacity-100 hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-sm"
+          >
+            <ChevronLeft size={18} />
+          </button>
+
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next artifact"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/45 dark:bg-black/65 text-white backdrop-blur-md flex items-center justify-center opacity-85 hover:opacity-100 hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-sm"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+
+        {/* Caption & Metadata Footer */}
+        <div className="px-3.5 py-3 sm:px-6 sm:py-4 space-y-1 bg-white/40 dark:bg-white/2">
+          <h3 className="font-sans font-semibold text-[14px] sm:text-[16px] text-(--ink) leading-snug">
+            {active.title}
+          </h3>
+          <p className="text-[12px] sm:text-[13px] text-(--ink-secondary) leading-relaxed">
+            {active.caption}
+          </p>
+        </div>
+      </div>
+
+      {/* ─── Mobile Clean Dot Indicator (<sm) ─── */}
+      <div className="flex sm:hidden items-center justify-between px-1 pt-1">
+        <p className="text-[11px] text-(--ink-tertiary)">
+          Swipe or tap arrows to inspect
+        </p>
+        <div className="flex items-center gap-1.5" aria-hidden="true">
+          {ARTIFACTS.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setActiveIndex(idx)}
+              aria-label={`Go to artifact ${idx + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                idx === activeIndex
+                  ? "w-5 bg-(--apple-blue)"
+                  : "w-1.5 bg-black/20 dark:bg-white/20"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* ─── Desktop Thumbnails Scrub Bar (sm+) ─── */}
+      <div className="hidden sm:grid sm:grid-cols-4 gap-2 pt-1">
+        {ARTIFACTS.map((artifact, idx) => {
+          const isCurrent = idx === activeIndex;
           return (
             <button
-              key={index}
+              key={idx}
               type="button"
-              onClick={() => handleCardClick(index)}
-              aria-label={`Photo ${index + 1} of ${count}`}
-              aria-current={isCurrent}
-              style={{
-                zIndex,
-                transform: `translateX(calc(${d} * var(--step))) translateY(calc(${a} * 6px)) rotate(calc(${d} * 4.5deg)) scale(calc(1 - ${a} * 0.065))`,
-                boxShadow: isCurrent
-                  ? "0 10px 30px -5px rgba(0, 0, 0, 0.22), 0 4px 12px -2px rgba(0, 0, 0, 0.12)"
-                  : `0 calc(10px - ${a} * 2px) calc(24px - ${a} * 4px) rgba(0, 0, 0, calc(0.18 - ${a} * 0.03))`,
-              }}
-              className="absolute top-0 left-1/2 -ml-25 sm:-ml-32.5 md:-ml-36.25 w-50 h-66.25 sm:w-65 sm:h-83.75 md:w-72.5 md:h-91.25 rounded-[22px] border-[3.5px] border-white/90 dark:border-[#242428] bg-[#e4e4e1] dark:bg-[#1c1c20] overflow-hidden cursor-pointer will-change-transform transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:brightness-105 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--apple-blue)"
+              onClick={() => setActiveIndex(idx)}
+              className={`p-2 rounded-xl text-left border transition-all cursor-pointer flex flex-col gap-1.5 ${
+                isCurrent
+                  ? "border-(--apple-blue) bg-(--apple-blue)/5 dark:bg-(--apple-blue)/10 ring-1 ring-(--apple-blue)/30"
+                  : "border-black/6 dark:border-white/8 bg-black/2 dark:bg-white/4 hover:bg-black/4 dark:hover:bg-white/8 opacity-70 hover:opacity-100"
+              }`}
             >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(max-width: 640px) 200px, 290px"
-                className="object-cover object-top pointer-events-none select-none"
-                priority={isCurrent}
-              />
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-black/10 dark:bg-black/30">
+                <Image
+                  src={artifact.src}
+                  alt={artifact.title}
+                  fill
+                  sizes="160px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[11px] font-medium text-(--ink) truncate">
+                  {artifact.title}
+                </p>
+                <p className="text-[10px] text-(--ink-tertiary) truncate">
+                  {artifact.badge}
+                </p>
+              </div>
             </button>
           );
         })}
       </div>
-
-      {/* ─── Pagination Dots ─── */}
-      <div className="flex items-center gap-1.5 pt-1" aria-hidden="true">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            onClick={() => setActiveIndex(index)}
-            aria-label={`Go to photo ${index + 1}`}
-            className={`h-1.5 rounded-full transition-all duration-400 cursor-pointer ${
-              index === activeIndex
-                ? "w-5 bg-(--ink)"
-                : "w-1.5 bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* ─── Interaction Hint ─── */}
-      <p className="text-[12px] text-(--ink-secondary) tracking-tight flex items-center gap-1.5">
-        <Sparkles size={13} className="text-(--apple-blue)" />
-        <span>Click the stack to shuffle</span>
-      </p>
     </div>
   );
 }

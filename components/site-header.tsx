@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { ModeToggle } from "@/components/mode-toggle"
 import { SoundToggle } from "@/components/sound-toggle"
 import { SiteLogo } from "@/components/site-logo"
-import { User, Wrench, FolderGit2, Award, Images, Mail, Menu, X } from "lucide-react"
+import { User, Wrench, FolderGit2, Award, Activity, Mail, Menu, X } from "lucide-react"
 
 interface NavItem {
   name: string
@@ -22,7 +22,7 @@ export function SiteHeader() {
     { name: "Skills", href: "#skills", id: "skills", icon: Wrench },
     { name: "Projects", href: "#projects", id: "projects", icon: FolderGit2 },
     { name: "Certificates", href: "#certificates", id: "certificates", icon: Award },
-    { name: "Gallery", href: "#gallery", id: "gallery", icon: Images },
+    { name: "Telemetry Lab", href: "#gallery", id: "gallery", icon: Activity },
     { name: "Contact", href: "#contact", id: "contact", icon: Mail },
   ]
 
@@ -100,26 +100,36 @@ export function SiteHeader() {
   return (
     <>
       {/* Mobile Top Bar (iOS Frosted Glass Navigation Bar) */}
-      <header className="lg:hidden sticky top-0 z-50 flex h-14 items-center justify-between border-b border-black/6 dark:border-white/8 bg-(--surface-translucent) px-4 backdrop-blur-2xl">
-        <SiteLogo size="sm" showSubtitle={true} onClick={(e: any) => scrollToTop(e)} />
-        <div className="flex items-center gap-2">
+      <header className="lg:hidden sticky top-0 z-50 flex h-14 items-center justify-between border-b border-black/6 dark:border-white/8 bg-(--surface-translucent) px-3 sm:px-4 backdrop-blur-2xl">
+        <SiteLogo size="sm" showSubtitle={false} onClick={(e: any) => scrollToTop(e)} />
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <ModeToggle />
-          <SoundToggle />
+          <div className="hidden sm:flex">
+            <SoundToggle />
+          </div>
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="flex items-center justify-center w-8 h-8 rounded-full bg-black/4 dark:bg-white/8 text-(--ink) transition-colors hover:bg-black/8 dark:hover:bg-white/14 cursor-pointer"
+            className="flex items-center justify-center w-9 h-9 rounded-full bg-black/4 dark:bg-white/8 text-(--ink) transition-colors hover:bg-black/8 dark:hover:bg-white/14 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--apple-blue)"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
+            {isMobileMenuOpen ? <X size={17} /> : <Menu size={17} />}
           </button>
         </div>
       </header>
 
       {/* Mobile Fullscreen Menu (iOS Modal Sheet Blur) */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-white/90 dark:bg-black/90 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 animate-fade-up px-6">
+        <div className="lg:hidden fixed inset-0 z-50 bg-white/95 dark:bg-[#0c0c0e]/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-6 animate-fade-up px-6">
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full bg-black/5 dark:bg-white/10 text-(--ink) hover:bg-black/10 dark:hover:bg-white/15 cursor-pointer transition-colors"
+            aria-label="Close menu"
+          >
+            <X size={18} />
+          </button>
+
           <SiteLogo size="lg" showSubtitle={true} onClick={(e: any) => scrollToTop(e)} />
-          <div className="flex flex-col items-stretch w-full max-w-xs gap-2 my-4">
+          <div className="flex flex-col items-stretch w-full max-w-xs gap-1.5 my-2">
             {navItems.map((item) => {
               const isActive = activeSection === item.id
               const Icon = item.icon
@@ -128,7 +138,7 @@ export function SiteHeader() {
                   key={item.id}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.id)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-medium transition-all ${
+                  className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-[16px] font-medium min-h-12 transition-all ${
                     isActive 
                       ? "bg-[#0071e3] text-white shadow-xs" 
                       : "text-(--ink-secondary) hover:text-(--ink) hover:bg-black/4 dark:hover:bg-white/6"

@@ -60,31 +60,33 @@ export default function Home() {
   }
 
   return (
-    <div className="space-y-14 pb-20">
+    <div className="space-y-10 sm:space-y-14 pb-14 sm:pb-20">
       
       {/* ─── SECTION 01: INTRODUCTION & HERO ─── */}
-      <section id="intro" className="animate-fade-up stagger-1 pt-6 pb-2">
-        <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-10 items-start justify-between">
-          <div className="space-y-5 flex-1">
+      <section id="intro" className="animate-fade-up stagger-1 pt-3 sm:pt-6 pb-2">
+        <div className="flex flex-col-reverse sm:flex-row gap-5 sm:gap-8 md:gap-10 items-start justify-between">
+          <div className="space-y-4 sm:space-y-5 flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <span className="bryl-label">Introduction</span>
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-(--apple-green) animate-pulse-slow" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Available for Engineering Roles</span>
+              </span>
             </div>
             
-            <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-(--ink) leading-[1.12]">
-              Hi, I am Jude. I build fast, reliable web systems and applied AI.
+            <h1 className="font-sans text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-(--ink) leading-[1.18] sm:leading-[1.12]">
+              Hi, I am Jude. I build real-time computer vision telemetry and high-performance web systems.
             </h1>
             
-            <p className="text-[16px] sm:text-[17px] leading-relaxed text-(--ink-secondary) max-w-xl font-normal">
-              Computer Engineering graduate focused on full-stack web applications and applied machine learning.
+            <p className="text-[14px] sm:text-[17px] leading-relaxed text-(--ink-secondary) max-w-xl font-normal">
+              Computer Engineering graduate specializing in applied machine learning, 60 FPS edge inference, and modern full-stack web platforms.
             </p>
 
-            {/* Apple HIG Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            {/* Apple HIG Action Buttons (Always in the same row) */}
+            <div className="flex flex-row items-center gap-2.5 pt-1 sm:pt-2 w-full sm:w-auto">
               <button
                 type="button"
                 onClick={() => scrollToAnchor("projects")}
-                className="apple-button-primary cursor-pointer"
+                className="apple-button-primary cursor-pointer text-[13px] py-2.5 px-4 justify-center text-center flex-1 sm:flex-initial min-h-11 sm:min-h-0 whitespace-nowrap"
               >
                 Explore Work ↓
               </button>
@@ -93,7 +95,7 @@ export default function Home() {
                 href="/resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="apple-button-secondary gap-1.5"
+                className="apple-button-secondary gap-1.5 text-[13px] py-2.5 px-4 justify-center text-center flex-1 sm:flex-initial min-h-11 sm:min-h-0 whitespace-nowrap"
               >
                 <span>Resume</span>
                 <ArrowUpRight size={13} />
@@ -102,13 +104,13 @@ export default function Home() {
           </div>
 
           {/* Apple Squircle Profile Image Container */}
-          <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 shrink-0 rounded-[28px] border border-black/8 dark:border-white/12 overflow-hidden relative transition-all duration-300 shadow-md p-1.5 bg-white/80 dark:bg-white/8 self-center md:self-start">
-            <div className="relative w-full h-full rounded-[20px] overflow-hidden">
+          <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 shrink-0 rounded-2xl md:rounded-[28px] border border-black/8 dark:border-white/12 overflow-hidden relative transition-all duration-300 shadow-xs sm:shadow-md p-1 bg-white/80 dark:bg-white/8 self-start">
+            <div className="relative w-full h-full rounded-[14px] md:rounded-[20px] overflow-hidden">
               <Image 
                 src="/newprofile1.jpg" 
                 alt="Christian Jude Profile - Light" 
                 fill 
-                sizes="(max-width: 768px) 112px, 144px"
+                sizes="(max-width: 640px) 80px, 144px"
                 className="object-cover object-top dark:opacity-0 transition-opacity duration-500"
                 priority 
               />
@@ -116,7 +118,7 @@ export default function Home() {
                 src="/newprofile2.jpg" 
                 alt="Christian Jude Profile - Dark" 
                 fill 
-                sizes="(max-width: 768px) 112px, 144px"
+                sizes="(max-width: 640px) 80px, 144px"
                 className="object-cover object-top opacity-0 dark:opacity-100 transition-opacity duration-500"
                 priority
               />
@@ -243,17 +245,22 @@ export default function Home() {
 
       <div className="bryl-hairline animate-fade-up stagger-5" />
       
-      {/* ─── SECTION 06: GALLERY & MILESTONES ─── */}
+      {/* ─── SECTION 06: ENGINEERING ARTIFACTS & TELEMETRY LAB ─── */}
       <section id="gallery" className="animate-fade-up stagger-5 space-y-4">
-        <div className="flex items-center justify-between">
-          <p className="bryl-label">Gallery</p>
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-(--ink)">
+            Engineering Artifacts & Telemetry Lab
+          </h2>
+          <span className="text-[12px] font-mono text-(--ink-tertiary)">
+            [Thesis Telemetry & Research Datasets]
+          </span>
         </div>
         <GallerySection />
       </section>
 
       <div className="bryl-hairline animate-fade-up stagger-5" />
 
-      {/* ─── SECTION 06: CONTACT & INQUIRIES ─── */}
+      {/* ─── SECTION 07: CONTACT & INQUIRIES ─── */}
       <section id="contact" className="animate-fade-up stagger-5 space-y-6">
         <div>
           <p className="bryl-label">Contact</p>
@@ -348,7 +355,7 @@ export default function Home() {
                 required
                 type="text"
                 placeholder="Your Name"
-                className="w-full rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
+                className="w-full rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-base sm:text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
               />
             </div>
 
@@ -362,7 +369,7 @@ export default function Home() {
                 required
                 type="email"
                 placeholder="your.email@example.com"
-                className="w-full rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
+                className="w-full rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-base sm:text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
               />
             </div>
 
@@ -376,14 +383,14 @@ export default function Home() {
                 required
                 rows={3}
                 placeholder="Tell me briefly about your project or opportunity."
-                className="w-full resize-none rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-[13px] leading-relaxed text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
+                className="w-full resize-none rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-base sm:text-[13px] leading-relaxed text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
               />
             </div>
 
             <button
               type="submit"
               disabled={isPending}
-              className="apple-button-primary w-full gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="apple-button-primary w-full gap-2 py-3 min-h-11 justify-center text-center disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {isPending ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
               <span>{isPending ? "Sending..." : "Send Message"}</span>

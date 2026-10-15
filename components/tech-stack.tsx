@@ -211,7 +211,7 @@ export function TechStackSection() {
     : TECH_STACK.filter((item) => {
         if (activeFilter === "frontend") return item.category === "frontend";
         if (activeFilter === "backend") return item.category === "backend";
-        if (activeFilter === "tools") return item.category === "tools" || item.category === "backend";
+        if (activeFilter === "tools") return item.category === "tools";
         return true;
       });
 
