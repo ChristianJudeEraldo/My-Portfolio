@@ -26,46 +26,38 @@ export function SiteLogo({
     >
       {/* Apple App Icon Squircle Container */}
       <div 
-        className={`relative shrink-0 flex items-center justify-center rounded-[10px] border border-black/8 dark:border-white/12 bg-white dark:bg-[#1c1c1e] text-(--ink) shadow-xs transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-sm ${iconDimensions}`}
+        className={`relative shrink-0 flex items-center justify-center rounded-[10px] border border-black/8 dark:border-white/12 bg-white dark:bg-[#0c0c0e] text-(--ink) shadow-xs transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-sm ${iconDimensions}`}
       >
         <svg
-          viewBox="0 0 32 32"
+          viewBox="420 420 1208 1208"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full p-1.5 text-(--ink)"
           aria-hidden="true"
         >
-          {/* Subtle Corner Markers */}
-          <circle cx="7" cy="7" r="0.75" className="fill-(--ink-tertiary) opacity-50" />
-          <circle cx="25" cy="7" r="0.75" className="fill-(--ink-tertiary) opacity-50" />
-          <circle cx="7" cy="25" r="0.75" className="fill-(--ink-tertiary) opacity-50" />
-          <circle cx="25" cy="25" r="0.75" className="fill-(--ink-tertiary) opacity-50" />
-
-          {/* Precision Monogram Architecture */}
+          {/* Precision Corner Brackets */}
           <path
-            d="M 14 9.5 H 10.5 C 9.1 9.5 8 10.6 8 12 V 15"
+            d="M 508 622 V 508 H 622 M 1426 508 H 1540 V 622 M 508 1426 V 1540 H 622 M 1426 1540 H 1540 V 1426"
             stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-(--ink-tertiary) group-hover:text-(--apple-blue) transition-colors duration-300"
+            strokeWidth="24"
+            strokeLinecap="square"
+            strokeLinejoin="miter"
+            className="opacity-40 group-hover:opacity-75 transition-opacity duration-300"
           />
 
-          <path
-            d="M 23 9.5 H 18 V 18.5 C 18 20.8 16.2 22.5 13.8 22.5 C 11.5 22.5 9.8 20.8 9.8 18.5"
-            stroke="currentColor"
-            strokeWidth="1.85"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-(--ink)"
-          />
+          {/* Top Bar of J */}
+          <rect x="748" y="615" width="185" height="102" fill="currentColor" />
 
-          {/* Accent dot in Apple Blue */}
-          <circle
-            cx="23"
-            cy="9.5"
-            r="1.4"
-            className="fill-(--apple-blue)"
+          {/* Bottom Bar of E */}
+          <polygon points="1087,1332 1466,1332 1466,1461 958,1461" fill="currentColor" />
+
+          {/* Bottom-Left Circular Accent Dot */}
+          <circle cx="581" cy="1465.5" r="34.5" fill="currentColor" />
+
+          {/* Precision JE Monogram Geometry */}
+          <path
+            d="M 973 615 H 1448 V 717 H 1074 V 972 H 1431 V 1074 H 1074 V 1274 L 887 1461 H 647 A 66 66 0 0 0 615 1409 V 1152 H 721 V 1333 H 871 L 973 1231 Z"
+            fill="currentColor"
           />
         </svg>
       </div>

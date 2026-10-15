@@ -12,8 +12,8 @@ const nextConfig: NextConfig = {
       { source: "/about", destination: "/#about", permanent: false },
       { source: "/skills", destination: "/#skills", permanent: false },
       { source: "/projects", destination: "/#projects", permanent: false },
-      { source: "/projects/cnn-thesis", destination: "/#projects-cnn", permanent: false },
-      { source: "/projects/todo", destination: "/#projects-todo", permanent: false },
+      { source: "/projects/cnn-thesis", destination: "/projects/sleep-deprivation-detection", permanent: false },
+      { source: "/projects/todo", destination: "/#projects", permanent: false },
       { source: "/blogs", destination: "/#contact", permanent: false },
       { source: "/contact", destination: "/#contact", permanent: false },
     ];
