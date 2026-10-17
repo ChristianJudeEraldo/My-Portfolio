@@ -1,21 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { 
   Award, 
   ChevronLeft, 
   ChevronRight, 
-  ArrowUpRight, 
-  Maximize2, 
-  X, 
   CheckCircle2, 
-  Calendar 
+  Calendar,
+  ExternalLink,
+  Copy,
+  Check,
+  ShieldCheck
 } from "lucide-react";
-import { certificates, Certificate } from "@/data/certificates";
+import { toast } from "sonner";
+import { certificates } from "@/data/certificates";
 
 export function CertificatesDeck() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [previewCert, setPreviewCert] = useState<Certificate | null>(null);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const activeCert = certificates[activeIndex];
@@ -26,6 +28,20 @@ export function CertificatesDeck() {
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev === certificates.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleCopyId = async (id: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(id);
+      setCopiedId(id);
+      toast.success(`Copied Credential ID: ${id}`);
+      setTimeout(() => {
+        setCopiedId((curr) => (curr === id ? null : curr));
+      }, 2000);
+    } catch {
+      toast.error("Failed to copy Credential ID to clipboard");
+    }
   };
 
   // Touch swipe support for mobile
@@ -44,23 +60,6 @@ export function CertificatesDeck() {
     }
     setTouchStart(null);
   };
-
-  // Close modal on Escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setPreviewCert(null);
-      }
-    };
-    if (previewCert) {
-      window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-    }
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
-    };
-  }, [previewCert]);
 
   return (
     <div className="space-y-4 sm:space-y-6">
@@ -138,40 +137,72 @@ export function CertificatesDeck() {
 
             {/* Bottom Meta & Actions */}
             <div className="pt-3 sm:pt-4 border-t border-black/6 dark:border-white/8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
-              <div className="flex items-center gap-3 text-[12px] sm:text-[13px] text-(--ink-secondary)">
+              <div className="flex flex-wrap items-center gap-3 text-[12px] sm:text-[13px] text-(--ink-secondary)">
                 <div className="flex items-center gap-1.5">
                   <Calendar size={13} className="text-(--ink-tertiary)" />
                   <span>Issued {activeCert.issueDate}</span>
                 </div>
                 {activeCert.credentialId && (
-                  <div className="flex items-center gap-1 font-mono text-[10px] sm:text-[11px]">
+                  <button
+                    type="button"
+                    onClick={() => handleCopyId(activeCert.credentialId!)}
+                    title="Click to copy Credential ID"
+                    className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-black/4 dark:bg-white/6 hover:bg-black/8 dark:hover:bg-white/10 text-[11px] font-mono transition-colors cursor-pointer text-(--ink)"
+                  >
                     <span className="text-(--ink-tertiary)">ID:</span>
                     <span>{activeCert.credentialId}</span>
-                  </div>
+                    {copiedId === activeCert.credentialId ? (
+                      <Check size={11} className="text-emerald-500" />
+                    ) : (
+                      <Copy size={11} className="text-(--ink-tertiary)" />
+                    )}
+                  </button>
                 )}
               </div>
 
               {/* Action Buttons: Full-width on mobile for easy tap */}
               <div className="flex items-center gap-2 w-full sm:w-auto">
-                <button
-                  type="button"
-                  onClick={() => setPreviewCert(activeCert)}
-                  className="apple-button-secondary text-[12px] py-1.5 px-3 gap-1.5 cursor-pointer flex-1 sm:flex-initial justify-center"
-                >
-                  <Maximize2 size={13} />
-                  <span>Preview</span>
-                </button>
+                {activeCert.credentialId && (
+                  <button
+                    type="button"
+                    onClick={() => handleCopyId(activeCert.credentialId!)}
+                    className="apple-button-secondary text-[12px] py-1.5 px-3.5 gap-1.5 cursor-pointer flex-1 sm:flex-initial justify-center"
+                  >
+                    {copiedId === activeCert.credentialId ? (
+                      <>
+                        <Check size={13} className="text-emerald-500" />
+                        <span>Copied ID</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={13} />
+                        <span>Copy ID</span>
+                      </>
+                    )}
+                  </button>
+                )}
 
                 <a
-                  href={activeCert.pdfUrl}
+                  href={activeCert.verificationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="apple-button-primary text-[12px] py-1.5 px-3.5 gap-1.5 flex-1 sm:flex-initial justify-center text-center"
                 >
-                  <span>Open PDF</span>
-                  <ArrowUpRight size={13} />
+                  <span>Verify Credential</span>
+                  <ExternalLink size={13} />
                 </a>
               </div>
+            </div>
+
+            {/* Anti-tamper & Verification Security Note */}
+            <div className="pt-3 border-t border-black/5 dark:border-white/6 flex items-center justify-between text-[11px] text-(--ink-tertiary)">
+              <div className="flex items-center gap-1.5">
+                <ShieldCheck size={13} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <span>Protected Credential · Direct registry verification</span>
+              </div>
+              <span className="hidden sm:inline font-mono text-[10px] tracking-wider text-(--ink-tertiary)/80 uppercase">
+                {activeCert.organization} Verified
+              </span>
             </div>
           </div>
         </div>
@@ -193,61 +224,6 @@ export function CertificatesDeck() {
           ))}
         </div>
       </div>
-
-      {/* ─── Lightbox PDF Viewer Modal ─── */}
-      {previewCert && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-md animate-fade-up"
-          onClick={() => setPreviewCert(null)}
-        >
-          <div 
-            className="relative w-full max-w-4xl h-[85vh] sm:h-[82vh] rounded-2xl bg-white dark:bg-[#18181b] border border-black/10 dark:border-white/15 shadow-2xl flex flex-col overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-black/8 dark:border-white/10 bg-white/80 dark:bg-[#18181b]/80 backdrop-blur-md">
-              <div className="min-w-0 pr-3">
-                <h4 className="font-sans font-semibold text-[14px] sm:text-[15px] text-(--ink) truncate">
-                  {previewCert.title}
-                </h4>
-                <p className="text-[11px] sm:text-[12px] text-(--ink-secondary) truncate">
-                  {previewCert.issuer} · {previewCert.issueDate}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2 shrink-0">
-                <a
-                  href={previewCert.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="apple-button-secondary text-[11px] sm:text-[12px] py-1 px-2.5 gap-1"
-                >
-                  <span>Open Tab</span>
-                  <ArrowUpRight size={12} />
-                </a>
-
-                <button
-                  type="button"
-                  onClick={() => setPreviewCert(null)}
-                  className="w-8 h-8 rounded-full bg-black/5 dark:bg-white/8 text-(--ink) hover:bg-black/10 dark:hover:bg-white/15 flex items-center justify-center transition-colors cursor-pointer"
-                  aria-label="Close certificate preview"
-                >
-                  <X size={16} />
-                </button>
-              </div>
-            </div>
-
-            {/* PDF Viewer Frame */}
-            <div className="flex-1 w-full bg-black/4 dark:bg-white/2 relative">
-              <iframe
-                src={`${previewCert.pdfUrl}#toolbar=1`}
-                title={`${previewCert.title} PDF Document`}
-                className="w-full h-full border-none"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -7,7 +7,8 @@ export interface Certificate {
   badge: string;
   category: string;
   credentialId?: string;
-  pdfUrl: string;
+  verificationUrl: string;
+  pdfUrl?: string;
   skills: string[];
 }
 
@@ -20,7 +21,8 @@ export const certificates: Certificate[] = [
     issueDate: "June 2025",
     badge: "Pearson VUE Certified",
     category: "Software Engineering & Applied AI",
-    pdfUrl: "/certificates/Python_Certiport_Certificate.pdf",
+    credentialId: "wq4F5-2FvW",
+    verificationUrl: "https://verify.certiport.com",
     skills: ["Python 3", "Data Structures", "Algorithms", "Applied ML"],
   },
   {
@@ -31,7 +33,8 @@ export const certificates: Certificate[] = [
     issueDate: "June 2025",
     badge: "Pearson VUE Certified",
     category: "Database Systems & Architecture",
-    pdfUrl: "/certificates/Databases_Certiport_Certificate.pdf",
+    credentialId: "XsAs-XM3o",
+    verificationUrl: "https://verify.certiport.com",
     skills: ["Relational Databases", "SQL", "Schema Design", "Query Optimization"],
   },
   {
@@ -43,7 +46,7 @@ export const certificates: Certificate[] = [
     badge: "Professional Certification",
     category: "Information Systems & Development",
     credentialId: "3KAD8YI34VM33",
-    pdfUrl: "/certificates/EAST-WEST-CISDP.pdf",
+    verificationUrl: "https://east-west-iesi.trainercentralsite.com/credential-validation?credentialId=3KAD8YI34VM33",
     skills: ["Systems Analysis", "IT Infrastructure", "Professional Development"],
   },
 ];

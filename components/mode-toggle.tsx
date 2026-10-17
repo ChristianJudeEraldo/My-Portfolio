@@ -2,10 +2,12 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
+import { flushSync } from "react-dom"
 
 export function ModeToggle() {
   const { theme, resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
+  const isTransitioningRef = React.useRef(false)
 
   React.useEffect(() => {
     setMounted(true)
@@ -23,10 +25,72 @@ export function ModeToggle() {
   const activeTheme = theme === "system" ? resolvedTheme : theme
   const isDark = activeTheme === "dark"
 
-  const toggleTheme = () => {
+  const toggleTheme = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isTransitioningRef.current) return
     const nextTheme = isDark ? "light" : "dark"
-    if (typeof window !== "undefined" && (window as any).__triggerCircularReveal) {
-      ;(window as any).__triggerCircularReveal(nextTheme)
+
+    // 1. Get exact center of the clicked switch button
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = rect.left + rect.width / 2
+    const y = rect.top + rect.height / 2
+
+    // 2. Respect user's reduced-motion preference
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (prefersReducedMotion) {
+      setTheme(nextTheme)
+      return
+    }
+
+    // 3. View Transitions API (Chrome 111+, Safari 18+, Edge, Firefox 141+)
+    if (typeof document !== "undefined" && "startViewTransition" in document) {
+      isTransitioningRef.current = true
+
+      const endRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      )
+
+      const transition = (document as any).startViewTransition(() => {
+        flushSync(() => {
+          setTheme(nextTheme)
+        })
+        document.documentElement.classList.toggle("dark", nextTheme === "dark")
+      })
+
+      transition.ready
+        .then(() => {
+          const anim = document.documentElement.animate(
+            {
+              clipPath: [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${endRadius}px at ${x}px ${y}px)`,
+              ],
+            },
+            {
+              duration: 450,
+              easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+              pseudoElement: "::view-transition-new(root)",
+            } as any
+          )
+
+          anim.finished.finally(() => {
+            isTransitioningRef.current = false
+          })
+        })
+        .catch(() => {
+          isTransitioningRef.current = false
+        })
+
+      return
+    }
+
+    // 4. Smooth fallback for older browsers
+    if (typeof window !== "undefined" && (window as any).__triggerFallbackReveal) {
+      isTransitioningRef.current = true
+      ;(window as any).__triggerFallbackReveal(nextTheme, { x, y })
+      setTimeout(() => {
+        isTransitioningRef.current = false
+      }, 450)
     } else {
       setTheme(nextTheme)
     }

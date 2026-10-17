@@ -87,9 +87,8 @@
   color-scheme: dark;
 }
 
-html {
+html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Lenis smooth scroll */
@@ -120,10 +119,16 @@ body {
   font-size: 15px;
   line-height: 1.5;
   letter-spacing: -0.012em;
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Graceful color transition for legacy browsers without View Transitions */
+@supports not (view-transition-name: none) {
+  html, body {
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
 }
 
 /* Base resets & scrollbar */
@@ -173,9 +178,55 @@ html, body {
   animation: pulseOpacity 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-@keyframes circularReveal {
-  from { clip-path: circle(0px at var(--reveal-x, 50%) var(--reveal-y, 50%)); }
-  to { clip-path: circle(1500px at var(--reveal-x, 50%) var(--reveal-y, 50%)); }
+/* ─── Circular Theme Reveal (View Transitions API) ─── */
+::view-transition-group(root) {
+  animation-duration: 450ms;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+.dark::view-transition-old(root) {
+  z-index: 1;
+}
+
+.dark::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Fallback for legacy browsers without View Transitions */
+.circular-reveal-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  animation: circularRevealFallback 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes circularRevealFallback {
+  0% {
+    clip-path: circle(0px at var(--reveal-x, 50%) var(--reveal-y, 50%));
+    opacity: 1;
+  }
+  75% {
+    clip-path: circle(var(--reveal-r, 1500px) at var(--reveal-x, 50%) var(--reveal-y, 50%));
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(var(--reveal-r, 1500px) at var(--reveal-x, 50%) var(--reveal-y, 50%));
+    opacity: 0;
+  }
 }
 
 /* Apple HIG Surface Components */
@@ -358,5 +409,13 @@ html, body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  .circular-reveal-fallback {
+    display: none !important;
   }
 }

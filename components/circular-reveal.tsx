@@ -1,57 +1,56 @@
 "use client"
 
-import React, { useState, useCallback } from "react"
+import React, { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 
 export function CircularReveal() {
-  const { theme, setTheme } = useTheme()
-  const [isAnimating, setIsAnimating] = useState(false)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [nextTheme, setNextTheme] = useState("")
+  const { setTheme } = useTheme()
+  const [animating, setAnimating] = useState(false)
+  const [coords, setCoords] = useState({ x: 0, y: 0, radius: 0 })
+  const [targetTheme, setTargetTheme] = useState<"light" | "dark">("dark")
 
-  const handleThemeChange = useCallback(
-    (newTheme: string) => {
-      // Get the toggle button position
-      const toggleButton = document.querySelector("[data-theme-toggle]")
-      if (toggleButton) {
-        const rect = toggleButton.getBoundingClientRect()
-        const x = rect.left + rect.width / 2
-        const y = rect.top + rect.height / 2
-        setPosition({ x, y })
+  useEffect(() => {
+    // Only register fallback listener if native startViewTransition is NOT supported
+    if (typeof window !== "undefined" && !("startViewTransition" in document)) {
+      ;(window as any).__triggerFallbackReveal = (
+        nextTheme: "light" | "dark",
+        point: { x: number; y: number }
+      ) => {
+        const radius = Math.hypot(
+          Math.max(point.x, window.innerWidth - point.x),
+          Math.max(point.y, window.innerHeight - point.y)
+        )
+        setCoords({ x: point.x, y: point.y, radius })
+        setTargetTheme(nextTheme)
+        setAnimating(true)
+
+        // Switch theme midway through reveal
+        setTimeout(() => {
+          setTheme(nextTheme)
+        }, 180)
+
+        // Reset animation state after completion
+        setTimeout(() => {
+          setAnimating(false)
+        }, 450)
       }
+    }
+  }, [setTheme])
 
-      setNextTheme(newTheme)
-      setIsAnimating(true)
-
-      // Delay theme switch so the circular reveal is visibly underway first
-      setTimeout(() => {
-        setTheme(newTheme)
-      }, 320)
-
-      // Reset animation state after completion
-      setTimeout(() => {
-        setIsAnimating(false)
-      }, 400)
-    },
-    [setTheme]
-  )
-
-  // Expose the function globally for the ModeToggle component
-  React.useEffect(() => {
-    ;(window as any).__triggerCircularReveal = handleThemeChange
-  }, [handleThemeChange])
-
-  if (!isAnimating) return null
+  if (!animating) return null
 
   return (
     <div
-      className="circular-reveal-overlay"
+      className="circular-reveal-fallback"
       style={
         {
-          "--reveal-x": `${position.x}px`,
-          "--reveal-y": `${position.y}px`,
+          "--reveal-x": `${coords.x}px`,
+          "--reveal-y": `${coords.y}px`,
+          "--reveal-r": `${coords.radius}px`,
+          backgroundColor: targetTheme === "dark" ? "#000000" : "#f5f5f7",
         } as React.CSSProperties
       }
+      aria-hidden="true"
     />
   )
 }
