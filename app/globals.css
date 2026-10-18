@@ -419,3 +419,130 @@ html, body {
     display: none !important;
   }
 }
+
+/* ─── Spotlight Card Deck (Bryl Lim Style) ─── */
+.deck {
+  position: relative;
+  height: 22.5rem;
+  margin-inline: calc(50% - 50vw);
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+@supports not (overflow-x: clip) {
+  .deck {
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 640px) {
+  .deck {
+    height: 20.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .deck {
+    margin-inline: 0;
+    overflow: visible;
+  }
+}
+
+.deck-card {
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  width: 19rem;
+  margin-left: -9.5rem;
+  transform-origin: center bottom;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 350ms ease;
+  will-change: transform;
+  outline: none;
+}
+
+@media (min-width: 640px) {
+  .deck-card {
+    width: 22.5rem;
+    margin-left: -11.25rem;
+  }
+}
+
+.deck-card.is-center {
+  transform: translateY(0) rotate(0deg) scale(1);
+  z-index: 30;
+  box-shadow: 0 26px 55px -22px rgba(10, 10, 10, 0.28);
+}
+
+.dark .deck-card.is-center {
+  box-shadow: 0 26px 55px -22px rgba(0, 0, 0, 0.75);
+}
+
+.deck-card.is-left {
+  transform: translateX(-40%) translateY(14px) rotate(-16deg) scale(0.88);
+  z-index: 10;
+  box-shadow: 0 16px 32px -18px rgba(10, 10, 10, 0.22);
+  cursor: pointer;
+}
+
+.dark .deck-card.is-left {
+  box-shadow: 0 16px 32px -18px rgba(0, 0, 0, 0.55);
+}
+
+.deck-card.is-right {
+  transform: translateX(40%) translateY(14px) rotate(16deg) scale(0.88);
+  z-index: 20;
+  box-shadow: 0 16px 32px -18px rgba(10, 10, 10, 0.22);
+  cursor: pointer;
+}
+
+.dark .deck-card.is-right {
+  box-shadow: 0 16px 32px -18px rgba(0, 0, 0, 0.55);
+}
+
+/* Dim back cards so center card pops */
+.deck-card.is-left::after,
+.deck-card.is-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(245, 245, 247, 0.45);
+  transition: background 350ms ease;
+  pointer-events: none;
+}
+
+.dark .deck-card.is-left::after,
+.dark .deck-card.is-right::after {
+  background: rgba(0, 0, 0, 0.52);
+}
+
+.deck-card.is-left:hover::after,
+.deck-card.is-right:hover::after {
+  background: transparent;
+}
+
+/* Hover lifts */
+.deck-card.is-center:hover {
+  transform: translateY(-7px) scale(1.015);
+  box-shadow: 0 34px 65px -22px rgba(10, 10, 10, 0.34);
+}
+
+.dark .deck-card.is-center:hover {
+  box-shadow: 0 34px 65px -22px rgba(0, 0, 0, 0.85);
+}
+
+.deck-card.is-left:hover {
+  transform: translateX(-45%) translateY(2px) rotate(-12deg) scale(0.92);
+  z-index: 25;
+}
+
+.deck-card.is-right:hover {
+  transform: translateX(45%) translateY(2px) rotate(12deg) scale(0.92);
+  z-index: 25;
+}
+
+/* Only center card's links are clickable */
+.deck-card:not(.is-center) a,
+.deck-card:not(.is-center) button.deck-action-btn {
+  pointer-events: none;
+}

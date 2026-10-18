@@ -15,7 +15,6 @@ import {
   Loader2, 
   ArrowUpRight
 } from "lucide-react";
-import { GallerySection } from "@/components/gallery-section";
 import { TechStackSection } from "@/components/tech-stack";
 import { ProjectsSection } from "@/components/projects-section";
 import { CertificatesDeck } from "@/components/certificates-deck";
@@ -78,7 +77,7 @@ export default function Home() {
             </h1>
             
             <p className="text-[14px] sm:text-[17px] leading-relaxed text-(--ink-secondary) max-w-xl font-normal">
-              Computer Engineering graduate specializing in applied machine learning, 60 FPS edge inference, and modern full-stack web platforms.
+              Computer Engineering graduate specializing in applied machine learning, edge inference, and modern full-stack web platforms.
             </p>
 
             {/* Apple HIG Action Buttons (Always in the same row) */}
@@ -244,23 +243,8 @@ export default function Home() {
       </section>
 
       <div className="bryl-hairline animate-fade-up stagger-5" />
-      
-      {/* ─── SECTION 06: ENGINEERING ARTIFACTS & TELEMETRY LAB ─── */}
-      <section id="gallery" className="animate-fade-up stagger-5 space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-          <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-(--ink)">
-            Engineering Artifacts & Telemetry Lab
-          </h2>
-          <span className="text-[12px] font-mono text-(--ink-tertiary)">
-            [Thesis Telemetry & Research Datasets]
-          </span>
-        </div>
-        <GallerySection />
-      </section>
 
-      <div className="bryl-hairline animate-fade-up stagger-5" />
-
-      {/* ─── SECTION 07: CONTACT & INQUIRIES ─── */}
+      {/* ─── SECTION 06: CONTACT & INQUIRIES ─── */}
       <section id="contact" className="animate-fade-up stagger-5 space-y-6">
         <div>
           <p className="bryl-label">Contact</p>

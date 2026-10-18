@@ -76,11 +76,6 @@ Information density is balanced with generous whitespace and 20px–28px continu
 - **Secondary (`apple-button-secondary`)**:
   - Subtle translucent background (`bg-black/5 dark:bg-white/8`), hairline border.
   - Ink text, smooth hover background highlight.
-
-### Engineering & Telemetry Lab (Artifact Viewer)
-- Widescreen `16/10` or `16/9` display card with status header, metric chips, and caption footer.
-- Bottom interactive scrub bar displaying multi-project technical captures.
-
 ---
 
 ## 5. Do's and Don'ts

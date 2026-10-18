@@ -15,6 +15,8 @@ export interface Project {
   summary: string;
   tag: string;
   badge?: string;
+  laurelBadge?: string;
+  pillTags?: string[];
   liveUrl?: string;
   githubUrl?: string;
   thumbnail: string;
@@ -33,6 +35,8 @@ export const projects: Project[] = [
     summary: "Deep learning computer vision system classifying early physiological fatigue markers using CNNs and facial landmark telemetry.",
     tag: "Machine Learning / AI",
     badge: "Thesis & Telemetry",
+    laurelBadge: "Computer Vision Thesis",
+    pillTags: ["Machine Learning", "94.8% Accuracy"],
     liveUrl: "https://lpu-health-monitoring.me/",
     thumbnail: "/projects/sleep-deprivation/thumb.svg",
     images: [
@@ -87,6 +91,8 @@ export const projects: Project[] = [
     summary: "Intelligent Philippine market recipe pricing platform powered by WFP HDX commodity datasets and a deterministic pricing engine.",
     tag: "AI & Data Platform",
     badge: "Featured Web App",
+    laurelBadge: "WFP HDX Commodity AI",
+    pillTags: ["REST API", "AI INTEGRATION"],
     liveUrl: "https://aipamilihan.vercel.app/",
     thumbnail: "/projects/pamilihan-ai/thumb.png",
     images: [
@@ -141,6 +147,8 @@ export const projects: Project[] = [
     summary: "Modern SaaS financial tracker analyzing monthly run rate, annual commitments, renewal calendars, and overdue payment alerts.",
     tag: "Financial SaaS",
     badge: "Production App",
+    laurelBadge: "Local-First Financial SaaS",
+    pillTags: ["Apple HIG", "POSTGREQSL"],
     liveUrl: "https://sub-tracer.vercel.app/",
     thumbnail: "/projects/subtrace/thumb.svg",
     images: [
