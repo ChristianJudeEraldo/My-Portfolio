@@ -21,8 +21,11 @@ import { CertificatesDeck } from "@/components/certificates-deck";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { toast } from "sonner";
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function Home() {
   const [isPending, setIsPending] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   const scrollToAnchor = (id: string) => {
     const el = document.getElementById(id);
@@ -40,18 +43,33 @@ export default function Home() {
     }
   };
 
+  const validateEmail = (value: string): string => {
+    if (!value.trim()) return "Email is required.";
+    if (!EMAIL_REGEX.test(value.trim())) return "Please enter a valid email address.";
+    return "";
+  };
+
   async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setIsPending(true);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const emailValue = (formData.get("email") as string) ?? "";
+    const error = validateEmail(emailValue);
+    if (error) {
+      setEmailError(error);
+      return;
+    }
+
+    setIsPending(true);
+
     const result = await sendEmail(formData);
 
     if (result?.error) {
       toast.error(result.error);
     } else {
       toast.success("Message sent successfully! I will be in touch soon.");
+      setEmailError("");
       form.reset();
     }
 
@@ -353,8 +371,24 @@ export default function Home() {
                 required
                 type="email"
                 placeholder="your.email@example.com"
-                className="w-full rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-base sm:text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
+                aria-invalid={!!emailError}
+                aria-describedby={emailError ? "email-error" : undefined}
+                onChange={(e) => {
+                  if (emailError) setEmailError(validateEmail(e.target.value));
+                }}
+                onBlur={(e) => setEmailError(validateEmail(e.target.value))}
+                className={`w-full rounded-xl border px-3.5 py-2.5 text-base sm:text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:ring-3 transition-all bg-black/2 dark:bg-white/5 ${
+                  emailError
+                    ? "border-red-400 dark:border-red-500 focus:border-red-500 focus:ring-red-500/15"
+                    : "border-black/8 dark:border-white/12 focus:border-(--apple-blue) focus:ring-(--apple-blue)/15"
+                }`}
               />
+              {emailError && (
+                <p id="email-error" role="alert" className="flex items-center gap-1.5 text-[11px] font-medium text-red-500 dark:text-red-400 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <span aria-hidden="true">⚠</span>
+                  {emailError}
+                </p>
+              )}
             </div>
 
             <div className="space-y-1.5">

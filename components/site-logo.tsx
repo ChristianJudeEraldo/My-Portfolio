@@ -68,7 +68,21 @@ export function SiteLogo({
           <span className="font-sans text-[14px] font-bold tracking-tight text-(--ink)">
             Jude
           </span>
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-(--apple-green)" />
+          <svg
+            viewBox="0 0 24 24"
+            aria-label="Verified account"
+            className={`${size === "lg" ? "w-4 h-4" : "w-3.5 h-3.5"} text-[#0071e3] dark:text-[#2997ff] shrink-0 transition-transform duration-200 group-hover:scale-105`}
+          >
+            <title>Verified</title>
+            <path
+              d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.97-.81-4.01s-2.62-1.27-4.01-.81C14.57 2.53 13.33 1.65 11.9 1.65s-2.67.88-3.34 2.19c-1.39-.46-2.97-.2-4.01.81s-1.27 2.62-.81 4.01C2.43 9.33 1.55 10.57 1.55 12s.88 2.67 2.19 3.34c-.46 1.39-.2 2.97.81 4.01s2.62 1.27 4.01.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.97.2 4.01-.81s1.27-2.62.81-4.01c1.31-.67 2.19-1.91 2.19-3.34z"
+              fill="currentColor"
+            />
+            <path
+              d="M10.54 16.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"
+              fill="#ffffff"
+            />
+          </svg>
         </div>
         {showSubtitle && (
           <span className="font-sans text-[10px] font-medium uppercase tracking-widest text-(--ink-secondary) leading-none mt-0.5">
