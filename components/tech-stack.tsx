@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import { ShieldCheck } from "lucide-react";
 
 // ─── Precision Brand SVG Icons ───
 
@@ -203,100 +201,68 @@ const TECH_STACK: TechItem[] = [
   },
 ];
 
+interface TechCategory {
+  id: string;
+  label: string;
+  items: TechItem[];
+}
+
+const CATEGORIES: TechCategory[] = [
+  {
+    id: "frontend",
+    label: "Frontend",
+    items: TECH_STACK.filter((item) => item.category === "frontend"),
+  },
+  {
+    id: "backend",
+    label: "Backend & DB",
+    items: TECH_STACK.filter((item) => item.category === "backend"),
+  },
+  {
+    id: "tools",
+    label: "Cloud & Tools",
+    items: TECH_STACK.filter((item) => item.category === "tools"),
+  },
+];
+
 export function TechStackSection() {
-  const [activeFilter, setActiveFilter] = useState<"all" | "frontend" | "backend" | "tools">("all");
-
-  const filteredItems = activeFilter === "all"
-    ? TECH_STACK
-    : TECH_STACK.filter((item) => {
-        if (activeFilter === "frontend") return item.category === "frontend";
-        if (activeFilter === "backend") return item.category === "backend";
-        if (activeFilter === "tools") return item.category === "tools";
-        return true;
-      });
-
   return (
-    <div className="space-y-4">
-      {/* ─── Apple iOS/macOS Minimalist Filter Bar ─── */}
-      <div className="inline-flex p-1 bg-black/5 dark:bg-white/8 rounded-full border border-black/4 dark:border-white/6 backdrop-blur-md overflow-x-auto max-w-full">
-        <button
-          type="button"
-          onClick={() => setActiveFilter("all")}
-          className={`px-3 py-1 text-[11px] font-medium rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer ${
-            activeFilter === "all"
-              ? "bg-white dark:bg-[#2c2c2e] text-(--ink) shadow-xs font-semibold"
-              : "text-(--ink-secondary) hover:text-(--ink)"
-          }`}
-        >
-          All ({TECH_STACK.length})
-        </button>
-        <button
-          type="button"
-          onClick={() => setActiveFilter("frontend")}
-          className={`px-3 py-1 text-[11px] font-medium rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer ${
-            activeFilter === "frontend"
-              ? "bg-white dark:bg-[#2c2c2e] text-(--ink) shadow-xs font-semibold"
-              : "text-(--ink-secondary) hover:text-(--ink)"
-          }`}
-        >
-          Frontend
-        </button>
-        <button
-          type="button"
-          onClick={() => setActiveFilter("backend")}
-          className={`px-3 py-1 text-[11px] font-medium rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer ${
-            activeFilter === "backend"
-              ? "bg-white dark:bg-[#2c2c2e] text-(--ink) shadow-xs font-semibold"
-              : "text-(--ink-secondary) hover:text-(--ink)"
-          }`}
-        >
-          Backend & DB
-        </button>
-        <button
-          type="button"
-          onClick={() => setActiveFilter("tools")}
-          className={`px-3 py-1 text-[11px] font-medium rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer ${
-            activeFilter === "tools"
-              ? "bg-white dark:bg-[#2c2c2e] text-(--ink) shadow-xs font-semibold"
-              : "text-(--ink-secondary) hover:text-(--ink)"
-          }`}
-        >
-          Cloud & Tools
-        </button>
-      </div>
+    <div className="w-full">
+      {/* ─── Section Header ─── */}
+      <h2 className="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-4">
+        Tech Stack
+      </h2>
 
-      {/* ─── Responsive Minimalist Tech Grid (2-col mobile, 3-col desktop) ─── */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-2.5">
-        {filteredItems.map((tech) => {
-          const Icon = tech.icon;
-          return (
-            <div
-              key={tech.id}
-              className="group relative flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 hover:bg-black/3 dark:hover:bg-white/6 hover:border-black/12 dark:hover:border-white/14 transition-all duration-200 cursor-default"
-            >
-              {/* Squircle Brand Icon */}
-              <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-black/4 dark:bg-white/6 border border-black/4 dark:border-white/8 text-(--ink) shrink-0 group-hover:scale-105 transition-transform duration-200">
-                <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              </div>
+      {/* ─── Categorized Rows Container ─── */}
+      <div className="divide-y divide-zinc-800/60 border-y border-zinc-800/60">
+        {CATEGORIES.map((cat) => (
+          <div
+            key={cat.id}
+            className="grid grid-cols-1 sm:grid-cols-4 gap-2.5 sm:gap-3 py-3.5 sm:py-4 items-start"
+          >
+            {/* Category Label */}
+            <span className="sm:col-span-1 text-[11px] sm:text-xs font-semibold sm:font-medium text-zinc-500 uppercase tracking-wider sm:pt-1.5 select-none">
+              {cat.label}
+            </span>
 
-              {/* Text Meta */}
-              <div className="min-w-0 flex-1 flex items-center justify-between gap-1">
-                <span className="font-sans text-[12px] sm:text-[13px] font-semibold text-(--ink) truncate group-hover:text-(--apple-blue) transition-colors">
-                  {tech.name}
-                </span>
-                {tech.certified && (
-                  <span 
-                    className="px-1 sm:px-1.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-semibold bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 shrink-0 flex items-center gap-0.5"
-                    title="Pearson Certified"
+            {/* Technology Pills */}
+            <div className="sm:col-span-3 flex flex-wrap gap-1.5 sm:gap-2 items-center">
+              {cat.items.map((tech) => {
+                const Icon = tech.icon;
+
+                return (
+                  <span
+                    key={tech.id}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs sm:text-sm text-zinc-300 hover:text-white transition-all duration-200 group cursor-default bg-zinc-900/50 border border-zinc-800/80 hover:border-zinc-700 hover:bg-zinc-800/60"
                   >
-                    <ShieldCheck size={9} />
-                    <span className="hidden sm:inline">Certified</span>
+                    <Icon className="w-4 h-4 shrink-0 text-zinc-400 group-hover:text-white transition-colors" />
+                    <span>{tech.name}</span>
                   </span>
-                )}
-              </div>
+                );
+              })}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );

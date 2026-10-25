@@ -237,11 +237,7 @@ export default function Home() {
       <div className="bryl-hairline animate-fade-up stagger-3" />
 
       {/* ─── SECTION 03: TECH STACK & TOOLCHAIN ─── */}
-      <section id="skills" className="animate-fade-up stagger-3 space-y-6">
-        <div>
-          <p className="bryl-label">Tech Stack</p>
-        </div>
-
+      <section id="skills" className="animate-fade-up stagger-3">
         <TechStackSection />
       </section>
 
