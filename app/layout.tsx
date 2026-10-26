@@ -21,25 +21,60 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Christian Jude | Computer Engineer & Developer",
-    template: "%s | Christian Jude",
+    default: "Christian Jude Eraldo | Computer Engineer & Full-Stack Developer",
+    template: "%s | Christian Jude Eraldo",
   },
-  description: "BSCPE Graduate and certified Python & Database developer specializing in AI-driven systems and high-performance web development.",
-  metadataBase: new URL("https://judeeraldo.tech"), 
+  description:
+    "Christian Jude Eraldo — Computer Engineering graduate from the Philippines specializing in AI/ML (computer vision, CNNs), full-stack web development with Next.js, and applied machine learning systems.",
+  metadataBase: new URL("https://judeeraldo.tech"),
+  authors: [{ name: "Christian Jude Eraldo", url: "https://judeeraldo.tech" }],
+  keywords: [
+    "Christian Jude Eraldo",
+    "Christian Jude",
+    "Jude Eraldo",
+    "Computer Engineering portfolio",
+    "Full-stack developer Philippines",
+    "Next.js developer",
+    "Machine learning engineer",
+    "Computer vision CNN",
+    "TypeScript developer",
+    "React developer Philippines",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  openGraph: {
+    title: "Christian Jude Eraldo | Computer Engineer & Full-Stack Developer",
+    description:
+      "Portfolio of Christian Jude Eraldo — AI/ML systems, computer vision, and high-performance web platforms built with Next.js and React.",
+    url: "https://judeeraldo.tech",
+    siteName: "Christian Jude Eraldo Portfolio",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Christian Jude Eraldo – Computer Engineer Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Christian Jude Eraldo | Computer Engineer & Full-Stack Developer",
+    description:
+      "AI/ML systems, computer vision, and high-performance web platforms built with Next.js and React.",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/favicon.ico", sizes: "any" },
     ],
     apple: "/apple-icon.png",
-  },
-  openGraph: {
-    title: "Christian Jude | Computer Engineering Portfolio",
-    description: "Explore the projects and technical expertise of Christian Jude, a certified developer focused on AI (CNN), Systems, and Full-stack development.",
-    url: "https://judeeraldo.tech",
-    siteName: "Christian Jude Portfolio",
-    locale: "en_US",
-    type: "website",
   },
 };
 
