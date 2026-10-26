@@ -9,6 +9,17 @@ const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "judeeraldo.vercel.app",
+          },
+        ],
+        destination: "https://judeeraldo.tech/:path*",
+        permanent: true,
+      },
       { source: "/about", destination: "/#about", permanent: false },
       { source: "/skills", destination: "/#skills", permanent: false },
       { source: "/projects", destination: "/#projects", permanent: false },

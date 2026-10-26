@@ -229,19 +229,19 @@ export function TechStackSection() {
   return (
     <div className="w-full">
       {/* ─── Section Header ─── */}
-      <h2 className="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-4">
+      <h2 className="text-xs font-semibold tracking-wider text-(--ink-secondary) uppercase mb-4">
         Tech Stack
       </h2>
 
       {/* ─── Categorized Rows Container ─── */}
-      <div className="divide-y divide-zinc-800/60 border-y border-zinc-800/60">
+      <div className="divide-y divide-black/8 dark:divide-zinc-800/60 border-y border-black/8 dark:border-zinc-800/60">
         {CATEGORIES.map((cat) => (
           <div
             key={cat.id}
             className="grid grid-cols-1 sm:grid-cols-4 gap-2.5 sm:gap-3 py-3.5 sm:py-4 items-start"
           >
             {/* Category Label */}
-            <span className="sm:col-span-1 text-[11px] sm:text-xs font-semibold sm:font-medium text-zinc-500 uppercase tracking-wider sm:pt-1.5 select-none">
+            <span className="sm:col-span-1 text-[11px] sm:text-xs font-semibold sm:font-medium text-(--ink-secondary) uppercase tracking-wider sm:pt-1.5 select-none">
               {cat.label}
             </span>
 
@@ -253,9 +253,9 @@ export function TechStackSection() {
                 return (
                   <span
                     key={tech.id}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs sm:text-sm text-zinc-300 hover:text-white transition-all duration-200 group cursor-default bg-zinc-900/50 border border-zinc-800/80 hover:border-zinc-700 hover:bg-zinc-800/60"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs sm:text-sm transition-all duration-200 group cursor-default border text-(--ink) bg-(--fill) border-(--border) hover:bg-(--fill-hover) hover:border-black/15 dark:hover:border-zinc-700 hover:text-(--ink)"
                   >
-                    <Icon className="w-4 h-4 shrink-0 text-zinc-400 group-hover:text-white transition-colors" />
+                    <Icon className="w-4 h-4 shrink-0 text-(--ink-secondary) group-hover:text-(--ink) transition-colors" />
                     <span>{tech.name}</span>
                   </span>
                 );

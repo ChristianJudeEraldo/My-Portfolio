@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Christian Jude",
   },
   description: "BSCPE Graduate and certified Python & Database developer specializing in AI-driven systems and high-performance web development.",
-  metadataBase: new URL("https://my-portfolio-gules-seven-lxpwm7vyqd.vercel.app/"), 
+  metadataBase: new URL("https://judeeraldo.tech"), 
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Christian Jude | Computer Engineering Portfolio",
     description: "Explore the projects and technical expertise of Christian Jude, a certified developer focused on AI (CNN), Systems, and Full-stack development.",
-    url: "https://my-portfolio-gules-seven-lxpwm7vyqd.vercel.app/",
+    url: "https://judeeraldo.tech",
     siteName: "Christian Jude Portfolio",
     locale: "en_US",
     type: "website",
