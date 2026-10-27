@@ -229,7 +229,7 @@ export function TechStackSection() {
   return (
     <div className="w-full">
       {/* ─── Section Header ─── */}
-      <h2 className="text-xs font-semibold tracking-wider text-(--ink-secondary) uppercase mb-4">
+      <h2 className="bryl-label mb-4">
         Tech Stack
       </h2>
 

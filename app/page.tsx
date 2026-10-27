@@ -84,7 +84,7 @@ export default function Home() {
         <div className="flex flex-col-reverse sm:flex-row gap-5 sm:gap-8 md:gap-10 items-start justify-between">
           <div className="space-y-4 sm:space-y-5 flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Available for Engineering Roles</span>
               </span>
@@ -94,7 +94,7 @@ export default function Home() {
               Hi, I am Jude. I build real-time computer vision telemetry and high-performance web systems.
             </h1>
             
-            <p className="text-[14px] sm:text-[17px] leading-relaxed text-(--ink-secondary) max-w-xl font-normal">
+            <p className="text-[15px] sm:text-[17px] leading-relaxed text-(--ink-secondary) max-w-xl font-normal">
               Computer Engineering graduate specializing in applied machine learning, edge inference, and modern full-stack web platforms.
             </p>
 
@@ -180,7 +180,7 @@ export default function Home() {
                   </div>
                   <p className="text-[14px] font-medium text-(--ink)">Python Programming</p>
                 </div>
-                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-medium whitespace-nowrap shrink-0 bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
+                <span className="rounded-full px-2.5 py-0.5 text-[11px] font-medium whitespace-nowrap shrink-0 bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
                   Pearson VUE Certified
                 </span>
               </div>
@@ -194,7 +194,7 @@ export default function Home() {
                   </div>
                   <p className="text-[14px] font-medium text-(--ink)">Database Management</p>
                 </div>
-                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-medium whitespace-nowrap shrink-0 bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
+                <span className="rounded-full px-2.5 py-0.5 text-[11px] font-medium whitespace-nowrap shrink-0 bg-(--apple-blue)/10 text-(--apple-blue) dark:bg-(--apple-blue)/15 dark:text-(--apple-blue)">
                   Pearson VUE Certified
                 </span>
               </div>
@@ -353,7 +353,7 @@ export default function Home() {
                 required
                 type="text"
                 placeholder="Your Name"
-                className="w-full rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-base sm:text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
+                className="w-full rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-base sm:text-[14px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
               />
             </div>
 
@@ -373,7 +373,7 @@ export default function Home() {
                   if (emailError) setEmailError(validateEmail(e.target.value));
                 }}
                 onBlur={(e) => setEmailError(validateEmail(e.target.value))}
-                className={`w-full rounded-xl border px-3.5 py-2.5 text-base sm:text-[13px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:ring-3 transition-all bg-black/2 dark:bg-white/5 ${
+                className={`w-full rounded-xl border px-3.5 py-2.5 text-base sm:text-[14px] text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:ring-3 transition-all bg-black/2 dark:bg-white/5 ${
                   emailError
                     ? "border-red-400 dark:border-red-500 focus:border-red-500 focus:ring-red-500/15"
                     : "border-black/8 dark:border-white/12 focus:border-(--apple-blue) focus:ring-(--apple-blue)/15"
@@ -397,7 +397,7 @@ export default function Home() {
                 required
                 rows={3}
                 placeholder="Tell me briefly about your project or opportunity."
-                className="w-full resize-none rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-base sm:text-[13px] leading-relaxed text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
+                className="w-full resize-none rounded-xl border border-black/8 dark:border-white/12 bg-black/2 dark:bg-white/5 px-3.5 py-2.5 text-base sm:text-[14px] leading-relaxed text-(--ink) placeholder:text-(--ink-tertiary) outline-none focus:bg-white dark:focus:bg-[#1c1c1e] focus:border-(--apple-blue) focus:ring-3 focus:ring-(--apple-blue)/15 transition-all"
               />
             </div>
 

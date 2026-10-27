@@ -83,13 +83,13 @@ export function ProjectRow({ project }: ProjectRowProps) {
           {/* Tag, Badge, and Title */}
           <div className="space-y-1.5 sm:space-y-2">
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 rounded-full text-[10px] sm:text-[11px] font-mono font-medium bg-(--apple-blue)/10 text-(--apple-blue)">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-(--apple-blue)/10 text-(--apple-blue)">
                 <Activity size={11} className="animate-pulse-slow" />
                 <span>{project.tag}</span>
               </span>
 
               {project.badge && (
-                <span className="text-[10px] sm:text-[11px] font-mono font-medium px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/8 text-(--ink-secondary)">
+                <span className="text-[11px] font-mono font-medium px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/8 text-(--ink-secondary)">
                   {project.badge}
                 </span>
               )}
@@ -103,7 +103,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
           </div>
 
           {/* Summary */}
-          <p className="text-[13px] sm:text-[15px] leading-relaxed text-(--ink-secondary) font-normal">
+          <p className="text-[14px] sm:text-[15px] leading-relaxed text-(--ink-secondary) font-normal">
             {project.summary}
           </p>
 
@@ -112,7 +112,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
             {keyTech.map((tech, idx) => (
               <span
                 key={idx}
-                className={`text-[10px] sm:text-[11px] font-mono px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-black/4 dark:bg-white/6 border border-black/4 dark:border-white/8 text-(--ink-secondary) ${
+                className={`text-[11px] font-mono px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-black/4 dark:bg-white/6 border border-black/4 dark:border-white/8 text-(--ink-secondary) ${
                   idx >= 3 ? "hidden sm:inline-block" : ""
                 }`}
               >
@@ -128,7 +128,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="apple-button-primary px-2.5! sm:px-3.5! py-2! sm:py-1.5! text-[11px]! sm:text-[13px]! h-auto! min-h-9.5 justify-center flex-1 sm:flex-initial text-center whitespace-nowrap gap-1 sm:gap-1.5"
+                className="apple-button-primary px-2.5! sm:px-3.5! py-2! sm:py-1.5! text-[12px]! sm:text-[13px]! h-auto! min-h-9.5 justify-center flex-1 sm:flex-initial text-center whitespace-nowrap gap-1 sm:gap-1.5"
               >
                 <span className="sm:hidden">Live Demo</span>
                 <span className="hidden sm:inline">Live System Demo</span>
@@ -138,7 +138,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
 
             <Link
               href={`/projects/${project.slug}`}
-              className="apple-button-secondary px-2.5! sm:px-3.5! py-2! sm:py-1.5! text-[11px]! sm:text-[13px]! h-auto! min-h-9.5 justify-center flex-1 sm:flex-initial text-center whitespace-nowrap gap-1 sm:gap-1.5"
+              className="apple-button-secondary px-2.5! sm:px-3.5! py-2! sm:py-1.5! text-[12px]! sm:text-[13px]! h-auto! min-h-9.5 justify-center flex-1 sm:flex-initial text-center whitespace-nowrap gap-1 sm:gap-1.5"
             >
               <span className="min-[380px]:inline hidden">Architecture & Details</span>
               <span className="min-[380px]:hidden inline">Architecture</span>

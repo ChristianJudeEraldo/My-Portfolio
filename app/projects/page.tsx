@@ -29,7 +29,7 @@ export default function ProjectsPage() {
         <h1 className="font-sans text-2xl sm:text-4xl font-bold tracking-tight text-(--ink)">
           All Engineering Projects
         </h1>
-        <p className="text-[14px] sm:text-[16px] text-(--ink-secondary) max-w-2xl">
+        <p className="text-[15px] sm:text-[16px] text-(--ink-secondary) max-w-2xl">
           Deep dive into production machine learning, real-time edge telemetry, and full-stack web architectures.
         </p>
       </div>

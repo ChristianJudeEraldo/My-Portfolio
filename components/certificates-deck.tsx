@@ -99,7 +99,7 @@ export function CertificatesDeck() {
                 >
                   <ChevronLeft size={15} strokeWidth={2} />
                 </button>
-                <span className="text-[11px] sm:text-[12px] font-mono text-(--ink-secondary) px-1 select-none">
+                <span className="text-[11px] sm:text-[12px] font-mono tabular-nums text-(--ink-secondary) px-1 select-none">
                   {activeIndex + 1}/{certificates.length}
                 </span>
                 <button
@@ -115,7 +115,7 @@ export function CertificatesDeck() {
 
             {/* Certificate Header Info */}
             <div className="space-y-1 sm:space-y-2">
-              <p className="text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase text-(--ink-tertiary)">
+              <p className="text-[11px] font-semibold tracking-wider uppercase text-(--ink-tertiary)">
                 {activeCert.issuer}
               </p>
               <h3 className="font-sans text-lg sm:text-2xl font-bold tracking-tight text-(--ink) leading-snug">

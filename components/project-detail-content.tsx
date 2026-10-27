@@ -58,7 +58,7 @@ export function ProjectDetailContent({ project, showBackLink }: ProjectDetailCon
           <Sparkles size={15} className="text-(--apple-blue)" />
           <span>Project Overview</span>
         </h2>
-        <div className="space-y-3 text-[14px] sm:text-[15px] leading-relaxed text-(--ink-secondary)">
+        <div className="space-y-3 text-[15px] leading-relaxed text-(--ink-secondary)">
           <p>{project.overview[0]}</p>
         </div>
       </section>
@@ -74,7 +74,7 @@ export function ProjectDetailContent({ project, showBackLink }: ProjectDetailCon
             {project.features.slice(0, 4).map((feature, idx) => (
               <li
                 key={idx}
-                className="flex items-start gap-2.5 text-[13px] sm:text-[14px] leading-relaxed text-(--ink-secondary) p-2.5 rounded-xl bg-black/2 dark:bg-white/4 border border-black/4 dark:border-white/6"
+                className="flex items-start gap-2.5 text-[14px] sm:text-[15px] leading-relaxed text-(--ink-secondary) p-2.5 rounded-xl bg-black/2 dark:bg-white/4 border border-black/4 dark:border-white/6"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-(--apple-blue) mt-2 shrink-0" />
                 <span>{feature}</span>
@@ -95,7 +95,7 @@ export function ProjectDetailContent({ project, showBackLink }: ProjectDetailCon
             {project.highlights.map((highlight, idx) => (
               <li
                 key={idx}
-                className="flex items-start gap-2.5 text-[13px] sm:text-[14px] leading-relaxed text-(--ink-secondary)"
+                className="flex items-start gap-2.5 text-[14px] sm:text-[15px] leading-relaxed text-(--ink-secondary)"
               >
                 <span className="font-mono text-[11px] text-(--ink-tertiary) mt-0.5 shrink-0">
                   [{idx + 1}]

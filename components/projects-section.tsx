@@ -98,7 +98,7 @@ export function ProjectsSection() {
             >
               {/* Laurel Wreath Badge & Secondary Tags */}
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-(--ink) px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-(--background) shadow-xs">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-(--ink) px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-(--background) shadow-xs">
                   <LaurelIcon className="h-3.5 w-auto shrink-0" />
                   <span>{project.laurelBadge || project.badge}</span>
                   <span className="inline-flex -scale-x-100">
@@ -109,7 +109,7 @@ export function ProjectsSection() {
                 {project.pillTags?.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-black/10 dark:border-white/15 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-(--ink-secondary)"
+                    className="rounded-full border border-black/10 dark:border-white/15 px-2 py-0.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-(--ink-secondary)"
                   >
                     {tag}
                   </span>
@@ -127,7 +127,7 @@ export function ProjectsSection() {
                     className="object-contain p-0.5 rounded-lg"
                   />
                 </div>
-                <h3 className="font-sans font-bold text-[15px] sm:text-base leading-tight text-(--ink)">
+                <h3 className="font-sans font-bold text-base sm:text-[17px] leading-tight text-(--ink)">
                   {project.shortTitle || project.title}
                 </h3>
               </div>
