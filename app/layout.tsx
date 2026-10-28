@@ -26,8 +26,11 @@ export const metadata: Metadata = {
   },
   description:
     "Christian Jude Eraldo — Computer Engineering graduate from the Philippines specializing in AI/ML (computer vision, CNNs), full-stack web development with Next.js, and applied machine learning systems.",
-  metadataBase: new URL("https://judeeraldo.tech"),
-  authors: [{ name: "Christian Jude Eraldo", url: "https://judeeraldo.tech" }],
+  metadataBase: new URL("https://www.judeeraldo.tech"),
+  alternates: {
+    canonical: "/",
+  },
+  authors: [{ name: "Christian Jude Eraldo", url: "https://www.judeeraldo.tech" }],
   keywords: [
     "Christian Jude Eraldo",
     "Christian Jude",
@@ -49,7 +52,7 @@ export const metadata: Metadata = {
     title: "Christian Jude Eraldo | Computer Engineer & Full-Stack Developer",
     description:
       "Portfolio of Christian Jude Eraldo — AI/ML systems, computer vision, and high-performance web platforms built with Next.js and React.",
-    url: "https://judeeraldo.tech",
+    url: "https://www.judeeraldo.tech",
     siteName: "Christian Jude Eraldo Portfolio",
     locale: "en_US",
     type: "website",
@@ -71,11 +74,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icon.png", sizes: "256x256", type: "image/png" },
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon.png", type: "image/png", sizes: "256x256" },
       { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
     ],
-    apple: "/apple-icon.png",
+    shortcut: [{ url: "/favicon.ico" }],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 

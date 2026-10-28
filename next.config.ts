@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
             value: "judeeraldo.vercel.app",
           },
         ],
-        destination: "https://judeeraldo.tech/:path*",
+        destination: "https://www.judeeraldo.tech/:path*",
         permanent: true,
       },
       { source: "/about", destination: "/#about", permanent: false },
