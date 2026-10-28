@@ -85,6 +85,48 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.judeeraldo.tech/#website",
+      url: "https://www.judeeraldo.tech",
+      name: "Christian Jude Eraldo",
+      alternateName: "Jude Eraldo",
+      publisher: {
+        "@id": "https://www.judeeraldo.tech/#person",
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.judeeraldo.tech/#person",
+      name: "Christian Jude Eraldo",
+      alternateName: "Jude Eraldo",
+      url: "https://www.judeeraldo.tech",
+      jobTitle: "Computer Engineer & Full-Stack Developer",
+      alumniOf: {
+        "@type": "EducationalOrganization",
+        name: "Lyceum of the Philippines University - Cavite",
+      },
+      knowsAbout: [
+        "Computer Engineering",
+        "Full-Stack Development",
+        "Next.js",
+        "Machine Learning",
+        "Computer Vision",
+        "Convolutional Neural Networks (CNN)",
+        "TypeScript",
+        "React",
+      ],
+      sameAs: [
+        "https://github.com/ChristianJudeEraldo",
+        "https://www.linkedin.com/in/christian-jude-eraldo-012718251/",
+      ],
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -93,6 +135,10 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-(--background) text-(--ink)`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
