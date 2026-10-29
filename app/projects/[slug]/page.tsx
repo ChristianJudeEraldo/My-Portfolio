@@ -25,11 +25,18 @@ export async function generateMetadata({
     };
   }
 
+  const pageTitle = project.seoTitle || project.shortTitle || project.title;
+
   return {
-    title: `${project.title}`,
+    title: pageTitle,
     description: project.summary,
     openGraph: {
-      title: `${project.title} | Christian Jude`,
+      title: `${pageTitle} | Christian Jude`,
+      description: project.summary,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${pageTitle} | Christian Jude Eraldo`,
       description: project.summary,
     },
   };

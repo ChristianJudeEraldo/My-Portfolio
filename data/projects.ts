@@ -12,6 +12,7 @@ export interface Project {
   slug: string;
   title: string;
   shortTitle: string;
+  seoTitle?: string;
   summary: string;
   tag: string;
   badge?: string;
@@ -32,6 +33,7 @@ export const projects: Project[] = [
     slug: "sleep-deprivation-detection",
     title: "CNN Facial Recognition for Sleep Deprivation Detection",
     shortTitle: "Sleep Deprivation Monitor",
+    seoTitle: "CNN Sleep Deprivation Detection",
     summary: "Deep learning computer vision system classifying early physiological fatigue markers using CNNs and facial landmark telemetry.",
     tag: "Machine Learning / AI",
     badge: "Thesis & Telemetry",
@@ -88,6 +90,7 @@ export const projects: Project[] = [
     slug: "pamilihan-ai",
     title: "Pamilihan AI — Philippine Market Recipe Pricing",
     shortTitle: "Pamilihan AI",
+    seoTitle: "Pamilihan AI: Market Recipe Pricing",
     summary: "Intelligent Philippine market recipe pricing platform powered by WFP HDX commodity datasets and a deterministic pricing engine.",
     tag: "AI & Data Platform",
     badge: "Featured Web App",
@@ -144,6 +147,7 @@ export const projects: Project[] = [
     slug: "subtrace",
     title: "SubTrace — Subscription & Recurring Expense Tracker",
     shortTitle: "SubTrace",
+    seoTitle: "SubTrace: Recurring Expense Tracker",
     summary: "Modern SaaS financial tracker analyzing monthly run rate, annual commitments, renewal calendars, and overdue payment alerts.",
     tag: "Financial SaaS",
     badge: "Production App",

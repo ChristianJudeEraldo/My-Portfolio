@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Christian Jude Eraldo",
   },
   description:
-    "Christian Jude Eraldo — Computer Engineering graduate from the Philippines specializing in AI/ML (computer vision, CNNs), full-stack web development with Next.js, and applied machine learning systems.",
+    "Christian Jude Eraldo is a Computer Engineer and full-stack developer specializing in AI/ML, computer vision, and modern web systems with Next.js.",
   metadataBase: new URL("https://www.judeeraldo.tech"),
   alternates: {
     canonical: "/",

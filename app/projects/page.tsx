@@ -4,7 +4,7 @@ import { projects } from "@/data/projects";
 import { ProjectRow } from "@/components/project-row";
 
 export const metadata = {
-  title: "Projects | Christian Jude",
+  title: "Engineering Projects",
   description: "Comprehensive portfolio of applied machine learning, computer vision telemetry, and full-stack web platforms.",
 };
 
