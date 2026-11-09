@@ -30,9 +30,13 @@ export async function generateMetadata({
   return {
     title: pageTitle,
     description: project.summary,
+    alternates: {
+      canonical: `/projects/${slug}`,
+    },
     openGraph: {
       title: `${pageTitle} | Christian Jude`,
       description: project.summary,
+      url: `/projects/${slug}`,
     },
     twitter: {
       card: "summary_large_image",

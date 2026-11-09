@@ -2,10 +2,19 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { projects } from "@/data/projects";
 import { ProjectRow } from "@/components/project-row";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Engineering Projects",
   description: "Comprehensive portfolio of applied machine learning, computer vision telemetry, and full-stack web platforms.",
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Engineering Projects | Christian Jude",
+    description: "Comprehensive portfolio of applied machine learning, computer vision telemetry, and full-stack web platforms.",
+    url: "/projects",
+  },
 };
 
 export default function ProjectsPage() {
