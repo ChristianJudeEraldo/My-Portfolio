@@ -83,22 +83,15 @@ export default function Home() {
       <section id="intro" className="animate-fade-up stagger-1 pt-3 sm:pt-6 pb-2">
         <div className="flex flex-col-reverse sm:flex-row gap-5 sm:gap-8 md:gap-10 items-start justify-between">
           <div className="space-y-4 sm:space-y-5 flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Available for Engineering Roles</span>
-              </span>
-            </div>
-            
+    
             <h1 className="font-sans text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-(--ink) leading-[1.18] sm:leading-[1.12]">
-              Hi, I am Jude. I build real-time computer vision telemetry and high-performance web systems.
+              Hi, I’m Jude. I build modern full-stack web apps and intelligent workflow automations.
             </h1>
             
             <p className="text-[15px] sm:text-[17px] leading-relaxed text-(--ink-secondary) max-w-xl font-normal">
-              Computer Engineering graduate specializing in applied machine learning, edge inference, and modern full-stack web platforms.
+               Computer Engineering graduate crafting fast, reliable web platforms, API integrations, and automated systems that solve real-world problems.
             </p>
 
-            {/* Apple HIG Action Buttons (Always in the same row) */}
             <div className="flex flex-row items-center gap-2.5 pt-1 sm:pt-2 w-full sm:w-auto">
               <button
                 type="button"
