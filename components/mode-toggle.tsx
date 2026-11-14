@@ -4,7 +4,11 @@ import * as React from "react"
 import { useTheme } from "next-themes"
 import { flushSync } from "react-dom"
 
-export function ModeToggle() {
+interface ModeToggleProps {
+  variant?: "switch" | "square"
+}
+
+export function ModeToggle({ variant = "switch" }: ModeToggleProps) {
   const { theme, resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
   const isTransitioningRef = React.useRef(false)
@@ -14,6 +18,15 @@ export function ModeToggle() {
   }, [])
 
   if (!mounted) {
+    if (variant === "square") {
+      return (
+        <div
+          className="h-8 w-8 shrink-0 rounded-[10px] border border-black/8 dark:border-white/8 bg-black/3 dark:bg-[#1c1c1c]"
+          aria-hidden="true"
+        />
+      )
+    }
+
     return (
       <div 
         className="h-7 w-12.5 rounded-full border border-black/8 dark:border-white/10 bg-black/4 dark:bg-white/8" 
@@ -94,6 +107,36 @@ export function ModeToggle() {
     } else {
       setTheme(nextTheme)
     }
+  }
+
+  if (variant === "square") {
+    return (
+      <button
+        type="button"
+        data-theme-toggle
+        aria-pressed={isDark}
+        onClick={toggleTheme}
+        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] border border-black/8 dark:border-white/8 bg-black/3 dark:bg-[#1c1c1c] hover:bg-black/6 dark:hover:bg-[#252525] text-(--ink-secondary) dark:text-[#a1a1aa] hover:text-(--ink) dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--apple-blue)"
+        aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+        title={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      >
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`transition-transform duration-300 ${isDark ? "rotate-0" : "rotate-180"}`}
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="M12 3.5a8.5 8.5 0 0 1 0 17Z" fill="currentColor" stroke="none" />
+        </svg>
+      </button>
+    )
   }
 
   return (
