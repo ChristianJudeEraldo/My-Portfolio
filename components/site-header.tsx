@@ -506,7 +506,7 @@ export function SiteHeader() {
             role="dialog"
             aria-modal="true"
             aria-label="Navigation drawer"
-            className="relative z-10 flex h-full w-[min(19rem,calc(100vw-1.5rem))] flex-col justify-between rounded-[22px] border border-black/8 dark:border-white/8 bg-[#f8f8fa] dark:bg-[#141414] p-4 shadow-xl"
+            className="sidebar-textured relative z-10 flex h-full w-[min(19rem,calc(100vw-1.5rem))] flex-col justify-between rounded-[22px] border border-black/8 dark:border-white/8 p-4 shadow-xl"
           >
             <SidebarContent
               collapsed={false}
@@ -532,7 +532,7 @@ export function SiteHeader() {
       {/* Desktop Floating Card Sidebar */}
       <aside
         aria-label="Sidebar"
-        className={`hidden lg:flex fixed top-3 bottom-3 left-3 z-30 flex-col justify-between rounded-[22px] border border-black/8 dark:border-white/8 bg-[#f8f8fa] dark:bg-[#141414] shadow-sm dark:shadow-[0_12px_32px_rgba(0,0,0,0.6)] transition-[width,padding] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`sidebar-textured hidden lg:flex fixed top-3 bottom-3 left-3 z-30 flex-col justify-between rounded-[22px] border border-black/8 dark:border-white/8 shadow-sm transition-[width,padding] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isCollapsed ? "w-16 py-4 px-2.5 items-center" : "w-64 p-4"
         }`}
       >
