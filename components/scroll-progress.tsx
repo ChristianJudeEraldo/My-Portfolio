@@ -74,12 +74,12 @@ export function ScrollProgress() {
 
   return (
     <div 
-      className="fixed top-0 left-0 right-0 h-[2.5px] z-50 pointer-events-none bg-transparent"
+      className="fixed top-0 left-0 right-0 h-[2.5px] z-50 pointer-events-none bg-(--progress-track)"
       aria-hidden="true"
     >
       <div 
         ref={barRef}
-        className="h-full w-full bg-(--apple-blue) origin-left will-change-transform"
+        className="scroll-progress-fill h-full w-full bg-(--progress-fill) origin-left will-change-transform"
         style={{ transform: "scaleX(0)" }}
       />
     </div>

@@ -217,7 +217,7 @@ export function CertificatesDeck() {
               aria-label={`Go to certificate ${index + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                 index === activeIndex
-                  ? "w-7 bg-(--apple-blue)"
+                  ? "w-7 bg-(--ink)"
                   : "w-1.5 bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40"
               }`}
             />

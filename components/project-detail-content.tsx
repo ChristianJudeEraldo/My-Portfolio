@@ -38,7 +38,7 @@ export function ProjectDetailContent({ project, showBackLink }: ProjectDetailCon
         </div>
 
         <div>
-          <h1 className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-(--ink) leading-tight">
+          <h1 className="font-sans text-2xl sm:text-3xl md:text-4xl font-semibold text-(--ink) leading-tight">
             {project.title}
           </h1>
           <p className="mt-2 text-[15px] sm:text-[16px] text-(--ink-secondary) leading-relaxed">

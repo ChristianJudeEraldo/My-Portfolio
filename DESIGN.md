@@ -46,16 +46,18 @@ Information density is balanced with generous whitespace and 20px–28px continu
 ## 3. Typography & Hierarchy
 
 ### Typefaces
-- **Primary / UI**: `SF Pro Display`, `Inter Variable`, `-apple-system`, `system-ui`, sans-serif.
-- **Telemetry / Mono**: `SF Mono`, `Geist Mono`, `ui-monospace`, monospace.
+- **Primary / UI (`--font-sans`)**: `Onest` (variable, loaded via `next/font/google`), `-apple-system`, `BlinkMacSystemFont`, `ui-sans-serif`, `system-ui`, sans-serif.
+- **Editorial Accent (`--font-serif`)**: `Fraunces Italic` (soft variable serif with `"SOFT" 100`, weight 400), `Georgia`, serif. Used exclusively via `.type-accent` (tinted in `--apple-blue`) on at most one keyword per display heading—never in body prose or literal project names.
+- **Telemetry / Mono (`--font-mono`)**: `JetBrains Mono`, `SF Mono`, `ui-monospace`, monospace. Powers `.bryl-label` section eyebrows, metric chips, and status counters.
 
 ### Type Scale
 | Role | Size | Weight | Tracking | Usage |
 | :--- | :--- | :--- | :--- | :--- |
-| Hero Display | 40px–48px | Bold (700) | `-0.025em` | Main hero introduction headline |
-| Section Title | 24px–30px | Bold (700) | `-0.02em` | Major sections (Featured Projects, Tech Stack) |
-| Card Headline | 18px–22px | Semibold (600) | `-0.015em` | Project showcase titles, credential headers |
-| Body Prose | 15px–16px | Regular (400) | `normal` | Overviews, project summaries, bios |
+| Hero Display | 40px–48px | Semibold (600) | `-0.025em` | Main hero introduction headline (with single `.type-accent` word) |
+| Section Title | 24px–30px | Semibold (600) | `-0.025em` | Major display headings (e.g. Contact, Projects page) |
+| Card Headline | 18px–24px | Semibold (600) | `-0.015em` | Project showcase titles, credential headers |
+| Body Prose | 15px–16px | Regular (400) | `-0.005em` | Overviews, project summaries, bios |
+| Section Eyebrow (`.bryl-label`) | 11px | Medium (500) | `+0.08em` | Uppercase mono section labels (`PROJECTS`, `CONTACT`) |
 | Telemetry Chip | 11px–12px | Medium (500) | `+0.02em` | Metric badges, tech stack tags, status flags |
 
 ---
@@ -68,14 +70,15 @@ Information density is balanced with generous whitespace and 20px–28px continu
 - **Direct Actions**: Primary action pill (`apple-button-primary`) linking directly to live deployment + secondary button (`apple-button-secondary`) for technical architecture.
 - **Media Preview**: `aspect-16/10` squircle screenshot container with subtle hover scale (`scale-[1.02]`).
 
-### Action Buttons
+### Action Buttons & Progress Indicators
 - **Primary (`apple-button-primary`)**:
-  - Ink background (`#1d1d1f` in light, `#ffffff` in dark) with inverse text.
-  - Fully rounded (`rounded-full`) or smooth 12px squircle, `text-[13px] font-semibold`.
-  - Subtle hover lift and active scale down (`active:scale-[0.98]`).
+  - Monochrome high-contrast fill (`--btn-primary-bg`: `#18181b` in light, `#f5f5f7` in dark) with inverse text (`#ffffff` in light, `#09090b` in dark).
+  - Fully rounded (`rounded-full`), `13px font-medium`, neutral shadow, and `outline: 2px solid var(--ink)` on `:focus-visible`.
+  - Subtle hover lift (`scale(1.01)`) and active scale down (`scale(0.98)`), with `@media (forced-colors: active)` system fallbacks.
 - **Secondary (`apple-button-secondary`)**:
-  - Subtle translucent background (`bg-black/5 dark:bg-white/8`), hairline border.
-  - Ink text, smooth hover background highlight.
+  - Subtle translucent background (`--fill`), hairline border (`--border`), `--ink` text, and crisper neutral border on hover.
+- **Scroll Progress & Deck Indicators**:
+  - Top scroll progress bar uses `--progress-fill` (`#18181b` light / `#f5f5f7` dark) over a faint `--progress-track`, and carousel active pills use `--ink` to stay cohesive with the black-and-white aesthetic.
 ---
 
 ## 5. Do's and Don'ts

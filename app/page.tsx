@@ -84,8 +84,9 @@ export default function Home() {
         <div className="flex flex-col-reverse sm:flex-row gap-5 sm:gap-8 md:gap-10 items-start justify-between">
           <div className="space-y-4 sm:space-y-5 flex-1 min-w-0">
     
-            <h1 className="font-sans text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-(--ink) leading-[1.18] sm:leading-[1.12]">
-              Hi, I’m Jude. I build modern full-stack web apps and intelligent workflow automations.
+            <h1 className="font-sans text-2xl sm:text-4xl md:text-5xl font-semibold text-(--ink) leading-[1.18] sm:leading-[1.12]">
+              Hi, I’m Jude. I build modern full-stack web apps and{" "}
+              <em className="type-accent">intelligent</em> workflow automations.
             </h1>
             
             <p className="text-[15px] sm:text-[17px] leading-relaxed text-(--ink-secondary) max-w-xl font-normal">
@@ -255,8 +256,8 @@ export default function Home() {
       <section id="contact" className="animate-fade-up stagger-5 space-y-6">
         <div>
           <p className="bryl-label">Contact</p>
-          <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-(--ink) mt-1.5">
-            Let&apos;s build something meaningful.
+          <h2 className="font-sans text-2xl sm:text-3xl font-semibold text-(--ink) mt-1.5">
+            Let&apos;s build something <em className="type-accent">meaningful</em>.
           </h2>
         </div>
 

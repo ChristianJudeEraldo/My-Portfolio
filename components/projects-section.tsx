@@ -127,7 +127,7 @@ export function ProjectsSection() {
                     className="object-contain p-0.5 rounded-lg"
                   />
                 </div>
-                <h3 className="font-sans font-bold text-base sm:text-[17px] leading-tight text-(--ink)">
+                <h3 className="font-sans font-semibold text-base sm:text-[17px] leading-tight text-(--ink)">
                   {project.shortTitle || project.title}
                 </h3>
               </div>
@@ -187,7 +187,7 @@ export function ProjectsSection() {
               aria-label={`Switch to ${p.title}`}
               className={`h-1.5 rounded-full transition-all cursor-pointer ${
                 idx === centerIndex
-                  ? "w-6 bg-(--apple-blue)"
+                  ? "w-6 bg-(--ink)"
                   : "w-1.5 bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40"
               }`}
             />

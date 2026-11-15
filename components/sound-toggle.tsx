@@ -69,7 +69,7 @@ export function SoundToggle({ variant = "circle" }: SoundToggleProps) {
       onClick={handleToggle}
       className={`relative inline-flex h-7 w-7 items-center justify-center rounded-full border transition-all duration-200 cursor-pointer ${
         enabled
-          ? "border-black/8 dark:border-white/12 bg-white dark:bg-[#2c2c2e] text-(--apple-blue) shadow-xs"
+          ? "border-black/8 dark:border-white/12 bg-white dark:bg-[#2c2c2e] text-(--ink) shadow-xs"
           : "border-black/6 dark:border-white/8 bg-black/4 dark:bg-white/8 text-(--ink-tertiary) hover:text-(--ink)"
       }`}
       aria-pressed={enabled}

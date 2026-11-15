@@ -96,7 +96,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
             </div>
 
             <Link href={`/projects/${project.slug}`}>
-              <h3 className="font-sans font-bold text-lg sm:text-2xl text-(--ink) group-hover:text-(--apple-blue) transition-colors leading-snug">
+              <h3 className="font-sans font-semibold text-lg sm:text-2xl text-(--ink) group-hover:text-(--apple-blue) group-hover:underline underline-offset-4 decoration-1 transition-colors leading-snug">
                 {project.title}
               </h3>
             </Link>
@@ -218,7 +218,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden xs:inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-(--apple-blue) text-white hover:opacity-90 transition-opacity"
+                  className="hidden xs:inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-white text-black hover:bg-neutral-200 transition-colors"
                 >
                   <span>Live Demo</span>
                   <ExternalLink size={11} />

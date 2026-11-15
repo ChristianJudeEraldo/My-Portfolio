@@ -5,7 +5,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-onest), -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-mono: var(--font-jetbrains-mono), "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -28,6 +29,13 @@
   --apple-blue: #0071e3;
   --apple-blue-hover: #0077ed;
   --apple-green: #34c759;
+
+  /* Monochrome Buttons & Progress Bar */
+  --btn-primary-bg: #18181b;
+  --btn-primary-hover: #27272a;
+  --btn-primary-ink: #ffffff;
+  --progress-track: rgba(0, 0, 0, 0.06);
+  --progress-fill: #18181b;
   
   /* Grays ramp for backward compatibility */
   --gray-50: #f8f8fa;
@@ -67,6 +75,13 @@
   --apple-blue: #2997ff;
   --apple-blue-hover: #0a84ff;
   --apple-green: #30d158;
+
+  /* Monochrome Buttons & Progress Bar */
+  --btn-primary-bg: #f5f5f7;
+  --btn-primary-hover: #e4e4e7;
+  --btn-primary-ink: #09090b;
+  --progress-track: rgba(255, 255, 255, 0.08);
+  --progress-fill: #f5f5f7;
   
   /* Grays ramp for backward compatibility */
   --gray-50: #141416;
@@ -116,13 +131,38 @@ body {
   background-color: var(--background);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.5;
-  letter-spacing: -0.012em;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  letter-spacing: -0.005em;
+  font-optical-sizing: auto;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display headings: lighter weight with tighter optical tracking and normalized mixed-font x-height */
+h1, h2 {
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  font-size-adjust: from-font;
+}
+
+/* Signature editorial accent: one italic serif word inside a display heading */
+.type-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-variation-settings: "SOFT" 100;
+  color: var(--apple-blue);
+  letter-spacing: -0.01em;
+  padding-right: 0.04em;
+}
+
+@supports not (font-size-adjust: from-font) {
+  .type-accent {
+    font-size: 1.03em;
+    line-height: 1;
+  }
 }
 
 /* Graceful color transition for legacy browsers without View Transitions */
@@ -295,11 +335,11 @@ html, body {
 }
 
 .bryl-label {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--ink-secondary);
 }
 
@@ -319,8 +359,8 @@ html, body {
 }
 
 .bryl-pill-inverted {
-  background-color: var(--apple-blue);
-  color: #ffffff;
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-ink);
   border: none;
 }
 
@@ -352,8 +392,8 @@ html, body {
 }
 
 .apple-button-primary {
-  background-color: var(--apple-blue);
-  color: #ffffff;
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-ink);
   min-height: 36px;
   padding: 0 14px;
   border-radius: 9999px;
@@ -364,18 +404,29 @@ html, body {
   align-items: center;
   justify-content: center;
   transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0, 113, 227, 0.25);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.dark .apple-button-primary {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
 
 .apple-button-primary:hover {
-  background-color: var(--apple-blue-hover);
+  background-color: var(--btn-primary-hover);
   transform: scale(1.01);
 }
 
 .apple-button-primary:active {
   transform: scale(0.98);
+}
+
+.apple-button-primary:focus-visible,
+.apple-button-secondary:focus-visible,
+.bryl-button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 .apple-button-secondary {
@@ -397,15 +448,29 @@ html, body {
 
 .apple-button-secondary:hover {
   background-color: var(--fill-hover);
-  border-color: rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.22);
 }
 
 .dark .apple-button-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 .apple-button-secondary:active {
   transform: scale(0.98);
+}
+
+@media (forced-colors: active) {
+  .apple-button-primary,
+  .apple-button-secondary,
+  .bryl-button {
+    border: 1px solid ButtonText;
+    background-color: ButtonFace;
+    color: ButtonText;
+  }
+
+  .scroll-progress-fill {
+    background-color: Highlight;
+  }
 }
 
 .bryl-halftone {
