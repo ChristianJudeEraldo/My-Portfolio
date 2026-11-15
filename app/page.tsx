@@ -265,7 +265,7 @@ export default function Home() {
           
           {/* Left Column: Direct Contact & Channels (Apple Settings Grouped List) */}
           <div className="space-y-4">
-            <div className="rounded-2xl overflow-hidden border border-black/6 dark:border-white/8 bg-white/80 dark:bg-[#1c1c1e]/80 backdrop-blur-xl divide-y divide-black/6 dark:divide-white/8 text-[13px]">
+            <div className="card-textured relative rounded-2xl overflow-hidden border border-black/6 dark:border-white/8 divide-y divide-black/6 dark:divide-white/8 text-[13px]">
               <a
                 href="mailto:cjeraldo@outlook.ph"
                 className="group flex items-center justify-between gap-3 p-3.5 transition-colors hover:bg-black/2 dark:hover:bg-white/3"

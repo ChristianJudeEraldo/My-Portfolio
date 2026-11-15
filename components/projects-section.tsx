@@ -88,7 +88,7 @@ export function ProjectsSection() {
           return (
             <article
               key={project.slug}
-              className={`deck-card ${slotClass} rounded-2xl border border-black/8 dark:border-white/10 bg-white dark:bg-[#151518] backdrop-blur-xl p-5 select-none transition-all`}
+              className={`deck-card ${slotClass} card-textured rounded-2xl border border-black/8 dark:border-white/10 p-5 select-none transition-all`}
               role="button"
               tabIndex={0}
               aria-label={`Show ${project.title}`}

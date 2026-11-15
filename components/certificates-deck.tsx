@@ -69,7 +69,7 @@ export function CertificatesDeck() {
         <div 
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          className="relative w-full rounded-2xl border border-black/8 dark:border-white/10 bg-white/70 dark:bg-[#18181b]/70 backdrop-blur-xl p-5 sm:p-8 shadow-sm transition-all duration-300"
+          className="card-textured relative w-full rounded-2xl border border-black/8 dark:border-white/10 p-5 sm:p-8 shadow-sm transition-all duration-300"
         >
           {/* Subtle Watermark (hidden on mobile for cleanliness) */}
           <div className="hidden sm:block absolute top-0 right-0 p-6 pointer-events-none opacity-5 dark:opacity-10 text-(--ink)">

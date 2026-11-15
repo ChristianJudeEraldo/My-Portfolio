@@ -222,22 +222,37 @@ html, body {
   }
 }
 
-/* Tactile matte grain surface texture for sidebar */
-.sidebar-textured {
+/* Tactile matte grain surface texture for sidebar and cards */
+@layer components {
+  :where(.card-textured, .bryl-card) {
+    position: relative;
+  }
+}
+
+.sidebar-textured,
+.card-textured,
+.bryl-card {
   isolation: isolate;
   background-color: #f8f8fa;
   background-image: linear-gradient(to bottom var(--in-oklab), #fafafc, #f2f2f6);
 }
 
-.dark .sidebar-textured {
+.dark .sidebar-textured,
+.dark .card-textured,
+.dark .bryl-card {
   background-color: #141416;
   background-image: linear-gradient(to bottom var(--in-oklab), #171719, #121214);
+}
+
+.dark .sidebar-textured {
   box-shadow:
     0 12px 32px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.sidebar-textured::before {
+.sidebar-textured::before,
+.card-textured::before,
+.bryl-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -257,7 +272,9 @@ html, body {
   mask-size: 180px 180px;
 }
 
-.dark .sidebar-textured::before {
+.dark .sidebar-textured::before,
+.dark .card-textured::before,
+.dark .bryl-card::before {
   background-image: linear-gradient(
     to bottom var(--in-oklab),
     rgba(255, 255, 255, 0.08),
@@ -266,7 +283,9 @@ html, body {
 }
 
 @supports (not (mask-image: url(x))) and (not (-webkit-mask-image: url(x))) {
-  .sidebar-textured::before {
+  .sidebar-textured::before,
+  .card-textured::before,
+  .bryl-card::before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='g' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 180px 180px;
@@ -365,9 +384,6 @@ html, body {
 .bryl-card {
   border: 1px solid var(--border);
   border-radius: 20px;
-  background-color: var(--surface-translucent);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
   transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
   padding: 1.125rem;
@@ -380,7 +396,6 @@ html, body {
 }
 
 .dark .bryl-card {
-  background-color: rgba(28, 28, 30, 0.78);
   box-shadow: 0 8px 28px -4px rgba(0, 0, 0, 0.35);
   border-color: rgba(255, 255, 255, 0.09);
 }
@@ -521,7 +536,9 @@ html, body {
 }
 
 @media (forced-colors: active) {
-  .sidebar-textured::before {
+  .sidebar-textured::before,
+  .card-textured::before,
+  .bryl-card::before {
     display: none;
   }
 

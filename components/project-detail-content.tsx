@@ -74,7 +74,7 @@ export function ProjectDetailContent({ project, showBackLink }: ProjectDetailCon
             {project.features.slice(0, 4).map((feature, idx) => (
               <li
                 key={idx}
-                className="flex items-start gap-2.5 text-[14px] sm:text-[15px] leading-relaxed text-(--ink-secondary) p-2.5 rounded-xl bg-black/2 dark:bg-white/4 border border-black/4 dark:border-white/6"
+                className="card-textured relative flex items-start gap-2.5 text-[14px] sm:text-[15px] leading-relaxed text-(--ink-secondary) p-2.5 rounded-xl border border-black/4 dark:border-white/6"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-(--apple-blue) mt-2 shrink-0" />
                 <span>{feature}</span>
@@ -118,7 +118,7 @@ export function ProjectDetailContent({ project, showBackLink }: ProjectDetailCon
           {project.techStack.map((category, idx) => (
             <div
               key={idx}
-              className="p-3.5 rounded-xl border border-black/6 dark:border-white/8 bg-white/60 dark:bg-[#1c1c1e]/60 space-y-2"
+              className="card-textured relative p-3.5 rounded-xl border border-black/6 dark:border-white/8 space-y-2"
             >
               <p className="text-[11px] font-semibold uppercase tracking-wider text-(--ink-tertiary)">
                 {category.category}

@@ -74,7 +74,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
   }, [isLightboxOpen, images.length]);
 
   return (
-    <article className="group rounded-2xl sm:rounded-3xl border border-black/8 dark:border-white/10 bg-white/70 dark:bg-[#1c1c1e]/70 backdrop-blur-xl p-4 sm:p-6 md:p-7 shadow-xs hover:shadow-md transition-all duration-300 hover:border-black/15 dark:hover:border-white/20">
+    <article className="card-textured relative group rounded-2xl sm:rounded-3xl border border-black/8 dark:border-white/10 p-4 sm:p-6 md:p-7 shadow-xs hover:shadow-md transition-all duration-300 hover:border-black/15 dark:hover:border-white/20">
       <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 items-start justify-between">
         
         {/* Left / Main Details & Telemetry */}
