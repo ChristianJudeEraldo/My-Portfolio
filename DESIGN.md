@@ -46,9 +46,9 @@ Information density is balanced with generous whitespace and 20px–28px continu
 ## 3. Typography & Hierarchy
 
 ### Typefaces
-- **Primary / UI (`--font-sans`)**: `Onest` (variable, loaded via `next/font/google`), `-apple-system`, `BlinkMacSystemFont`, `ui-sans-serif`, `system-ui`, sans-serif.
-- **Editorial Accent (`--font-serif`)**: `Fraunces Italic` (soft variable serif with `"SOFT" 100`, weight 400), `Georgia`, serif. Used exclusively via `.type-accent` (tinted in `--apple-blue`) on at most one keyword per display heading—never in body prose or literal project names.
-- **Telemetry / Mono (`--font-mono`)**: `JetBrains Mono`, `SF Mono`, `ui-monospace`, monospace. Powers `.bryl-label` section eyebrows, metric chips, and status counters.
+- **Primary / UI (`--font-sans`)**: `Figtree` (variable weight 300–900, loaded via `next/font/google`), `system-ui`, sans-serif.
+- **Editorial Accent (`--font-serif`)**: `Newsreader` (`italic`, weight 400, loaded via `next/font/google`), `Georgia`, serif. Used exclusively via `.type-accent` (tinted in `--apple-blue`) on at most one keyword per display heading—never in body prose or literal project names.
+- **Telemetry / Mono (`--font-mono`)**: `ui-monospace`, `SFMono-Regular`, `Menlo`, `monospace`. Powers `.bryl-label` section eyebrows, metric chips, and status counters.
 
 ### Type Scale
 | Role | Size | Weight | Tracking | Usage |

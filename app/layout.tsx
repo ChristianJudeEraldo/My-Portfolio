@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Onest, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Figtree, Newsreader } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SoundProvider } from "@/components/sound-provider";
@@ -9,23 +9,17 @@ import { SmoothScroll } from "@/components/smooth-scroll";
 import { CircularReveal } from "@/components/circular-reveal";
 import { Toaster } from "sonner";
 
-const onest = Onest({
+const figtree = Figtree({
   subsets: ["latin"],
-  variable: "--font-onest",
+  variable: "--font-figtree",
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const newsreader = Newsreader({
   subsets: ["latin"],
   style: ["italic"],
-  axes: ["SOFT", "opsz"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  weight: "400",
+  variable: "--font-newsreader",
   display: "swap",
 });
 
@@ -146,7 +140,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body className={`${onest.variable} ${fraunces.variable} ${jetbrainsMono.variable} antialiased bg-(--background) text-(--ink)`}>
+      <body className={`${figtree.variable} ${newsreader.variable} antialiased bg-(--background) text-(--ink)`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -5,9 +5,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: var(--font-onest), -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-mono: var(--font-jetbrains-mono), "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --font-sans: var(--font-figtree), system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 :root {
@@ -152,7 +152,6 @@ h1, h2 {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-variation-settings: "SOFT" 100;
   color: var(--apple-blue);
   letter-spacing: -0.01em;
   padding-right: 0.04em;
