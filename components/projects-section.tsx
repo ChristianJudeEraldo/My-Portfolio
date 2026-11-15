@@ -96,28 +96,17 @@ export function ProjectsSection() {
               onClick={() => activateCard(index)}
               onKeyDown={(e) => handleKeyDown(e, index)}
             >
-              {/* Laurel Wreath Badge & Secondary Tags */}
-              <div className="flex flex-wrap items-center gap-1.5">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-(--ink) px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-(--background) shadow-xs">
+              {/* Laurel Wreath Eyebrow */}
+              <div className="flex items-center gap-1.5 text-[10px] sm:text-[10.5px] font-mono uppercase tracking-wider text-(--ink-secondary)">
+                <LaurelIcon className="h-3.5 w-auto shrink-0 text-(--ink)" />
+                <span className="truncate">{project.laurelBadge || project.badge}</span>
+                <span className="inline-flex -scale-x-100 text-(--ink)">
                   <LaurelIcon className="h-3.5 w-auto shrink-0" />
-                  <span>{project.laurelBadge || project.badge}</span>
-                  <span className="inline-flex -scale-x-100">
-                    <LaurelIcon className="h-3.5 w-auto shrink-0" />
-                  </span>
                 </span>
-
-                {project.pillTags?.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-black/10 dark:border-white/15 px-2 py-0.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-(--ink-secondary)"
-                  >
-                    {tag}
-                  </span>
-                ))}
               </div>
 
-              {/* App / Project Icon and Title */}
-              <div className="mt-4 flex items-center gap-3.5">
+              {/* App / Project Icon, Title & Metadata */}
+              <div className="mt-3.5 flex items-center gap-3.5">
                 <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-black/8 dark:border-white/12 bg-white dark:bg-[#1c1c1e] shadow-xs p-1">
                   <Image
                     src={project.thumbnail}
@@ -127,24 +116,31 @@ export function ProjectsSection() {
                     className="object-contain p-0.5 rounded-lg"
                   />
                 </div>
-                <h3 className="font-sans font-semibold text-base sm:text-[17px] leading-tight text-(--ink)">
-                  {project.shortTitle || project.title}
-                </h3>
+                <div className="min-w-0">
+                  <h3 className="font-sans font-semibold text-base sm:text-[17px] leading-tight text-(--ink) text-balance">
+                    {project.shortTitle || project.title}
+                  </h3>
+                  {project.pillTags && project.pillTags.length > 0 && (
+                    <p className="mt-1 font-mono text-[10.5px] text-(--ink-tertiary) truncate">
+                      {project.pillTags.join(" · ")}
+                    </p>
+                  )}
+                </div>
               </div>
 
               {/* Summary Description */}
-              <p className="mt-3 text-[13px] leading-relaxed text-(--ink-secondary) line-clamp-3 font-normal">
+              <p className="mt-3.5 text-[13px] leading-relaxed text-(--ink-secondary) line-clamp-3 font-normal text-pretty">
                 {project.summary}
               </p>
 
-              {/* Action Buttons: Live demo & Architecture detail */}
-              <div className="mt-5 flex flex-wrap items-center gap-2 pt-0.5">
+              {/* Actions: Live demo & Architecture detail */}
+              <div className="mt-5 flex flex-wrap items-center gap-3.5 pt-0.5">
                 {project.liveUrl && (
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="deck-action-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[12px] font-semibold text-white bg-black dark:bg-white dark:text-black hover:opacity-90 active:scale-95 transition-all shadow-xs"
+                    className="deck-action-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-semibold text-white bg-black dark:bg-white dark:text-black hover:opacity-90 active:scale-95 transition-all shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--apple-blue)"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -155,11 +151,12 @@ export function ProjectsSection() {
 
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="deck-action-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[12px] font-medium text-(--ink) bg-black/4 dark:bg-white/8 hover:bg-black/8 dark:hover:bg-white/12 border border-black/8 dark:border-white/12 active:scale-95 transition-all"
+                  className="deck-action-btn group/link inline-flex items-center gap-1.5 py-1.5 text-[12px] font-medium text-(--ink-secondary) hover:text-(--ink) transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--apple-blue) rounded-md"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <Layers size={13} strokeWidth={2} />
                   <span>Architecture detail</span>
+                  <ChevronRight size={12} className="transition-transform group-hover/link:translate-x-0.5" />
                 </Link>
               </div>
             </article>
