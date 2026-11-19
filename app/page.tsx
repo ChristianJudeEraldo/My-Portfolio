@@ -18,6 +18,7 @@ import {
 import { TechStackSection } from "@/components/tech-stack";
 import { ProjectsSection } from "@/components/projects-section";
 import { CertificatesDeck } from "@/components/certificates-deck";
+import { ExperimentsSection } from "@/components/experiments-section";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { toast } from "sonner";
 
@@ -252,7 +253,12 @@ export default function Home() {
 
       <div className="bryl-hairline animate-fade-up stagger-5" />
 
-      {/* ─── SECTION 06: CONTACT & INQUIRIES ─── */}
+      {/* ─── SECTION 06: AGENTIC LAB ─── */}
+      <ExperimentsSection />
+
+      <div className="bryl-hairline animate-fade-up stagger-5" />
+
+      {/* ─── SECTION 07: CONTACT & INQUIRIES ─── */}
       <section id="contact" className="animate-fade-up stagger-5 space-y-6">
         <div>
           <p className="bryl-label">Contact</p>

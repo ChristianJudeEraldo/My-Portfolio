@@ -6,11 +6,13 @@ import { ModeToggle } from "@/components/mode-toggle"
 import { SoundToggle } from "@/components/sound-toggle"
 import { projects } from "@/data/projects"
 import { certificates } from "@/data/certificates"
+import { experiments } from "@/data/experiments"
 import {
   User,
   Wrench,
   FolderGit2,
   Award,
+  FlaskConical,
   Mail,
   PanelLeftClose,
   PanelLeftOpen,
@@ -34,10 +36,11 @@ const PRIMARY_NAV_ITEMS: NavItem[] = [
 
 const EXPLORE_NAV_ITEMS: NavItem[] = [
   { name: "Certificates", href: "#certificates", id: "certificates", icon: Award, count: certificates.length },
+  { name: "Agentic Lab", href: "#lab", id: "lab", icon: FlaskConical, count: experiments.length },
   { name: "Contact", href: "#contact", id: "contact", icon: Mail },
 ]
 
-const ALL_SECTION_IDS = ["intro", "about", "skills", "projects", "certificates", "contact"]
+const ALL_SECTION_IDS = ["intro", "about", "skills", "projects", "certificates", "lab", "contact"]
 
 const CLOCK_FORMATTER = new Intl.DateTimeFormat("en-GB", {
   timeZone: "Asia/Manila",

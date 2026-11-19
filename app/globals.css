@@ -724,3 +724,21 @@ html, body {
 .deck-card:not(.is-center) button.deck-action-btn {
   pointer-events: none;
 }
+
+/* ─── Native Theater Video Dialog ─── */
+dialog.video-theater-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog.video-theater-dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog.video-theater-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
