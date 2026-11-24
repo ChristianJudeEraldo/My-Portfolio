@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
 
 // ─── Precision Brand SVG Icons ───
 
@@ -57,7 +59,7 @@ function NextjsIcon({ className = "w-4 h-4" }: { className?: string }) {
 function PythonIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-label="Python">
-      <path d="M11.914 0C5.794 0 6.177 2.656 6.177 2.656l.007 2.753h5.827v.826H3.84S0 5.797 0 11.94c0 6.14 3.344 5.922 3.344 5.922h1.996v-2.805s-.109-3.344 3.29-3.344h5.66v-.848H8.462s-3.344.054-3.344-3.235c0-3.29 2.887-3.208 2.887-3.208h8.868s2.969-.082 2.969 2.887v2.316h-1.67V8.118s.082-1.67-1.67-1.67H11.914s-1.67-.027-1.67 1.67c0 1.697 1.67 1.67 1.67 1.67h5.827s3.59.382 3.59 5.868c0 5.487-3.126 5.678-3.126 5.678h-1.942v2.343s.464 2.322-5.718 2.322c-6.182 0-5.772-2.683-5.772-2.683l-.007-2.726h5.827v-.826h-8.17S0 18.203 0 12.06c0-6.14 3.344-5.922 3.344-5.922h1.996V8.97s-.109 3.344 3.29 3.344h5.66v.848H8.462s-3.344-.054-3.344 3.235c0 3.29 2.887 3.208 2.887 3.208h8.868s2.969.082 2.969-2.887v-2.316h-1.67v2.316s.082 1.67-1.67 1.67H11.914s-1.67.027-1.67-1.67c0-1.697 1.67-1.67 1.67-1.67h5.827s3.59-.382 3.59-5.868c0-5.487-3.126-5.678-3.126-5.678h-1.942V2.656S18.096 0 11.914 0zm-2.42 1.838a.93.93 0 1 1 0 1.859.93.93 0 0 1 0-1.86zm5.012 18.465a.93.93 0 1 1 0 1.86.93.93 0 0 1 0-1.86z" />
+      <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z" />
     </svg>
   );
 }
@@ -98,6 +100,22 @@ function GithubIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-label="GitHub">
       <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+    </svg>
+  );
+}
+
+function VercelIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-label="Vercel">
+      <path d="M24 22.525H0l12-21.05 12 21.05z" />
+    </svg>
+  );
+}
+
+function VscodeIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-label="VS Code">
+      <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z" />
     </svg>
   );
 }
@@ -199,67 +217,243 @@ const TECH_STACK: TechItem[] = [
     role: "Version Control & CI/CD",
     icon: GithubIcon,
   },
+  {
+    id: "vercel",
+    name: "Vercel",
+    category: "tools",
+    role: "Deployment & Hosting",
+    icon: VercelIcon,
+  },
+  {
+    id: "vscode",
+    name: "VS Code",
+    category: "tools",
+    role: "Editor & Dev Workflow",
+    icon: VscodeIcon,
+  },
 ];
+
+
+// ─── Visual Config ───
+
+/** Brand accent revealed on hover/focus. Monochrome brands follow the theme ink. */
+const BRAND: Record<string, string> = {
+  react: "#61dafb",
+  nextjs: "var(--ink)",
+  tailwind: "#38bdf8",
+  javascript: "#f7df1e",
+  html: "#e34f26",
+  css: "#2f8fe0",
+  nodejs: "#6cc24a",
+  python: "#4f9fd8",
+  postgres: "#6aa0d8",
+  supabase: "#3ecf8e",
+  firebase: "#ffca28",
+  github: "var(--ink)",
+  vercel: "var(--ink)",
+  vscode: "#2fa3f2",
+};
+
+/** Primary tools shown as feature cards. */
+const FEATURED_IDS = ["nextjs", "react", "python"];
+const FEATURED = FEATURED_IDS.map((id) => TECH_STACK.find((t) => t.id === id)!);
 
 interface TechCategory {
   id: string;
   label: string;
   items: TechItem[];
+  startIndex: number;
 }
 
-const CATEGORIES: TechCategory[] = [
-  {
-    id: "frontend",
-    label: "Frontend",
-    items: TECH_STACK.filter((item) => item.category === "frontend"),
-  },
-  {
-    id: "backend",
-    label: "Backend & DB",
-    items: TECH_STACK.filter((item) => item.category === "backend"),
-  },
-  {
-    id: "tools",
-    label: "Cloud & Tools",
-    items: TECH_STACK.filter((item) => item.category === "tools"),
-  },
-];
+const CATEGORY_DEFS = [
+  { id: "frontend", label: "Frontend" },
+  { id: "backend", label: "Backend & DB" },
+  { id: "tools", label: "Cloud & Tools" },
+] as const;
+
+// Secondary tools grouped by category; startIndex keeps the entrance stagger continuous.
+const CATEGORIES: TechCategory[] = (() => {
+  let cursor = FEATURED.length;
+  return CATEGORY_DEFS.map((def) => {
+    const items = TECH_STACK.filter(
+      (t) => t.category === def.id && !FEATURED_IDS.includes(t.id)
+    );
+    const cat = { ...def, items, startIndex: cursor };
+    cursor += items.length;
+    return cat;
+  }).filter((c) => c.items.length > 0);
+})();
+
+const brandStyle = (id: string) => ({ "--brand": BRAND[id] }) as React.CSSProperties;
+
+// ─── Helpers ───
+
+function useInView<T extends Element>() {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return [ref, inView] as const;
+}
+
+/** Staggered fade/slide-in. Kept on a wrapper so its delay never affects hover transitions. */
+function Reveal({
+  show,
+  index,
+  className = "",
+  children,
+}: {
+  show: boolean;
+  index: number;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className={`transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none ${
+        show
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-2 motion-reduce:opacity-100 motion-reduce:translate-y-0"
+      } ${className}`}
+      style={{ transitionDelay: show ? `${index * 55}ms` : "0ms" }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function trackSpotlight(e: React.MouseEvent<HTMLElement>) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
+}
+
+// ─── Feature Card (primary tools) ───
+
+function FeatureCard({ tech }: { tech: TechItem }) {
+  const Icon = tech.icon;
+
+  return (
+    <article
+      onMouseMove={trackSpotlight}
+      style={brandStyle(tech.id)}
+      className="group relative flex h-full items-center gap-3 overflow-hidden rounded-xl border border-(--border) bg-(--fill) p-3 transition-colors sm:block sm:p-4 duration-200 hover:bg-(--fill-hover) hover:border-black/15 dark:hover:border-zinc-700"
+    >
+      {/* Cursor-following brand spotlight */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 [@media(hover:hover)]:group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(220px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--brand) 16%, transparent), transparent 70%)",
+        }}
+      />
+
+      <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-(--border) bg-(--fill) text-(--ink-secondary) transition-colors duration-200 group-hover:text-(--brand) sm:h-9 sm:w-9">
+        <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
+      </span>
+
+      <div className="relative min-w-0 flex-1 sm:mt-3 sm:flex-none">
+        <h3 className="text-sm font-medium leading-tight text-(--ink)">{tech.name}</h3>
+        <p className="mt-0.5 text-xs text-(--ink-secondary)">{tech.role}</p>
+      </div>
+
+      {tech.certified && (
+        <span className="relative shrink-0 rounded-full border border-blue-500/30 bg-blue-500/10 px-2 py-0.5 text-[10px] font-medium text-blue-600 dark:text-blue-400 sm:absolute sm:right-4 sm:top-4">
+          Certified
+        </span>
+      )}
+    </article>
+  );
+}
+
+// ─── Compact Chip (secondary tools) ───
+
+function TechChip({ tech }: { tech: TechItem }) {
+  const Icon = tech.icon;
+
+  return (
+    <span
+      tabIndex={0}
+      style={brandStyle(tech.id)}
+      className="group relative inline-flex cursor-default items-center gap-2 rounded-lg border border-(--border) bg-(--fill) px-3 py-1.5 text-xs text-(--ink) outline-none transition-all duration-200 hover:bg-(--fill-hover) hover:border-black/15 hover:shadow-[0_0_18px_-6px_var(--brand)] focus-visible:ring-2 focus-visible:ring-(--ink)/40 dark:hover:border-zinc-700 sm:text-sm"
+    >
+      <Icon className="h-4 w-4 shrink-0 text-(--ink-secondary) transition-colors group-hover:text-(--brand) group-focus-visible:text-(--brand)" />
+      <span>{tech.name}</span>
+      <span className="sr-only"> — {tech.role}</span>
+
+      {/* Role tooltip (visual only; screen readers get the sr-only text above) */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md border border-white/10 bg-[#1c1c1e] px-2 py-1 text-[11px] text-[#f5f5f7] opacity-0 shadow-lg transition duration-150 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100"
+      >
+        {tech.role}
+      </span>
+    </span>
+  );
+}
+
+// ─── Section ───
 
 export function TechStackSection() {
-  return (
-    <div className="w-full">
-      {/* ─── Section Header ─── */}
-      <h2 className="bryl-label mb-4">
-        Tech Stack
-      </h2>
+  const [ref, inView] = useInView<HTMLDivElement>();
 
-      {/* ─── Categorized Rows Container ─── */}
-      <div className="divide-y divide-black/8 dark:divide-zinc-800/60 border-y border-black/8 dark:border-zinc-800/60">
+  return (
+    <div ref={ref} className="w-full">
+      {/* ─── Section Header ─── */}
+      <h2 className="bryl-label mb-4">Tech Stack</h2>
+
+      {/* ─── Core Stack: Feature Cards ─── */}
+      <div
+        role="group"
+        aria-label="Core technologies"
+        tabIndex={0}
+        className="mb-3 flex snap-x snap-mandatory gap-2 overflow-x-auto overscroll-x-contain rounded-xl pb-1 outline-none [scrollbar-width:none] focus-visible:ring-2 focus-visible:ring-(--ink)/40 [&::-webkit-scrollbar]:hidden sm:mb-4 sm:grid sm:snap-none sm:grid-cols-3 sm:gap-2.5 sm:overflow-visible sm:pb-0"
+      >
+        {FEATURED.map((tech, i) => (
+          <Reveal
+            key={tech.id}
+            show={inView}
+            index={i}
+            className="w-64 shrink-0 snap-start sm:w-auto sm:shrink"
+          >
+            <FeatureCard tech={tech} />
+          </Reveal>
+        ))}
+      </div>
+
+      {/* ─── Supporting Stack: Categorized Chips ─── */}
+      <div className="divide-y divide-black/8 border-y border-black/8 dark:divide-zinc-800/60 dark:border-zinc-800/60">
         {CATEGORIES.map((cat) => (
           <div
             key={cat.id}
-            className="grid grid-cols-1 sm:grid-cols-4 gap-2.5 sm:gap-3 py-3.5 sm:py-4 items-start"
+            className="grid grid-cols-1 items-start gap-2.5 py-3.5 sm:grid-cols-4 sm:gap-3 sm:py-4"
           >
-            {/* Category Label */}
-            <span className="sm:col-span-1 text-[11px] sm:text-xs font-semibold sm:font-medium text-(--ink-secondary) uppercase tracking-wider sm:pt-1.5 select-none">
+            <span className="select-none text-[11px] font-semibold uppercase tracking-wider text-(--ink-secondary) sm:col-span-1 sm:pt-1.5 sm:text-xs sm:font-medium">
               {cat.label}
             </span>
 
-            {/* Technology Pills */}
-            <div className="sm:col-span-3 flex flex-wrap gap-1.5 sm:gap-2 items-center">
-              {cat.items.map((tech) => {
-                const Icon = tech.icon;
-
-                return (
-                  <span
-                    key={tech.id}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs sm:text-sm transition-all duration-200 group cursor-default border text-(--ink) bg-(--fill) border-(--border) hover:bg-(--fill-hover) hover:border-black/15 dark:hover:border-zinc-700 hover:text-(--ink)"
-                  >
-                    <Icon className="w-4 h-4 shrink-0 text-(--ink-secondary) group-hover:text-(--ink) transition-colors" />
-                    <span>{tech.name}</span>
-                  </span>
-                );
-              })}
+            <div className="flex flex-wrap items-center gap-1.5 sm:col-span-3 sm:gap-2">
+              {cat.items.map((tech, i) => (
+                <Reveal key={tech.id} show={inView} index={cat.startIndex + i}>
+                  <TechChip tech={tech} />
+                </Reveal>
+              ))}
             </div>
           </div>
         ))}
