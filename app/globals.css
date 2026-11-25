@@ -261,8 +261,8 @@ html, body {
   pointer-events: none;
   background-image: linear-gradient(
     to bottom var(--in-oklab),
-    rgba(0, 0, 0, 0.036),
-    rgba(0, 0, 0, 0.022)
+    rgba(0, 0, 0, 0.018),
+    rgba(0, 0, 0, 0.011)
   );
   -webkit-mask-image: url("/noise-grain.png");
   -webkit-mask-repeat: repeat;
@@ -278,8 +278,8 @@ html, body {
 .dark .bryl-card::before {
   background-image: linear-gradient(
     to bottom var(--in-oklab),
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.055)
+    rgba(255, 255, 255, 0.035),
+    rgba(255, 255, 255, 0.024)
   );
 }
 
@@ -290,7 +290,7 @@ html, body {
     background-image: url("/noise-grain.png");
     background-repeat: repeat;
     background-size: 180px 180px;
-    opacity: 0.05;
+    opacity: 0.024;
   }
 }
 
